@@ -2,7 +2,7 @@
 	function display_title(){
 		echo "Home";
 	}
-
+	
 
 
 

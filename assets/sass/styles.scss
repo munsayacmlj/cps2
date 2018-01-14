@@ -1,7 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
+@import "_custom_mixins.scss";
 
 body {
     font-family: 'Alegreya Sans', sans-serif;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 /* Sticky footer position and size
@@ -16,6 +23,11 @@ body {
 }
 
 .header-top{
+
+	font-size: 12px;
+	background-color: #e1e1e1;
+	border-bottom: 1px solid #d0d0d0d0;
+	padding: 4px 0;
 	.list-inline{
 		display: inline-block;
 	}
@@ -29,10 +41,30 @@ body {
 	}
 }
 
-.list-inline{
-	margin-top: 9px;
-	margin-bottom: 8px;
+.sticky-wrapper{
+	color: #bbb;
 }
+
+.list-inline{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+	.logo{
+		margin: 6px 0;
+		img{
+			height: 50px;
+		}
+	}
+	.site-slogan{
+		color: #777777;
+		font-size: 11px;
+		padding: 3px 0 0;
+		font-weight: 300;
+		opacity: 1;
+		text-align: center;
+	}
+
 
 ul{
 	.text-muted{
@@ -54,40 +86,17 @@ ul{
 }
 
 
-div.header-top{
-	background-color: #f2f2f2;
-	border-bottom: 1px solid #d0d0d0d0;
-	padding: 4px 0;
-}
 
-
-nav.bg-custom{
-	background-color: #fcfcfc !important;
+.bg-custom{
+	background-color: #292c2f !important;
 	border-top: 1px solid #ffffff;
 	border-bottom: 2px solid #f1f1f1f1;
 }
 
-nav{
+div{
 	.container{
 		.row{
 			width: 100%;
-
-			.header-button{
-
-
-				a{
-					padding-top: 7px;
-					color: #fff;
-					font-size: 12px;
-
-				}
-				a.btn-default{
-						background-color: #e07e27;
-						border-color: #cc7324;
-				}
-			}
-
-
 		}
 	}
 
@@ -96,23 +105,106 @@ nav{
 	}
 }
 
+.nav-margin{
+	margin-top: 5px;
+}
+
+.header-button{
+		margin-top: 13px;
+		font-size: 12px;
+		a{
+			color: #ffffff;
+		}
+
+	.btn-default{
+			background-color: #e07e27;
+			border-color: #cc7324;
+	}
+}
+
+
+
 .navbar-bg-custom{
 	background-color: #fcfcfc;
 }
 
 
+.nav-link{
+	color: #bbb;
+}
 
-.navbar-color{
-	ul{
-		li{
-			a.nav-link{
-				color: #333333;
-				font-size: 16px;
+.nav-link:hover{
+	color: #fff;
+}
 
-			}
-			:hover{
-					color: red;
-				}
+
+
+/* Login Page */
+
+.login-page{
+	
+	.logo-home{
+		position: relative;
+		height: 90px;
+		img{
+			height: 60px;
+			@include center_item;
 		}
 	}
+
+
+	.login-container{
+		width: 50%;
+		height: 100%;
+		margin: 0 auto;
+		
+		.row{
+			margin: 0;
+		}
+
+		#login{
+			width: 45%;
+			margin: 0 auto;
+			// background-color: lightgray;
+			padding: 30px;
+			border: 1px solid #b6b6b6;
+			border-radius: 5px;
+			color: #000;
+			font-weight: 600;
+
+			.sign-in{
+
+			}
+
+
+		}
+
+		.or-divider{
+			display: inline-block;
+			.inner{
+				border-right: 1px dotted #b6b6b6;
+				height: 100%;
+
+				.login_or{
+					text-align: center;
+					text-transform: uppercase;
+					font-size: 12px;
+					margin-right: 4px;
+					height: 2em;
+					width: 2em;
+					background-color: #dcdcdc;
+					border-radius: 50%;
+					display: inline-block;
+					position: absolute;
+					right: 0;
+					top: 50%;
+				}
+
+				.or-text{
+					@include center_item;
+				}	
+			}
+		}
+	}
+
 }
