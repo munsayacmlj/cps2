@@ -20,7 +20,7 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
               
-                <div class="collapse navbar-collapse" id="navbarColor03">
+                <div class="collapse navbar-collapse normal-link-texts" id="navbarColor03">
                   <ul class="navbar-nav ml-xl-auto">
                     <li class="nav-item">
                       <a class="nav-link" href="#">Home</a>
@@ -36,6 +36,9 @@
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cart-icon" href="#"><img src="assets/icons/shopping-cart.png" alt=""></a>
                     </li>
                   </ul>
                 </div> <!-- /navbar-collapse -->

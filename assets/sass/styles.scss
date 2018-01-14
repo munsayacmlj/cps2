@@ -15,7 +15,7 @@ body {
 -------------------------------------------------- */
 html {
   position: relative;
-  min-height: 100%;
+  min-height: 100vh;
 }
 body {
   /* Margin bottom by footer height */
@@ -99,10 +99,17 @@ div{
 			width: 100%;
 		}
 	}
-
-	a{
-		font-size: 1.2em !important;
-	}
+    
+    .normal-link-texts{
+        
+        a.nav-link{
+            font-size: 1.2em !important;
+        }
+        
+        .cart-icon{
+            margin-bottom: 2px;
+        }
+    }
 }
 
 .nav-margin{
@@ -141,13 +148,15 @@ div{
 
 /* Login Page */
 
+
+
 .login-page{
 	
 	.logo-home{
 		position: relative;
-		height: 90px;
+		height: 70px;
 		img{
-			height: 60px;
+			height: 55px;
 			@include center_item;
 		}
 	}
@@ -163,7 +172,7 @@ div{
 		}
 
 		#login{
-			width: 45%;
+			width: 55%;
 			margin: 0 auto;
 			// background-color: lightgray;
 			padding: 30px;
@@ -171,12 +180,70 @@ div{
 			border-radius: 5px;
 			color: #000;
 			font-weight: 600;
-
-			.sign-in{
-
-			}
-
-
+            
+            .sign-in-text{
+                h1{
+                    font-weight: 500 !important;
+                }
+            }
+            
+            #submitBtn{
+                width: 100%;
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+            .reg-page-button{
+                
+                margin-top: 20px;
+                
+                .new-customer-divider{
+                    text-align: center;
+                    position: relative;
+                    border-bottom: 1px solid #e7e7e7;
+                    height: 11px;
+                    
+                    .new-cust-text{
+                        color: #767676;
+                        font-size: 14px;
+                        background-color: #ffffff;
+                        padding: 0 10px;
+                    }
+                }
+                
+                .new-customer-button{
+                    margin-top: 30px;
+//                    background-color: red;
+                    height: 30px;
+                    position: relative;
+                    #create-account-button{
+                        text-align: center;
+                        background-color: #e7e9ec;
+                        border-width: 1px;
+                        border-style: solid;
+                        border-color: #adb1b8 #a2a6ac #8d9096;
+                        border-radius: 3px;
+                        width: 100%;
+                        padding: 2px 0;
+                        @include center-item;
+                        
+                        .ca-inner-button{
+                            box-shadow: 0 1px 0 rgba(255,255,255,.6) inset;
+                            display: block;
+                            position: relative;
+                            border-radius: 2px;
+                            background: linear-gradient(to bottom,#f7f8fa,#e7e9ec);
+                            
+                            a{
+                                padding: 5px 61px;
+//                                background-color: red;
+                                font-size: 15px;
+                                color: #111;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+            }
 		}
 
 		.or-divider{
@@ -206,5 +273,19 @@ div{
 			}
 		}
 	}
-
+    
+    
+    .login-page-footer{
+        margin-top: 26px;
+        .page-divider-section{
+            background-color: transparent;
+            padding-top: 20px;
+            text-align: center;
+            background: linear-gradient(to bottom,rgba(0,0,0,.14),rgba(0,0,0,.03) 3px,transparent);
+            height: 50px;
+            margin-bottom: -20px;
+            z-index: 0;
+            zoom: 1;
+        }
+    }
 }

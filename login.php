@@ -4,7 +4,7 @@
 	<title>Online Shopping - Login</title>
 	<?php require "assets/partials/head.php"; ?>
 </head>
-<body>
+<body style="margin-bottom: 0">
 	<?php //require "assets/partials/top-nav.php" ?>
 	<?php //require "assets/partials/navigation.php" ?>
 
@@ -19,37 +19,51 @@
 			<div class="container">
 				<div class="row">
 					<div id="login">
-						<div class="sign-in">
+						<div class="sign-in-text">
 							<h1>Sign in</h1>
 						</div>
 						<form action="authenticate.php" method="POST">
 							<div class="form-group">
-								<label for="exampleInputEmail1">Username</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username" name="username" id="usernameLoginInput">
+								<label for="exampleInputEmail1">Email</label>
+								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" id="usernameLoginInput">
 								<small id="chkUsr" class="form-text text-muted"></small>
 							</div>
 							<div class="form-group">
 								<label for="exampleInputPassword1">Password</label>
-								<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+								<input type="password" class="form-control" id="exampleInputPassword1" name="password">
 							</div>
+							<button type="submit" class="btn btn-primary" id="submitBtn">Sign in</button>
+							
 							<div class="form-check">
 								<input type="checkbox" class="form-check-input" id="exampleCheck1">
 								<label class="form-check-label" for="exampleCheck1">Remember Me</label>
 							</div>
-							<button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
 						</form>
+						
+						<div class="reg-page-button">
+						    <div class="new-customer-divider">
+						        <span class="new-cust-text">New Customer?</span>
+						    </div>
+						    
+						    <div class="new-customer-button">
+						        <span id="create-account-button">
+                                    <span class="ca-inner-button">
+                                        <a href="#">Create your new account</a>
+                                    </span>
+						        </span>
+						    </div>
+						</div> <!-- /.reg-page-button -->
 					</div> <!-- /.login -->
-
-		<!-- 	<div class="or-divider col-12 col-md-3 col-lg-3">
-				<div class="inner">
-					<div class="login_or"><span class="or-text">Or</span></div>
-				</div>
-			</div>
-		-->
 				</div> <!-- /.row -->
 			</div> <!-- /.container -->
 
 		</div> <!-- /.login-container -->
+		
+		<div class="login-page-footer">
+		    <div class="page-divider-section">
+		        &copy; 2018, MLJM.com, Inc or its affiliates
+		    </div>
+		</div> <!-- /.login-page-footer -->
 	</div> <!-- /.login-page -->
 
 

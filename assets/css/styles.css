@@ -11,7 +11,7 @@ body {
 -------------------------------------------------- */
 html {
   position: relative;
-  min-height: 100%; }
+  min-height: 100vh; }
 
 body {
   /* Margin bottom by footer height */
@@ -66,8 +66,10 @@ ul a.link-dark:hover {
 
 div .container .row {
   width: 100%; }
-div a {
+div .normal-link-texts a.nav-link {
   font-size: 1.2em !important; }
+div .normal-link-texts .cart-icon {
+  margin-bottom: 2px; }
 
 .nav-margin {
   margin-top: 5px; }
@@ -93,9 +95,9 @@ div a {
 /* Login Page */
 .login-page .logo-home {
   position: relative;
-  height: 90px; }
+  height: 70px; }
   .login-page .logo-home img {
-    height: 60px;
+    height: 55px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -107,13 +109,59 @@ div a {
   .login-page .login-container .row {
     margin: 0; }
   .login-page .login-container #login {
-    width: 45%;
+    width: 55%;
     margin: 0 auto;
     padding: 30px;
     border: 1px solid #b6b6b6;
     border-radius: 5px;
     color: #000;
     font-weight: 600; }
+    .login-page .login-container #login .sign-in-text h1 {
+      font-weight: 500 !important; }
+    .login-page .login-container #login #submitBtn {
+      width: 100%;
+      font-size: 14px;
+      margin-bottom: 10px; }
+    .login-page .login-container #login .reg-page-button {
+      margin-top: 20px; }
+      .login-page .login-container #login .reg-page-button .new-customer-divider {
+        text-align: center;
+        position: relative;
+        border-bottom: 1px solid #e7e7e7;
+        height: 11px; }
+        .login-page .login-container #login .reg-page-button .new-customer-divider .new-cust-text {
+          color: #767676;
+          font-size: 14px;
+          background-color: #ffffff;
+          padding: 0 10px; }
+      .login-page .login-container #login .reg-page-button .new-customer-button {
+        margin-top: 30px;
+        height: 30px;
+        position: relative; }
+        .login-page .login-container #login .reg-page-button .new-customer-button #create-account-button {
+          text-align: center;
+          background-color: #e7e9ec;
+          border-width: 1px;
+          border-style: solid;
+          border-color: #adb1b8 #a2a6ac #8d9096;
+          border-radius: 3px;
+          width: 100%;
+          padding: 2px 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%); }
+          .login-page .login-container #login .reg-page-button .new-customer-button #create-account-button .ca-inner-button {
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+            display: block;
+            position: relative;
+            border-radius: 2px;
+            background: linear-gradient(to bottom, #f7f8fa, #e7e9ec); }
+            .login-page .login-container #login .reg-page-button .new-customer-button #create-account-button .ca-inner-button a {
+              padding: 5px 61px;
+              font-size: 15px;
+              color: #111;
+              text-decoration: none; }
   .login-page .login-container .or-divider {
     display: inline-block; }
     .login-page .login-container .or-divider .inner {
@@ -137,5 +185,16 @@ div a {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%); }
+.login-page .login-page-footer {
+  margin-top: 26px; }
+  .login-page .login-page-footer .page-divider-section {
+    background-color: transparent;
+    padding-top: 20px;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.03) 3px, transparent);
+    height: 50px;
+    margin-bottom: -20px;
+    z-index: 0;
+    zoom: 1; }
 
 /*# sourceMappingURL=styles.css.map */
