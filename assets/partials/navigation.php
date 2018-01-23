@@ -21,21 +21,55 @@
                 </button>
               
                 <div class="collapse navbar-collapse normal-link-texts" id="navbarColor03">
-                  <ul class="navbar-nav ml-xl-auto">
+                  <ul class="nav navbar-nav ml-xl-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Home</a>
+                      <a class="nav-link" href="index.php?new=true">New Arrivals</a>
+                    </li>                    
+                    <li class="nav-item dropdown">
+                          <a class="nav-link" href="index.php?men=true" id="navbarDropdown">Men</a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="index.php?men=true&top=true">Top</a>
+                              <a class="dropdown-item" href="index.php?men=true&bag=true">Bag</a>
+                              <a class="dropdown-item" href="index.php?men=true&shoe=true">Shoes</a>
+                          </div>
+                    </li>
+                    
+
+                    <li class="nav-item dropdown">
+                          <a class="nav-link" href="index.php?women=true" id="navbarDropdown">Women</a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="index.php?women=true&top=true">Top</a>
+                              <a class="dropdown-item" href="index.php?women=true&bag=true">Bag</a>
+                              <a class="dropdown-item" href="index.php?women=true&shoe=true">Shoes</a>
+                          </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                          <a class="nav-link" href="index.php?women=true" id="navbarDropdown">Brands</a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="index.php?allen_edmonds=true">Allen Edmonds</a>
+                              <a class="dropdown-item" href="index.php?women=true&top=true">Balenciaga</a>
+                              <a class="dropdown-item" href="index.php?women=true&top=true">Barba Napoli</a>
+                              <a class="dropdown-item" href="index.php?women=true&top=true">Berluti</a>
+                              <a class="dropdown-item" href="index.php?women=true&top=true">Brioni</a>
+                              <a class="dropdown-item" href="index.php?women=true&top=true">Christian Louboutin</a>
+                              <a class="dropdown-item" href="index.php?women=true&top=true">Gucci</a>
+                              <a class="dropdown-item" href="index.php?women=true&top=true">Jimmy Choo</a>
+                              <a class="dropdown-item" href="index.php?women=true&top=true">Kate Spade</a>
+                              <a class="dropdown-item" href="index.php?women=true&top=true">Manolo Blhanik</a>
+                              <a class="dropdown-item" href="index.php?women=true&top=true">Ralph Lauren</a>
+                              <a class="dropdown-item" href="index.php?women=true&top=true">Saint Laurent</a>
+                              <a class="dropdown-item" href="index.php?women=true&top=true">Salvatore Ferragamo</a>
+                              <a class="dropdown-item" href="index.php?women=true&top=true">Stuart Weitzman</a>
+                              <a class="dropdown-item" href="index.php?women=true&top=true">Versace</a>
+                              
+                              
+                          </div>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Pages</a>
+                      <a class="nav-link" href="#">Bags</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Shop</a>
+                      <a class="nav-link" href="#">Shoes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link cart-icon" href="#"><img src="assets/icons/shopping-cart.png" alt=""></a>

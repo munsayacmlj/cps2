@@ -27,7 +27,7 @@ body {
 	font-size: 12px;
 	background-color: #e1e1e1;
 	border-bottom: 1px solid #d0d0d0d0;
-	padding: 4px 0;
+	padding: 0;
 	.list-inline{
 		display: inline-block;
 	}
@@ -38,6 +38,10 @@ body {
 
 	#header-top-right{
 		width: 98%;
+
+		.welcome-user{
+			font-size: 18px;
+		}
 	}
 }
 
@@ -95,6 +99,7 @@ ul{
 
 div{
 	.container{
+
 		.row{
 			width: 100%;
 		}
@@ -109,6 +114,8 @@ div{
         .cart-icon{
             margin-bottom: 2px;
         }
+
+       
     }
 }
 
@@ -144,7 +151,26 @@ div{
 	color: #fff;
 }
 
+.image-box{
+	// background-color: red;
+	width: 100%;
+	height: 450px;
+}
 
+.center-img{
+	line-height: 400px;
+}
+
+.card-content{
+	text-align: center;
+	.shop-link{
+		font-size: 16px;
+		color: #000;
+		&:hover{
+			text-decoration: none;
+		}
+	}
+}
 
 /* Login Page */
 

@@ -21,13 +21,15 @@ body {
   font-size: 12px;
   background-color: #e1e1e1;
   border-bottom: 1px solid #d0d0d0d0;
-  padding: 4px 0; }
+  padding: 0; }
   .header-top .list-inline {
     display: inline-block; }
   .header-top .text-right {
     text-align: right !important; }
   .header-top #header-top-right {
     width: 98%; }
+    .header-top #header-top-right .welcome-user {
+      font-size: 18px; }
 
 .sticky-wrapper {
   color: #bbb; }
@@ -91,6 +93,21 @@ div .normal-link-texts .cart-icon {
 
 .nav-link:hover {
   color: #fff; }
+
+.image-box {
+  width: 100%;
+  height: 450px; }
+
+.center-img {
+  line-height: 400px; }
+
+.card-content {
+  text-align: center; }
+  .card-content .shop-link {
+    font-size: 16px;
+    color: #000; }
+    .card-content .shop-link:hover {
+      text-decoration: none; }
 
 /* Login Page */
 .login-page .logo-home {

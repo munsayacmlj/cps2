@@ -24,7 +24,7 @@
 						</div>
 						<form action="authenticate.php" method="POST">
 							<div class="form-group">
-								<label for="exampleInputEmail1">Email</label>
+								<label for="exampleInputEmail1">Username</label>
 								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" id="usernameLoginInput">
 								<small id="chkUsr" class="form-text text-muted"></small>
 							</div>
@@ -32,7 +32,7 @@
 								<label for="exampleInputPassword1">Password</label>
 								<input type="password" class="form-control" id="exampleInputPassword1" name="password">
 							</div>
-							<button type="submit" class="btn btn-primary" id="submitBtn">Sign in</button>
+							<button type="submit" name="login" class="btn btn-primary" id="submitBtn">Sign in</button>
 							
 							<div class="form-check">
 								<input type="checkbox" class="form-check-input" id="exampleCheck1">

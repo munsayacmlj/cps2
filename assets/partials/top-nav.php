@@ -1,3 +1,7 @@
+<?php 
+	session_start();
+ ?>
+
 <div class="header-top">
 	
 	<div class="container">
@@ -19,10 +23,24 @@
 							<a class="contact-num" href="#">+63 999 322 2322</a>
 						</li>
 
-						<li class="list-inline-item">
-							<i class="fa fa-sign-in pl-2 pr-1"></i>
-							<a class="link-dark" href="login.php">Login</a>
-						</li>
+						<?php 
+							if (isset($_SESSION['username'])) :
+						 ?>
+						 	<li class="list-inline-item">
+						 		<span class="welcome-user">Welcome, <?php echo $_SESSION['username']; ?>!</span>
+						 	</li>
+							<li class="list-inline-item">
+								<i class="fa fa-sign-in pl-2 pr-1"></i>
+								<a class="link-dark" href="logout.php">Logout</a>
+							</li>
+						<?php 
+							else :
+						 ?>
+							 <li class="list-inline-item">
+								<i class="fa fa-sign-in pl-2 pr-1"></i>
+								<a class="link-dark" href="login.php">Login</a>
+							</li>
+						<?php endif; ?>
 						<li class="list-inline-item">
 							<i class="fa fa-user-plus pl-2 pr-1"></i>
 							<a class="link-dark" href="#">Sign up</a>
