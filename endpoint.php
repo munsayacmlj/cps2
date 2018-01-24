@@ -19,11 +19,9 @@
 
 	if (isset($_GET['add_to_cart'])) {
 		session_start();
+
+
 		$get_product_id = $_GET['id']; /* products.id*/
-
-
-
-
 		$now = new DateTime();
 		$date = $now->format('Y-m-d H:i:s');
 		// echo $now->format('Y-m-d H:i:s');
@@ -39,23 +37,32 @@
 		$result = mysqli_query($connection, $sql);
 		$row = mysqli_fetch_assoc($result);
 
+
 		if(mysqli_num_rows($result) == 0){
 			$sql = "INSERT INTO orders (order_date, user_id, status) VALUES ('$date', '$user_id', 'pending')";
 			mysqli_query($connection, $sql);
 		} /* if not existing*/
 
-		if (mysqli_num_rows($result) == 1 && $row['status'] == 'done') {
-			$sql = "INSERT INTO orders (order_date, user_id, status) VALUES ('$date', '$user_id', 'pending')";
-			mysqli_query($connection, $sql);
-		}
+		// if ($row['status'] == 'done') {
+		// 	$sql = "INSERT INTO orders (order_date, user_id, status) VALUES ('$date', '$user_id', 'pending')";
+		// 	mysqli_query($connection, $sql);
+		// }
 
-		$sql = "SELECT id as order_id FROM orders WHERE user_id = '$user_id' AND status = 'pending'";
+		$sql = "SELECT * FROM orders WHERE user_id = '$user_id' AND status = 'pending'";
 		$result = mysqli_query($connection, $sql);
-		$row = mysqli_fetch_assoc($result);
-		extract($row);
-		$new_order_id = $order_id; /* order_id of pending order*/
-		// echo $new_order_id;
+		// $row = mysqli_fetch_assoc($result);
+		// extract($row);
+		// print_r($row);
+		if (mysqli_num_rows($result) > 0) {   /* if there is a pending order from the session user*/
+			
+			$sql = "SELECT id as order_id FROM orders WHERE user_id = '$user_id' AND status = 'pending'";
+			$result = mysqli_query($connection, $sql);
+			$row = mysqli_fetch_assoc($result);
+			extract($row);
+			$new_order_id = $order_id; /* order_id of pending order*/
+			// echo $new_order_id;
 
+			
 			$sql = "SELECT * FROM products WHERE id = $get_product_id";
 			$result = mysqli_query($connection, $sql);
 			$row = mysqli_fetch_assoc($result);
@@ -63,14 +70,6 @@
 			$extracted_product_id = $id;   
 			$extracted_price = $price;
 			
-
-
-			// $sql = "SELECT id FROM orders WHERE user_id = $user_id";
-			// $result = mysqli_query($connection, $sql);
-			// $row = mysqli_fetch_assoc($result);
-			// extract($row);
-			// $extracted_order_id = $id;  
-			/*order id*/
 			
 			$sql = "SELECT COUNT(quantity) as qty FROM order_details WHERE product_id = '$extracted_product_id'";
 			$result = mysqli_query($connection, $sql);
@@ -96,9 +95,57 @@
 				else{
 					$_SESSION['cart'][$get_product_id] = 1;
 				}
-			}		
-		// header('Location: ' . $_SERVER['HTTP_REFERER']);
-		// 		exit;
+			}	
+		} /* if */
+		else{  /* if there is no pending order from the session user */
+
+			$sql = "INSERT INTO orders (order_date, user_id, status) VALUES ('$date', '$user_id', 'pending')";
+			mysqli_query($connection, $sql);
+
+			$sql = "SELECT id as order_id FROM orders WHERE user_id = '$user_id' AND status = 'pending'";
+			$result = mysqli_query($connection, $sql);
+			$row = mysqli_fetch_assoc($result);
+			extract($row);
+			$new_order_id = $order_id; /* order_id of pending order*/
+			// echo $new_order_id;
+
+			
+			$sql = "SELECT * FROM products WHERE id = $get_product_id";
+			$result = mysqli_query($connection, $sql);
+			$row = mysqli_fetch_assoc($result);
+			extract($row);
+			$extracted_product_id = $id;   
+			$extracted_price = $price;
+			
+			
+			$sql = "SELECT COUNT(quantity) as qty FROM order_details WHERE product_id = '$extracted_product_id'";
+			$result = mysqli_query($connection, $sql);
+			$row = mysqli_fetch_assoc($result);
+			extract($row);
+			if($qty >= 5){
+					$new_loc = (string)$_SERVER['HTTP_REFERER'];			
+					echo "<script>alert('You cannot order the same item more than 5 times.');
+							window.location.replace(\"$new_loc\")</script>";
+			}
+			else{
+				$sql = "INSERT INTO order_details (quantity, total_price, product_id, order_id)
+							VALUES (1, '$extracted_price', '$extracted_product_id', '$new_order_id')";
+				mysqli_query($connection, $sql);
+				
+				if (empty($_SESSION['cart'])) {
+					$_SESSION['cart'] = array();
+				}
+
+				if (isset($_SESSION['cart'][$get_product_id])) {
+					$_SESSION['cart'][$get_product_id] += 1;
+				}
+				else{
+					$_SESSION['cart'][$get_product_id] = 1;
+				}
+			}	
+		}	
+		header('Location: ' . $_SERVER['HTTP_REFERER']);
+		exit;
 	}
 
 	if (isset($_POST['qtyChange'])) {
@@ -136,7 +183,7 @@
 
 			$username = $_SESSION['username'];
 			
-			$sql = "SELECT a.id as order_id FROM orders a JOIN users b ON (a.user_id = b.id) WHERE username = '$username'";
+			$sql = "SELECT a.id as order_id FROM orders a JOIN users b ON (a.user_id = b.id) WHERE username = '$username' AND status = 'pending'";
 			$result = mysqli_query($connection, $sql);
 			$row = mysqli_fetch_assoc($result);
 			extract($row); /* $order_id */
