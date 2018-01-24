@@ -15,7 +15,29 @@
 			$row = mysqli_fetch_assoc($result);
 			$_SESSION['username'] = $username;
 			$_SESSION['role'] = $row['role_name'];
-			header('location: index.php');
+			
+			$username_query = $_SESSION['username'];
+
+			$sql = "SELECT id FROM orders WHERE user_id = 
+					(SELECT id FROM users WHERE username = '$username_query') AND status = 'pending'";
+			$result = mysqli_query($connection, $sql);
+			$row = mysqli_fetch_assoc($result);
+			extract($row);
+			if (mysqli_num_rows($result) > 0){
+				$sql = "SELECT * FROM order_details WHERE order_id = '$id'";
+				$result = mysqli_query($connection, $sql);
+				while($row = mysqli_fetch_assoc($result)){
+					extract($row);
+					// echo $product_id . "<br>";
+					if(isset($_SESSION['cart'][$product_id])){
+							$_SESSION['cart'][$product_id] += 1;
+					}
+					else{
+						$_SESSION['cart'][$product_id] = 1;
+					}
+				}
+			}
+			header('location: index.php');		
 		}
 		else{
 			echo "Failed to login. Incorrect login credentials. <br>";

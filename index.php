@@ -60,7 +60,17 @@
 	<?php require "assets/partials/footer.php" ?>
 	<script src="assets/js/main.js" type="text/javascript"></script>
     <script type="text/javascript">
-    
+	    	// $('.shop-link').click(function() {
+	    	// 	$.ajax({
+	    	// 		url: 'endpoint.php',
+	    	// 		type: 'POST',
+	    	// 		data: {five:true},
+	    	// 		success:function(data){
+	    	// 			// alert(data);
+	    	// 			$('.shop-link').html(data);
+	    	// 		}
+	    	// 	});
+	    	// });
     </script>
 </body>
 </html>

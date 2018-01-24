@@ -73,7 +73,11 @@
                     </li>
                     <?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'regular'): ?>
                       <li class="nav-item">
-                          <a class="nav-link cart-icon" href="#"><img src="assets/icons/shopping-cart.png" alt=""></a>
+                        <?php if(isset($_SESSION['cart'])): ?>
+                          <a class="nav-link cart-icon" href="shopping_cart.php"><img src="assets/icons/shopping-cart.png" alt="">( <?php echo array_sum($_SESSION['cart']); ?> )</a>
+                        <?php else: ?>
+                          <a class="nav-link cart-icon" href="shopping_cart.php"><img src="assets/icons/shopping-cart.png" alt=""></a>
+                        <?php endif;  ?>
                       </li>
                     <?php endif ?>
                   </ul>

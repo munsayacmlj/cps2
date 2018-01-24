@@ -94,7 +94,7 @@ div .normal-link-texts .cart-icon {
 .nav-link:hover {
   color: #fff; }
 
-.sort-text h1 {
+.sort-text h1, .sort-text h3 {
   text-align: center;
   margin-top: 20px; }
 
@@ -240,5 +240,46 @@ div .normal-link-texts .cart-icon {
   padding-right: 10px; }
 #input-names-reg div:last-child {
   padding-left: 10px; }
+
+/* Shopping Cart */
+.cart-container {
+  padding-bottom: 20px; }
+
+.item-row {
+  width: 100%; }
+  .item-row .row {
+    margin: 0; }
+  .item-row .outer-row {
+    margin-bottom: 20px; }
+  .item-row .image-col {
+    text-align: center; }
+    .item-row .image-col img {
+      max-height: 300px;
+      width: auto; }
+  .item-row .col-md-4 {
+    padding: 0; }
+  .item-row .col-md-7 {
+    padding: 0; }
+  .item-row .col-md-8 {
+    background-color: #f0f0; }
+  .item-row .desc-col {
+    margin-top: 30px; }
+    .item-row .desc-col .brand {
+      padding-bottom: 15px;
+      width: 100%;
+      height: 30px; }
+    .item-row .desc-col .value {
+      float: right; }
+    .item-row .desc-col .change-quantity {
+      text-align: center; }
+      .item-row .desc-col .change-quantity .qty-value {
+        padding-left: 20px; }
+    .item-row .desc-col .price-col .del-item-c {
+      margin-left: 60px;
+      cursor: pointer; }
+      .item-row .desc-col .price-col .del-item-c a {
+        color: #3E3F3A; }
+        .item-row .desc-col .price-col .del-item-c a:hover {
+          text-decoration: none; }
 
 /*# sourceMappingURL=styles.css.map */

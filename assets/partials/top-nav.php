@@ -55,11 +55,11 @@
 								<i class="fa fa-sign-in pl-2 pr-1"></i>
 								<a class="link-dark" href="login.php">Login</a>
 							</li>
+							<li class="list-inline-item">
+								<i class="fa fa-user-plus pl-2 pr-1"></i>
+								<a class="link-dark" href="register.php">Sign up</a>
+							</li>
 						<?php endif; ?>
-						<li class="list-inline-item">
-							<i class="fa fa-user-plus pl-2 pr-1"></i>
-							<a class="link-dark" href="register.php">Sign up</a>
-						</li>
 					</ul>
 				</div>
 

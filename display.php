@@ -16,7 +16,7 @@
 			    	<div class="delete-width"><a href="#"><i class="fa fa-trash fa-lg right"></i></a></div>
 			    </div>	
 			    <?php elseif (isset($_SESSION['username'])) : ?>
-			    <a href="endpoint.php?add_to_cart=true&id=<?php echo $prod_id; ?>" class="shop-link">Shop This &gt;</a>
+			    	<a href="endpoint.php?add_to_cart=true&id=<?php echo $prod_id; ?>" class="shop-link">Shop This &gt;</a>
 				<?php endif; ?>
 		    </div>
 		 </div>
