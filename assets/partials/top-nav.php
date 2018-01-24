@@ -23,11 +23,26 @@
 							<a class="contact-num" href="#">+63 999 322 2322</a>
 						</li>
 
-						<?php 
-							if (isset($_SESSION['username'])) :
+						<?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'admin') :	?>			
+						
+							<li class="list-inline-item">
+						 		<span class="welcome-user">Welcome, <?php echo "Admin"; ?>!</span>
+							 	</li>
+								<li class="list-inline-item">
+								<i class="fa fa-sign-in pl-2 pr-1"></i>
+								<a class="link-dark" href="logout.php">Logout</a>
+							</li>
+						<?php
+							elseif (isset($_SESSION['username'])) :
+								require "connection.php";
+								$username = $_SESSION['username'];
+								$sql = "SELECT first_name, last_name FROM users WHERE username = '$username'";
+								$result = mysqli_query($connection, $sql);
+								$row = mysqli_fetch_assoc($result);
+								extract($row);
 						 ?>
 						 	<li class="list-inline-item">
-						 		<span class="welcome-user">Welcome, <?php echo $_SESSION['username']; ?>!</span>
+						 		<span class="welcome-user">Welcome, <?php echo $first_name . " " . $last_name; ?>!</span>
 						 	</li>
 							<li class="list-inline-item">
 								<i class="fa fa-sign-in pl-2 pr-1"></i>
@@ -43,7 +58,7 @@
 						<?php endif; ?>
 						<li class="list-inline-item">
 							<i class="fa fa-user-plus pl-2 pr-1"></i>
-							<a class="link-dark" href="#">Sign up</a>
+							<a class="link-dark" href="register.php">Sign up</a>
 						</li>
 					</ul>
 				</div>

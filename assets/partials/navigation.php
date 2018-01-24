@@ -46,34 +46,36 @@
                     <li class="nav-item dropdown">
                           <a class="nav-link" href="index.php?women=true" id="navbarDropdown">Brands</a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="index.php?allen_edmonds=true">Allen Edmonds</a>
-                              <a class="dropdown-item" href="index.php?women=true&top=true">Balenciaga</a>
-                              <a class="dropdown-item" href="index.php?women=true&top=true">Barba Napoli</a>
-                              <a class="dropdown-item" href="index.php?women=true&top=true">Berluti</a>
-                              <a class="dropdown-item" href="index.php?women=true&top=true">Brioni</a>
-                              <a class="dropdown-item" href="index.php?women=true&top=true">Christian Louboutin</a>
-                              <a class="dropdown-item" href="index.php?women=true&top=true">Gucci</a>
-                              <a class="dropdown-item" href="index.php?women=true&top=true">Jimmy Choo</a>
-                              <a class="dropdown-item" href="index.php?women=true&top=true">Kate Spade</a>
-                              <a class="dropdown-item" href="index.php?women=true&top=true">Manolo Blhanik</a>
-                              <a class="dropdown-item" href="index.php?women=true&top=true">Ralph Lauren</a>
-                              <a class="dropdown-item" href="index.php?women=true&top=true">Saint Laurent</a>
-                              <a class="dropdown-item" href="index.php?women=true&top=true">Salvatore Ferragamo</a>
-                              <a class="dropdown-item" href="index.php?women=true&top=true">Stuart Weitzman</a>
-                              <a class="dropdown-item" href="index.php?women=true&top=true">Versace</a>
+                              <a class="dropdown-item" href="index.php?allen_edmonds=true&brand=true">Allen Edmonds</a>
+                              <a class="dropdown-item" href="index.php?balenciaga=true&brand=true">Balenciaga</a>
+                              <a class="dropdown-item" href="index.php?barba_napoli=true&brand=true">Barba Napoli</a>
+                              <a class="dropdown-item" href="index.php?berluti=true&brand=true">Berluti</a>
+                              <a class="dropdown-item" href="index.php?brioni=true&brand=true">Brioni</a>
+                              <a class="dropdown-item" href="index.php?christian_louboutin=true&brand=true">Christian Louboutin</a>
+                              <a class="dropdown-item" href="index.php?gucci=true&brand=true">Gucci</a>
+                              <a class="dropdown-item" href="index.php?jimmy_choo=true&brand=true">Jimmy Choo</a>
+                              <a class="dropdown-item" href="index.php?kate_spade=true&brand=true">Kate Spade</a>
+                              <a class="dropdown-item" href="index.php?manolo_blahnik=true&brand=true">Manolo Blhanik</a>
+                              <a class="dropdown-item" href="index.php?ralph_lauren=true&brand=true">Ralph Lauren</a>
+                              <a class="dropdown-item" href="index.php?saint_laurent=true&brand=true">Saint Laurent</a>
+                              <a class="dropdown-item" href="index.php?salvatore_ferragamo=true&brand=true">Salvatore Ferragamo</a>
+                              <a class="dropdown-item" href="index.php?stuart_weitzman=true&brand=true">Stuart Weitzman</a>
+                              <a class="dropdown-item" href="index.php?versace=true&brand=true">Versace</a>
                               
                               
                           </div>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Bags</a>
+                      <a class="nav-link" href="#">Portfolio</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Shoes</a>
+                      <a class="nav-link" href="#">Story</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link cart-icon" href="#"><img src="assets/icons/shopping-cart.png" alt=""></a>
-                    </li>
+                    <?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'regular'): ?>
+                      <li class="nav-item">
+                          <a class="nav-link cart-icon" href="#"><img src="assets/icons/shopping-cart.png" alt=""></a>
+                      </li>
+                    <?php endif ?>
                   </ul>
                 </div> <!-- /navbar-collapse -->
               

@@ -20,20 +20,32 @@
 				<div class="row">
 					<div id="login">
 						<div class="sign-in-text">
-							<h1>Sign in</h1>
+							<h1>Create account</h1>
 						</div>
-						<form action="authenticate.php" method="POST">
-						
+						<form action="endpoint.php" method="POST">
+
+							<div class="row" id="input-names-reg">
+								<div class="form-group col-xs-6 col-md-6">
+										<label for="inputFirstName">First Name</label>
+										<input type="text" class="form-control" id="inputFirstName" name="firstname">
+								</div>
+								<div class="form-group col-xs-6 col-md-6">
+										<label>Last Name</label>
+										<input type="text" class="form-control" id="inputLastName" name="lastname">
+								</div>
+							</div>
+							
+
 							<div class="form-group">
 								<label for="exampleInputEmail1">Username</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" id="usernameLoginInput">
+								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="reg-username" id="usernameLoginInput">
 								<small id="chkUsr" class="form-text text-muted"></small>
 							</div>
 							<div class="form-group">
 								<label for="exampleInputPassword1">Password</label>
-								<input type="password" class="form-control" id="exampleInputPassword1" name="password">
+								<input type="password" class="form-control" id="exampleInputPassword1" name="reg-password">
 							</div>
-							<button type="submit" name="login" class="btn btn-primary" id="submitBtn">Sign in</button>
+							<button type="submit" name="register" class="btn btn-primary" id="submitBtn">Create your MLJM account</button>
 							
 							<div class="form-check">
 								<input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -49,7 +61,7 @@
 						    <div class="new-customer-button">
 						        <span id="create-account-button">
                                     <span class="ca-inner-button">
-                                        <a href="register.php">Create your new account</a>
+                                        <a href="#">Create your new account</a>
                                     </span>
 						        </span>
 						    </div>
