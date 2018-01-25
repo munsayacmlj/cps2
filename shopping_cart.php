@@ -18,19 +18,21 @@
 				require "connection.php";
 
 				if (isset($_SESSION['cart'])) :
-					
+					$subtotal = 0;
 					foreach ($_SESSION['cart'] as $id => $total) :
 						$sql = "SELECT * FROM products WHERE id = '$id'";
 						$result = mysqli_query($connection,$sql);
 						$row = mysqli_fetch_assoc($result);
 						extract($row);
+
+						$subtotal += $price*$total;
 			?>
 
 				<div class="row outer-row">
 					<div class="image-col col-md-4">
 						<img src="<?php echo $picture; ?>">
 					</div>
-					<div class="desc-col col-md-7">
+					<div class="desc-col col-md-8">
 						<div class="brand">
 							<span><?php echo $product_name; ?></span>
 						</div>
@@ -64,7 +66,7 @@
 									<a href="endpoint.php?delete_item_from_cart=true&id=<?php echo $id; ?>"><li class="fa fa-trash fa-lg"></li></a>
 								</span>
 								<span class="price">
-									<span class="value">Php <?php echo $price*$total; ?></span>
+									<span class="value">Php <?php echo number_format($price*$total,2); ?></span>
 								</span>
 							</div>
 
@@ -75,29 +77,42 @@
 					endforeach;
 				endif;
 			?>	
+
 		</div> <!-- /.row -->
-	</div> <!-- /.container -->
+	<div class="box recap">
+		<div class="change-shipping-info">
+			You can change shipping method in the next step
+		</div>
+		<div class="price-recap">
+			<div class="product-subtotal">
+				<span>Subtotal:</span>
+				<span class="price">
+					<span>Php <?php echo number_format($subtotal,2); ?> </span>
+				</span>
+			</div>
+			<div class="tax-recap">
+				<span>Sales Tax:</span>
+				<span class="tax-text">To be calculated</span>
+			</div>
+			<div class="shipping-recap">
+				<span>Shipping: </span>
+				<span class="shipping-text">Standard - Complimentary</span>
+			</div>
+		</div>
+	</div>
+	<div class="box proceed">
+		<span class="back-to-shopping-btn">Back to shopping</span>
+		<button class="next-page-button">
+			<span>Proceed to checkout</span>
+		</button>
+	</div>
+</div> <!-- /.container -->
 	
+	
+
 	<?php require "assets/partials/footer.php" ?>
 	<script src="assets/js/main.js" type="text/javascript"></script>
     <script type="text/javascript">
-    	$('.selecta').on('change', function() {
-    		var id = $(this).data('index');
-    		var qty = $('#'+id).val();
-    		$.ajax({
-    			url: 'endpoint.php',
-    			type: 'POST',
-    			data: {
-    				qtyChange : true,
-    				id: id,
-    				qty: qty 
-    			},
-    			success:function(data){
-    				// alert(data);
-    				location.reload();
-    			}
-    		});
-    	});
     </script>
 </body>
 </html>

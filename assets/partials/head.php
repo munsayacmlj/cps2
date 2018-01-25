@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 <link rel="stylesheet" type="text/css" href="assets/css/footer.css">
+<link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

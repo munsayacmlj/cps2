@@ -1,5 +1,10 @@
 <?php 
 		function get_page_title(){
+
+			if (isset($_GET['search_all'])) {
+				echo "All Items";
+			}
+
 			if (isset($_GET['new'])) {
 				echo "New Arrivals";
 			}
