@@ -91,34 +91,7 @@
 	<?php require "assets/partials/footer.php" ?>
 	<script src="assets/js/main.js" type="text/javascript"></script>
     <script type="text/javascript">
-
-    	// $('div.card').filter(function() {
-    	// 	return this.id.
-    	// });
-    	var id = 0;
-    	function getId(obj){
-    		 id = obj.id;
-   //  		$('#' + id)
-			// 	.mouseover(function(){
-			// 		$('.product-name').hide();
-			// 		$('.price-tag').show();
-			// 		$('.shop-link').show();
-			// 	})
-			// 	.mouseout(function() {
-			// 		$('.product-name').show();
-			// 		$('.price-tag').hide();
-			// 		$('.shop-link').hide();	
-			// });
-    	}
-    	$('.card').mouseover(function() {
-    		// var id = $(this).data('index');
-    		var idd = $(this).attr('id');
-    		// alert(idd);
-    		$("span.product-name").hide();
-    		// $("#"+id).show();
-    		// $("#"+id).show();
-    	});
-
+    	
 
     </script>
 </body>

@@ -197,20 +197,36 @@ div{
 	line-height: 400px;
 }
 
+.price-cont{
+	position: absolute;
+	top: 0;
+	left: 26%;
+	transform: translate(0, -26%);
+}
+.product-price{
+		visibility: hidden;
+		// position: absolute;
+		// top : 0;
+		// left: 0;
+	}
 .card-content{
 	text-align: center;
+	position: relative;
 	.product-name{
 		letter-spacing: -0.1px;
 		height: 60px;
 		font-size: 15px;
+		opacity: 1;
+		// display: none;
 	}
-	.price-tag{
-		display: none;
-		font-size: 13px;
+	
+	.shop-link-cont{
+		position: absolute;
+		top: 20px;
+		left: 80px;
 	}
-
 	.shop-link{
-		display: none;
+		visibility: hidden;
 		font-size: 13px;
 		color: #000;
 		&:hover{

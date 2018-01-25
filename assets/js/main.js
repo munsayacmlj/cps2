@@ -4,6 +4,22 @@ $('ul.nav li.dropdown').hover(function() {
   $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
 });
 
+$('.card').mouseover(function() {
+	var idd = $(this).attr('id');
+	$("."+idd, ".product-name").hide();
+
+	$("."+idd, ".product-price").css('visibility', 'visible');
+	$("."+idd, ".shop-link").css('visibility', 'visible');
+
+});
+
+$('.card').mouseout(function(){
+	var idd = $(this).attr('id');
+	$(".product-name").show();
+	$("."+idd, ".product-price").css('visibility', 'hidden');
+	$("."+idd, ".shop-link").css('visibility', 'hidden');
+});
+
 $('document').ready(function(){
 
 	$('.edit-item').click(function(){

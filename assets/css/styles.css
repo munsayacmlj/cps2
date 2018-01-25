@@ -117,17 +117,29 @@ div .normal-link-texts .cart-icon {
 .center-img {
   line-height: 400px; }
 
+.price-cont {
+  position: absolute;
+  top: 0;
+  left: 26%;
+  transform: translate(0, -26%); }
+
+.product-price {
+  visibility: hidden; }
+
 .card-content {
-  text-align: center; }
+  text-align: center;
+  position: relative; }
   .card-content .product-name {
     letter-spacing: -0.1px;
     height: 60px;
-    font-size: 15px; }
-  .card-content .price-tag {
-    display: none;
-    font-size: 13px; }
+    font-size: 15px;
+    opacity: 1; }
+  .card-content .shop-link-cont {
+    position: absolute;
+    top: 20px;
+    left: 80px; }
   .card-content .shop-link {
-    display: none;
+    visibility: hidden;
     font-size: 13px;
     color: #000; }
     .card-content .shop-link:hover {
