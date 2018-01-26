@@ -43,27 +43,21 @@
 			<div class="right-side col-md-10">
 				<div class="row" id="data-row">
 					<?php 
-						require "connection.php";
+					 	if (isset($_GET['search_item'])) {
+					 		$name = $_GET['search_item'];
 
-						if (isset($_GET['search_all'])) {
-							require "all_items.php";
-						}
-						
-					 	if (isset($_GET['new'])) {
-					 		require "new_arrivals.php";
+					 		$sql = "SELECT *, a.id as prod_id, b.brand_name as brand, c.type as type FROM products a JOIN brands b ON (a.brand_id = b.id)
+					 				JOIN product_types c ON (a.product_type_id = c.id) WHERE a.product_name LIKE '$name%'
+					 				OR b.brand_name LIKE '$name%' OR c.type LIKE '$name%'";
+					 		$result = mysqli_query($connection, $sql);
+					 		
+					 		while ($row = mysqli_fetch_assoc($result)) {
+					 			extract($row);
+					 			require "display.php";
+					 		}
 					 	}
-						if (isset($_GET['men'])) {
-							require "men.php";
-						}
 
-						if (isset($_GET['women'])) {
-							require "women.php";
-						}
-
-						if (isset($_GET['brand'])) {
-							require "display_brands.php";
-						}
-					?>	
+				    ?>
 				</div> <!-- /.row -->
 			</div> <!-- /.container -->
 			

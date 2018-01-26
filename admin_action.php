@@ -60,4 +60,59 @@
 		header('location: ' . $_SERVER['HTTP_REFERER']);
 		exit;
 	}
+
+	if (isset($_GET['ban_user'])) {
+		$id = $_GET['user_id'];
+		if (isset($_POST['delete-order'])) {
+			$delete_order = $_POST['delete-order'];
+			// $sql = "SELECT id as order_id FROM orders WHERE user_id = '$id'";
+			// $result = mysqli_query($connection, $sql);
+			// $row = mysqli_fetch_assoc($result);
+			// extract($row);
+
+			$sql = "DELETE FROM order_details WHERE order_id = (SELECT id as order_id FROM orders WHERE user_id = '$id'
+					 AND status='pending')";
+			mysqli_query($connection, $sql);
+		}
+		$sql = "UPDATE users SET status_id = 2 WHERE id = '$id'";
+		mysqli_query($connection, $sql);
+		header('location: ' . $_SERVER['HTTP_REFERER']);
+		exit;
+	}
+
+	if (isset($_GET['unban_user'])) {
+		$id = $_GET['user_id'];
+		$sql = "UPDATE users SET status_id = 1 WHERE id = '$id'";
+		mysqli_query($connection, $sql);
+		header('location: ' . $_SERVER['HTTP_REFERER']);
+		exit;
+	}
+
+	if (isset($_GET['complete_order'])) {
+		$order_id = $_GET['order_id'];
+		$sql = "UPDATE orders SET status = 'done' WHERE id = '$order_id'";
+		mysqli_query($connection, $sql);
+		header('location: ' . $_SERVER['HTTP_REFERER']);
+		exit;
+	}
+
+	if (isset($_GET['delete_order'])) {
+		$order_id = $_GET['order_id'];
+		$sql = "DELETE FROM orders WHERE id = '$order_id'";
+		mysqli_query($connection, $sql);
+		header('location: ' . $_SERVER['HTTP_REFERER']);
+		exit;
+	}
+
+	if (isset($_POST['admin_register'])) {
+		
+		$username = $_POST['username'];
+		$password = sha1($_POST['password']);
+
+		$sql = "INSERT INTO users (username, password, role_id, status_id)
+				VALUES ('$username', '$password', 2, 1)";
+		mysqli_query($connection, $sql);
+		header('location: ' . $_SERVER['HTTP_REFERER']);
+		exit;
+	}
  ?>

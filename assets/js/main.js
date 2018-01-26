@@ -22,6 +22,7 @@ $('.card').mouseout(function(){
 
 $('document').ready(function(){
 
+
 	$('.edit-item').click(function(){
 		var index = $(this).data('index');
 		$.ajax({

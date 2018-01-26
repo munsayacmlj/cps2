@@ -9,8 +9,8 @@
 		$username = $_POST['reg-username'];
 		$password = sha1($_POST['reg-password']);
 
-		$sql = "INSERT INTO users (first_name, last_name, username, password, role_id)
-				VALUES ('$first_name', '$last_name', '$username', '$password', 1)";
+		$sql = "INSERT INTO users (first_name, last_name, username, password, role_id, status_id)
+				VALUES ('$first_name', '$last_name', '$username', '$password', 1, 1)";
 		mysqli_query($connection, $sql);
 
 		header('location: login.php');
@@ -204,6 +204,7 @@
 
 		$sql = "DELETE FROM order_details WHERE product_id = '$id'";
 		mysqli_query($connection, $sql);
+		echo 0;
 		header('location: '. $_SERVER['HTTP_REFERER']);
 		exit;
 	}
@@ -309,7 +310,7 @@
 
 					<div class="form-inline">
 			            <select class="form-control selectables" name="brand">
-			                <option disabled>Brand Name</option>
+			                <option disabled selected>Brand Name</option>
 			                <?php 
 			                $sql = "SELECT * FROM brands";
 			                $result = mysqli_query($connection, $sql);
@@ -322,7 +323,7 @@
 
 
 			            <select class="form-control selectables" name="gender">
-			                <option disabled>Men/Women</option>
+			                <option disabled selected>Men/Women</option>
 			                <?php 
 			                $sql = "SELECT * FROM genders";
 			                $result = mysqli_query($connection, $sql);
@@ -334,7 +335,7 @@
 			            </select>
 
 			            <select class="form-control selectables" name="product_type">
-			                <option disabled>Type</option>
+			                <option disabled selected>Type</option>
 			                <?php 
 			                $sql = "SELECT * FROM product_types";
 			                $result = mysqli_query($connection, $sql);
@@ -360,3 +361,147 @@
 <?php	
 	endif;
  ?>
+
+<?php 
+	if (isset($_POST['ban'])) :
+		$id = $_POST['id']; 
+		$sql = "SELECT *, a.id as user_id, b.role_name as role, c.status as status, COUNT(e.quantity) as total_items, d.status as order_status FROM users a JOIN roles b ON (a.role_id = b.id) JOIN user_status c ON (a.status_id = c.id) JOIN orders d ON (a.id = d.user_id) JOIN order_details e ON (d.id = e.order_id) WHERE a.id = $id AND d.status = 'pending'";
+		$result = mysqli_query($connection, $sql);
+		$row = mysqli_fetch_assoc($result);
+		extract($row);
+		// echo $total_items . " " . $order_status;
+?>
+			<h4 class="warning">Are you sure you want to ban this user?</h4>
+  			<div class="ban-user">
+  				<div class="first-last-name form-group">
+  					<label for="names">Name</label>
+	  				<span class="form-control" id="names"><?php echo $first_name . " " .$last_name;  ?></span>
+  				</div>
+  				<div class="role form-group">
+  					<label for="user-role">Role</label>
+		            <span class="form-control" id="user-role"><?php echo $role; ?></span>
+  				</div>
+  				<div class="ban-username form-group">
+  					<label for="username">Username: </label>
+					<span class="form-control" id="username"><?php echo $username; ?></span>
+  				</div>
+  				<div class="pending-orders form-group">
+  					<label for="order">Order: </label>
+					<span class="form-control" id="order"><?php echo $order_status; ?></span>
+	  				<label for="quantity-ordered">Number of items: </label>
+					<span class="form-control" id="quantity-ordered"><?php echo $total_items; ?></span>
+  				</div>
+  			</div> <!-- /.ban-user -->
+            <form id="delete-form" action="admin_action.php?ban_user=true&user_id=<?php echo $user_id ?>" method="POST">
+  				<div class="form-group">
+  					<input type="checkbox" name="delete-order" id="delete-orders" <?php if($order_status == NULL) echo "disabled"; ?>>
+  					<label for="delete-orders" class="form-check-label">Delete orders of this user?</label>
+  				</div>
+	            <input type="submit" class="btn btn-danger" value="Yes">
+	            <input type="button" class="btn btn-success" data-dismiss='modal' value="No">
+            </form>
+<?php endif; ?>
+
+<?php 
+	if (isset($_POST['unban'])) :
+		$id = $_POST['id'];
+		
+		$sql = "SELECT *, a.id as user_id, b.role_name as role, c.status as status, COUNT(e.quantity) as total_items, d.status as order_status FROM users a JOIN roles b ON (a.role_id = b.id) JOIN user_status c ON (a.status_id = c.id) JOIN orders d ON (a.id = d.user_id) JOIN order_details e ON (d.id = e.order_id) WHERE a.id = $id AND d.status = 'pending'";
+		$result = mysqli_query($connection, $sql);
+		$row = mysqli_fetch_assoc($result);
+		extract($row);
+?>
+			<h4 class="warning">Do you want to unban this user?</h4>
+  			<div class="ban-user">
+  				<div class="first-last-name form-group">
+  					<label for="names">Name</label>
+	  				<span class="form-control" id="names"><?php echo $first_name . " " .$last_name;  ?></span>
+  				</div>
+  				<div class="role form-group">
+  					<label for="user-role">Role</label>
+		            <span class="form-control" id="user-role"><?php echo $role; ?></span>
+  				</div>
+  				<div class="ban-username">
+  					<label for="username">Username: </label>
+					<span class="form-control" id="username"><?php echo $username; ?></span>
+  				</div>
+  				<div class="pending-orders form-group">
+  					<label for="order">Order: </label>
+					<span class="form-control" id="order"><?php echo $order_status; ?></span>
+	  				<label for="quantity-ordered">Number of items: </label>
+					<span class="form-control" id="quantity-ordered"><?php echo $total_items; ?></span>
+  				</div>
+  			</div>
+            <form id="delete-form" action="admin_action.php?unban_user=true&user_id=<?php echo $user_id ?>" method="POST">
+	            <input type="submit" class="btn btn-success" value="Yes">
+	            <input type="button" class="btn btn-danger" data-dismiss='modal' value="No">
+            </form>
+<?php endif; ?>
+
+<?php 
+	if (isset($_POST['order_complete'])) :
+		$order_id = $_POST['order_id'];
+		$user_id = $_POST['user_id'];
+		
+		$sql = "SELECT *, a.username as username, COUNT(quantity) as quantity_ordered FROM users a JOIN orders b ON (a.id = b.user_id)
+				JOIN order_details c ON (b.id = c.order_id) WHERE a.id = '$user_id' AND b.id = '$order_id'";
+		$result = mysqli_query($connection, $sql);
+		$row = mysqli_fetch_assoc($result);
+		extract($row);
+		// print_r($row);
+		// echo $username . " " . $order_id . " " . $quantity_ordered;
+?>
+			<h4 class="warning">Do you want to complete this order?</h4>
+  			<div class="ban-user">
+  				<div class="ban-username form-group">
+  					<label for="username">Username:</label>
+					<span class="form-control" id="username"><?php echo $username; ?></span>
+  				</div>
+  				
+  				<div class="first-last-name form-group">
+  					<label for="names">Order ID:</label>
+	  				<span class="form-control" id="names"><?php echo $order_id; ?></span>
+  				</div>
+
+
+  				<div class="pending-orders form-group">
+  					<label for="order">Orders: </label>
+					<span class="form-control" id="order"><?php echo $quantity_ordered; ?></span>
+  				</div>
+  			</div>
+            <form id="delete-form" action="admin_action.php?complete_order=true&order_id=<?php echo $order_id ?>" method="POST">
+	            <input type="submit" class="btn btn-success" value="Yes">
+	            <input type="button" class="btn btn-danger" data-dismiss='modal' value="No">
+            </form>
+
+<?php endif; ?>
+
+<?php 
+	if (isset($_POST['order_delete'])) :
+		$order_id = $_POST['order_id'];
+		$username = $_POST['username'];
+		$quantity_ordered = $_POST['quantity'];
+?>
+			<h4 class="warning">Do you want to delete this order?</h4>
+  			<div class="ban-user">
+  				<div class="ban-username form-group">
+  					<label for="username">Username:</label>
+					<span class="form-control" id="username"><?php echo $username; ?></span>
+  				</div>
+  				
+  				<div class="first-last-name form-group">
+  					<label for="names">Order ID:</label>
+	  				<span class="form-control" id="names"><?php echo $order_id; ?></span>
+  				</div>
+
+
+  				<div class="pending-orders form-group">
+  					<label for="order">Orders: </label>
+					<span class="form-control" id="order"><?php echo $quantity_ordered; ?></span>
+  				</div>
+  			</div>
+            <form id="delete-form" action="admin_action.php?delete_order=true&order_id=<?php echo $order_id ?>" method="POST">
+	            <input type="submit" class="btn btn-success" value="Yes">
+	            <input type="button" class="btn btn-danger" data-dismiss='modal' value="No">
+            </form>
+<?php	endif; ?>

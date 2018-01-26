@@ -23,6 +23,9 @@ body {
   margin-bottom: 300px;
 }
 
+a{
+	color: #000;
+}
 
 
 
@@ -42,9 +45,19 @@ body {
 
 	#header-top-right{
 		width: 98%;
-
-		.welcome-user{
-			font-size: 18px;
+		
+		a.admin-page{
+			&:hover{
+				text-decoration: none !important;
+			}
+			.welcome-user{
+				color: #000;
+				font-size: 18px;
+				&:hover{
+					color: #e07e27;
+					
+				}
+			}
 		}
 	}
 }
@@ -127,7 +140,7 @@ div{
 	margin-top: 5px;
 }
 
-.header-button{
+.header-button, .header-search{
 		margin-top: 13px;
 		font-size: 12px;
 		a{
@@ -231,6 +244,7 @@ div{
 		color: #000;
 		&:hover{
 			text-decoration: none;
+			color: #737373;
 		}
 	}
 
@@ -433,9 +447,26 @@ div{
 }
 
 
-/* Shopping Cart */
+/* Shopping bag */
 .cart-container{
-	// padding-bottom: 20px;
+	width: 100%;
+}
+
+.inner-empty-cart{
+	font-size: 13px;
+	text-align: center;
+	width: 200px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	.empty-bag{
+		padding-bottom: 10px;
+	}
+	.go-back{
+		color: #000;
+		text-decoration: underline;
+	}
 }
 
 .item-row{
@@ -546,6 +577,7 @@ div{
 		cursor: pointer;
 		padding: 0 28px;
 		background-color: #000;
+		border: 1px solid #000;
 		line-height: 28px;
 	}
 }
@@ -629,5 +661,37 @@ div{
 		&:first-child{
 			margin-right: 20px;
 		}
+	}
+}
+
+/* ADMIN PAGE */
+
+.create-admin{
+	background-color: lightgray;
+}
+
+.container{
+	.home-btn{
+		padding: 20px 0;
+		.inner-admin-name{
+			text-align: center;
+		}
+		.inner-logout-btn{
+			text-align: right;
+		}
+	}
+	.users-table, .table{
+		padding: 20px;
+		// max-width: 600px;
+		.user-status{
+			// font-size: 16px;
+			font-weight: 600;
+		}
+	}
+	.admin-logout{
+		// float: right;
+	}
+	.ban-user{
+		padding-bottom: 20px;
 	}
 }

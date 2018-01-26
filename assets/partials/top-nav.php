@@ -26,7 +26,7 @@
 						<?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'admin') :	?>			
 						
 							<li class="list-inline-item">
-						 		<span class="welcome-user">Welcome, <?php echo "Admin"; ?>!</span>
+						 		<a href="admin_page.php?admin=<?php echo $_SESSION['username'] ?>" class="admin-page"><span class="welcome-user">Welcome, <?php echo "Admin"; ?>!</span></a>
 							 	</li>
 								<li class="list-inline-item">
 								<i class="fa fa-sign-in pl-2 pr-1"></i>

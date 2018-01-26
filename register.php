@@ -38,19 +38,19 @@
 
 							<div class="form-group">
 								<label for="exampleInputEmail1">Username</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="reg-username" id="usernameLoginInput">
+								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="reg-username" autocomplete="new-password">
 								<small id="chkUsr" class="form-text text-muted"></small>
 							</div>
 							<div class="form-group">
 								<label for="exampleInputPassword1">Password</label>
-								<input type="password" class="form-control" id="exampleInputPassword1" name="reg-password">
+								<input type="password" class="form-control" id="exampleInputPassword1" name="reg-password" autocomplete="new-password">
 							</div>
 							<button type="submit" name="register" class="btn btn-primary" id="submitBtn">Create your MLJM account</button>
 							
-							<div class="form-check">
+							<!-- <div class="form-check">
 								<input type="checkbox" class="form-check-input" id="exampleCheck1">
 								<label class="form-check-label" for="exampleCheck1">Remember Me</label>
-							</div>
+							</div> -->
 						</form>
 						
 						<div class="reg-page-button">
