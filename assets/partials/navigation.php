@@ -92,7 +92,7 @@
                     <li class="nav-item">
                       <a class="nav-link" href="#">Story</a>
                     </li>
-                    <?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'regular'): ?>
+                    <!-- <?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'regular'): ?>
                       <li class="nav-item">
                         <?php if(isset($_SESSION['cart'])): ?>
                           <a class="nav-link cart-icon" href="shopping_bag.php?user=<?php echo $_SESSION['username']; ?>"><img src="assets/icons/shopping-cart.png" alt="">( <?php echo array_sum($_SESSION['cart']); ?> )</a>
@@ -100,7 +100,7 @@
                           <a class="nav-link cart-icon" href="shopping_bag.php"><img src="assets/icons/shopping-cart.png" alt=""></a>
                         <?php endif;  ?>
                       </li>
-                    <?php endif ?>
+                    <?php endif ?> -->
                   </ul>
                 </div> <!-- /navbar-collapse -->
               

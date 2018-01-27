@@ -26,7 +26,7 @@
 						<?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'admin') :	?>			
 						
 							<li class="list-inline-item">
-						 		<a href="admin_page.php?admin=<?php echo $_SESSION['username'] ?>" class="admin-page"><span class="welcome-user">Welcome, <?php echo "Admin"; ?>!</span></a>
+						 		<a href="admin_page.php?admin=<?php echo $_SESSION['username'] ?>" class="admin-page"><span class="welcome-user">My Account / <?php echo "Admin"; ?></span></a>
 							 	</li>
 								<li class="list-inline-item">
 								<i class="fa fa-sign-in pl-2 pr-1"></i>
@@ -42,15 +42,30 @@
 								extract($row);
 						 ?>
 						 	<li class="list-inline-item">
-						 		<span class="welcome-user">Welcome, <?php echo $first_name . " " . $last_name; ?>!</span>
+						 		<span class="welcome-user">My Account / <?php echo $first_name . " " . $last_name; ?></span>
 						 	</li>
 						 	<li class=list-inline-item>
-						 		<?php if (isset($_SESSION['wish'])): ?>
-							 		<a href="#" class="user-page"><span class="user-wishlist">Wish List ( <?php echo array_sum($_SESSION['wish']); ?> )</span></a>
-							 	<?php else: ?>
-									<a href="#" class="user-page"><span class="user-wishlist">Wish List</span></a>
-						 		<?php endif ?>
+				 			<?php if (isset($_SESSION['wish'])): ?>
+				 				<div id="div-wish-list">
+							 		<a href="wishlist.php?user=<?php echo $_SESSION['username']; ?>" class="user-wishlist">Wish List (<?php echo array_sum($_SESSION['wish']); ?>)</a>
+				 				</div>
+					 		<?php else: ?>
+									<a href="#" class="user-wishlist">Wish List</a>
+				 			<?php endif ?>
 						 	</li>
+							
+		                      <li class="list-inline-item">
+							<?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'regular'): ?>
+		                        <?php if(isset($_SESSION['cart'])): ?>
+			                        <div id="div-shopping-bag">
+			                          <a class="shopping-bag-link" id="elon" href="shopping_bag.php?user=<?php echo $_SESSION['username']; ?>">Shopping Bag (<?php echo array_sum($_SESSION['cart']); ?>)</a>
+		                        	</div>	
+		                        <?php else: ?>
+		                          <a class="shopping-bag-link" href="shopping_bag.php">Shopping Bag</a>
+		                        <?php endif;  ?>
+		                    <?php endif ?>
+		                      </li>
+
 							<li class="list-inline-item">
 								<i class="fa fa-sign-in pl-2 pr-1"></i>
 								<a class="link-dark" href="logout.php">Logout</a>

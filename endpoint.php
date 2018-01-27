@@ -572,4 +572,14 @@
 
 <?php endif; ?>
 
+<?php 
+	if (isset($_POST['rm_wish_item'])) {
+		session_start();
+		$product_id = $_POST['product_id'];
+		unset($_SESSION['wish'][$product_id]);
 
+		$sql = "DELETE FROM wishlists WHERE product_id = '$product_id'";
+		mysqli_query($connection, $sql);
+
+	}
+ ?>

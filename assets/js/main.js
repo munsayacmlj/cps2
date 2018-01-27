@@ -92,9 +92,29 @@ $('document').ready(function(){
 		});
 	});
 
+	$('.shop-btn').click(function() {
+		var prod_id = $(this).data('id');
+		$.ajax({
+			url: 'endpoint.php',
+			type: 'GET',
+			data: {
+				add_to_cart : true,
+				id : prod_id
+			},
+			success:function(data) {
+				var delay = alertify.get('notifier','delay');
+				 alertify.set('notifier','delay', 2);
+				 alertify.set('notifier','position', 'top-right');
+				 alertify.success('Product added to Shopping Bag.');
+				 alertify.set('notifier','delay', delay);
+				 $('#div-shopping-bag').load(' #div-shopping-bag');
+			}
+		});
+		return false;
+	});
+
 	$(".add-to-wish").click(function() {
 		var prod_id = $(this).data('id');
-
 		$.ajax({
 			url: 'endpoint.php',
 			type: 'POST',
@@ -107,11 +127,15 @@ $('document').ready(function(){
 					alertify.alert("Oopps!",data).show();
 				}
 				else{
-					location.reload();
+					var delay = alertify.get('notifier','delay');
+					 alertify.set('notifier','delay', 2);
+					 alertify.set('notifier','position', 'top-right');
+					 alertify.warning('Product added to Wish List.');
+					 alertify.set('notifier','delay', delay);
+					$('#div-wish-list').load(' #div-wish-list');
 				}
-					
 			}
 		});
-
+		return false;
 	});
 });

@@ -9,10 +9,14 @@
 	<?php require "assets/partials/top-nav.php" ?>
 	<?php require "assets/partials/navigation.php" ?>
 	<?php require "get_page_title.php"; ?>
+<div id="shopping-wrapper">
 	<?php if (!empty($_SESSION['cart'])) :	?>
+	
+
 	<div class="sort-text">
-		<h3>Shopping Cart</h3>
+		<h3>Shopping Bag</h3>
 	</div>
+</div>	
 	<?php endif; ?>
 	<div class="container cart-container">
 		<div class="item-row" id="data-row">
@@ -30,15 +34,15 @@
 						$subtotal += $price*$total;
 			?>
 
-				<div class="row outer-row">
-					<div class="image-col col-md-4">
+				<div class="row outer-row" id="<?php echo $p_id; ?>">
+					<div class="image-col col-md-3">
 						<img src="<?php echo $picture; ?>">
 					</div>
-					<div class="desc-col col-md-8">
+					<div class="desc-col col-md-9">
 						<div class="brand">
 							<span><?php echo $product_name; ?></span>
 						</div>
-						<div class="inner row">
+						<div class="row">
 							<div class="desc-size col-md-4">
 								<div class="brand-name">
 									<span class="label">Brand:</span>
@@ -69,7 +73,7 @@
 							
 							<div class="price-col col-md-4">
 								<span class="del-item-c">
-									<a href="endpoint.php?delete_item_from_cart=true&id=<?php echo $p_id; ?>"><li class="fa fa-trash fa-lg trash-can"></li></a>
+									<a href="#"><li class="fa fa-trash fa-lg trash-can" data-id="<?php echo $p_id; ?>"></li></a>
 								</span>
 								<span class="price">
 									<span class="value">Php <?php echo number_format($price*$total,2); ?></span>
@@ -85,13 +89,14 @@
 			?>	
 
 		</div> <!-- /.row -->
-	
+<div id="ifEmptyBag">
+		
 	<?php if (empty($_SESSION['cart'])): ?>
 	
 		<div class="inner-empty-cart">
 			<div class="empty-bag">Your Shopping Bag is empty</div>
 			<div>
-				<a href="#" class="go-back">Back to shopping</a>
+				<a href="index.php?new=true" class="go-back">Back to shopping</a>
 			</div>
 		</div>
 	
@@ -124,8 +129,9 @@
 		</button>
 	</div>
 	<?php endif; ?>
+</div>	
 </div> <!-- /.container -->
-	
+
 	<section class="foot">
 		
 	</section>
@@ -141,6 +147,30 @@
     <script type="text/javascript">
     	$('.go-back').click(function() {
     		history.go(-1);
+    		return false;
+    	});
+
+    	$('.trash-can').click(function() {
+    		var id = $(this).data('id');
+    		 $.ajax({
+    			url: 'endpoint.php',
+    			type: 'GET',
+    			data: {
+    				delete_item_from_cart : true,
+    				id : id
+    			},
+    			success:function(data) {
+    				var delay = alertify.get('notifier','delay');
+					 alertify.set('notifier','delay', 2);
+					 alertify.set('notifier','position', 'top-right');
+					 alertify.warning('Product has been removed.');
+					 alertify.set('notifier','delay', delay);
+					 $('#ifEmptyBag').load(' #ifEmptyBag');
+					 $('#shopping-wrapper').load(' #shopping-wrapper');		
+ 					 $('#div-shopping-bag').load(' #div-shopping-bag');
+					 $('#'+id).remove();
+    			}
+    		});
     		return false;
     	});
 
