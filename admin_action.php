@@ -20,16 +20,19 @@
 
 	if (isset($_GET['delete_action'])) {
 		$del_id = $_GET['del_id'];
-		$sql = "DELETE FROM products WHERE id = '$del_id'";
-		mysqli_query($connection, $sql);
+		
 
-		$sql = "SELECT * FROM products WHERE id = '$del_id'";
+		$sql = "SELECT * FROM order_details WHERE product_id = '$del_id'";
 		$result = mysqli_query($connection, $sql);
 		if (mysqli_num_rows($result) > 0) {
 			$new_loc = (string)$_SERVER['HTTP_REFERER'];			
 			echo "<script>alert('You cannot delete this item. Someone is currently buying this item.');
 					window.location.replace(\"$new_loc\")</script>";
 			exit;
+		}
+		else{
+			$sql = "DELETE FROM products WHERE id = '$del_id'";
+			mysqli_query($connection, $sql);
 		}
 
 		header('location: ' . $_SERVER['HTTP_REFERER']);

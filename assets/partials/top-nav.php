@@ -44,6 +44,13 @@
 						 	<li class="list-inline-item">
 						 		<span class="welcome-user">Welcome, <?php echo $first_name . " " . $last_name; ?>!</span>
 						 	</li>
+						 	<li class=list-inline-item>
+						 		<?php if (isset($_SESSION['wish'])): ?>
+							 		<a href="#" class="user-page"><span class="user-wishlist">Wish List ( <?php echo array_sum($_SESSION['wish']); ?> )</span></a>
+							 	<?php else: ?>
+									<a href="#" class="user-page"><span class="user-wishlist">Wish List</span></a>
+						 		<?php endif ?>
+						 	</li>
 							<li class="list-inline-item">
 								<i class="fa fa-sign-in pl-2 pr-1"></i>
 								<a class="link-dark" href="logout.php">Logout</a>

@@ -40,6 +40,21 @@
 						}
 					}
 				}
+
+				$sql = "SELECT * FROM wishlists WHERE user_id = 
+						(SELECT id FROM users WHERE username = '$username_query')";
+				$result = mysqli_query($connection, $sql);
+				if (mysqli_num_rows($result) > 0) {
+					while($row = mysqli_fetch_assoc($result)) {
+						extract($row);
+						if (isset($_SESSION['wish'][$product_id])) {
+							$_SESSION['wish'][$product_id] += 1;
+						}
+						else {
+							$_SESSION['wish'][$product_id] = 1;
+						}
+					}
+				}
 				header('location: index.php');		
 			}
 			elseif ($user_status == 'banned'){

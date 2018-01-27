@@ -91,4 +91,27 @@ $('document').ready(function(){
 			}
 		});
 	});
+
+	$(".add-to-wish").click(function() {
+		var prod_id = $(this).data('id');
+
+		$.ajax({
+			url: 'endpoint.php',
+			type: 'POST',
+			data: {
+				add_to_wish : true,
+				prod_id : prod_id
+			},
+			success:function(data) {
+				if (data != 0) {
+					alertify.alert("Oopps!",data).show();
+				}
+				else{
+					location.reload();
+				}
+					
+			}
+		});
+
+	});
 });

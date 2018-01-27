@@ -50,13 +50,13 @@ a{
 			&:hover{
 				text-decoration: none !important;
 			}
-			.welcome-user{
-				color: #000;
-				font-size: 18px;
-				&:hover{
-					color: #e07e27;
-					
-				}
+		}
+		.welcome-user{
+			color: #000;
+			font-size: 18px;
+			&:hover{
+				color: #e07e27;
+				
 			}
 		}
 	}
@@ -187,7 +187,9 @@ div{
 	}
 }
 
-
+.card-block{
+	height: 150px;
+}
 
 .sort-text{
 	h1,h3{
@@ -199,22 +201,23 @@ div{
 .image-box{
 	// background-color: red;
 	width: 100%;
-	height: 400px;
+	height: 350px;
 
 	.card-img-top{
-		max-height: 400px;
+		max-height: 350px;
 	}
 }
 
 .center-img{
-	line-height: 400px;
+	line-height: 350px;
 }
 
 .price-cont{
+	text-align: center;
 	position: absolute;
-	top: 0;
-	left: 26%;
-	transform: translate(0, -26%);
+	top: 10%;
+	left: 30%;
+	transform: translate(-10%, -30%);
 }
 .product-price{
 		visibility: hidden;
@@ -226,6 +229,7 @@ div{
 	text-align: center;
 	position: relative;
 	.product-name{
+		text-align: center;
 		letter-spacing: -0.1px;
 		height: 60px;
 		font-size: 15px;
@@ -236,15 +240,35 @@ div{
 	.shop-link-cont{
 		position: absolute;
 		top: 20px;
-		left: 80px;
+		left: 65px;
+		.shop-btn{
+			margin-top: 10px;
+		}
+
+		.outer-add-to-wish{
+			padding: 10px;
+			// margin-top: 20px;
+			
+			.add-to-wish{
+				color: #000;
+				text-decoration: underline;
+				&:hover{
+					color: #000;
+				}
+			}
+		}
 	}
 	.shop-link{
 		visibility: hidden;
 		font-size: 13px;
-		color: #000;
+		color: #fff;
 		&:hover{
 			text-decoration: none;
-			color: #737373;
+		}
+
+		.btn-black{
+			background-color: #000;
+			border: 1px solid #000;
 		}
 	}
 
@@ -686,6 +710,12 @@ div{
 		.user-status{
 			// font-size: 16px;
 			font-weight: 600;
+		}
+	}
+
+	.orders-table{
+		tr.view-orders{
+			cursor: pointer;
 		}
 	}
 	.admin-logout{

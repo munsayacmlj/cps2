@@ -25,7 +25,10 @@
 			    </div>	
 			    <?php elseif (isset($_SESSION['username'])) : ?>
 			    	<div class="shop-link shop-link-cont">
-				    	<a href="endpoint.php?add_to_cart=true&id=<?php echo $prod_id; ?>" class="shop-link <?php echo $prod_id; ?>">Shop This &gt;</a>
+				    	<a href="endpoint.php?add_to_cart=true&id=<?php echo $prod_id; ?>" class="shop-link btn btn-black shop-btn <?php echo $prod_id; ?>">Shop This &gt;</a><br>
+				    	<div class="outer-add-to-wish">
+					    	<a href="#" class="add-to-wish <?php echo $prod_id; ?>" data-id="<?php echo $prod_id; ?>">Add to Wishlist</a>
+				    	</div>
 			    	</div>
 				<?php endif; ?>
 		    </div>

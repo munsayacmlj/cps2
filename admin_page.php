@@ -32,7 +32,7 @@
 		</div> -->
 
 
-		<table class="table table-condensed table-hover col-md-auto users-table">
+		<table class="table table-condensed col-md-auto users-table">
 			<caption>List of Users</caption>
 			<thead>
 				<tr>
@@ -79,7 +79,7 @@
 			</tbody>
 		</table>
 		
-		<table class="table table-condensed table-hover col-md-auto">
+		<table class="table table-condensed table-hover col-md-auto orders-table">
 			<caption>List of orders</caption>
 			<thead>
 				<tr>
@@ -101,20 +101,20 @@
 					while ($row = mysqli_fetch_assoc($result)): 
 						extract($row);
 				 ?>
-				<tr>
-					<td><?php echo $user_id; ?></td>
-					<td><?php echo $username; ?></td>
-					<td><?php echo $order_id; ?></td>
-					<td><?php echo $date_ordered; ?></td>
-					<td><?php echo $quantity; ?></td>
-					<td><?php echo $order_status; ?></td>
-					<?php if ($order_status == 'done'): ?>
-						<td><button class="btn btn-primary" disabled>Completed</button></td>
-					<?php else: ?>
-						<td><a href="#" class="btn btn-success order-complete-btn" data-user-id="<?php echo $user_id; ?>" data-order-id="<?php echo $order_id; ?>" data-toggle="modal" data-target="#myModal">Complete</a></td>
-					<?php endif; ?>
-					<td><a href="#" class="btn btn-danger order-delete-btn" data-username="<?php echo $username; ?>" data-order-id="<?php echo $order_id; ?>" data-quantity="<?php echo $quantity; ?>" data-toggle="modal" data-target="#myModal">Delete</a></td>
-				</tr>
+					<tr class="view-orders" data-order-id = "<?php echo $order_id; ?>" data-username="<?php echo $username; ?>">
+						<td><?php echo $user_id; ?></td>
+						<td><?php echo $username; ?></td>
+						<td><?php echo $order_id; ?></td>
+						<td><?php echo $date_ordered; ?></td>
+						<td><?php echo $quantity; ?></td>
+						<td><?php echo $order_status; ?></td>
+						<?php if ($order_status == 'done'): ?>
+							<td><button class="btn btn-primary" disabled>Completed</button></td>
+						<?php else: ?>
+							<td><a href="#" class="btn btn-success order-complete-btn" data-user-id="<?php echo $user_id; ?>" data-order-id="<?php echo $order_id; ?>" data-toggle="modal" data-target="#myModal">Complete</a></td>
+						<?php endif; ?>
+						<td><a href="#" class="btn btn-danger order-delete-btn" data-username="<?php echo $username; ?>" data-order-id="<?php echo $order_id; ?>" data-quantity="<?php echo $quantity; ?>" data-toggle="modal" data-target="#myModal">Delete</a></td>
+					</tr>
 				<?php endwhile; ?>
 			</tbody>
 		</table>
@@ -132,7 +132,7 @@
 			          <span aria-hidden="true">&times;</span>
 			        </button>
 			      </div>
-			      <div class="modal-body">
+			      <div class="modal-body view-modal-body ban-unban-modal-body">
 			        
 			      </div>
 			    </div>
@@ -140,11 +140,11 @@
 	</div>
 
 
-	<div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="adminModal" tabindex="-1" role="dialog">
 		  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel">Create Admin account</h5>
+			        <h5 class="admin-modal-title" id="exampleModalLabel">Create Admin account</h5>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
@@ -166,7 +166,28 @@
 		  </div>
 	</div>
 </body>
+
+	<script src="assets/js/alertify.js" type="text/javascript"></script>
 	<script>
+		$('.view-orders').click(function() {
+			var order_id = $(this).data('order-id');
+			var username = $(this).data('username');
+			$.ajax({
+				url: 'endpoint.php',
+				type: 'POST',
+				data: {
+					view_order : true,
+					order_id : order_id,
+					username : username 
+				},
+				success:function(data) {
+					$('.modal-title').html("View Orders");
+					$('.view-modal-body').html(data);
+					$('#myModal').modal('show');
+				}
+			});
+		});
+
 		$('.ban').click(function() {
 			var id = $(this).data('index');
 
@@ -179,7 +200,7 @@
 				},
 				success:function(data) {
 					$('.modal-title').html("BAN USER");
-					$('.modal-body').html(data);
+					$('.ban-unban-modal-body').html(data);
 				}
 			});
 		});
@@ -197,7 +218,7 @@
 				},
 				success:function(data) {
 					$('.modal-title').html("UNBAN USER");
-					$('.modal-body').html(data);
+					$('.ban-unban-modal-body').html(data);
 				}
 			});
 		});
@@ -215,7 +236,7 @@
 				},
 				success:function(data) {
 					$('.modal-title').html("COMPLETE ORDER");
-					$('.modal-body').html(data);
+					$('.ban-unban-modal-body').html(data);
 				}
 			});
 		});
@@ -235,7 +256,7 @@
 				},
 				success:function(data) {
 					$('.modal-title').html("DELETE ORDER");
-					$('.modal-body').html(data);
+					$('.ban-unban-modal-body').html(data);
 				}
 			});
 		});

@@ -32,10 +32,10 @@ a {
     width: 98%; }
     .header-top #header-top-right a.admin-page:hover {
       text-decoration: none !important; }
-    .header-top #header-top-right a.admin-page .welcome-user {
+    .header-top #header-top-right .welcome-user {
       color: #000;
       font-size: 18px; }
-      .header-top #header-top-right a.admin-page .welcome-user:hover {
+      .header-top #header-top-right .welcome-user:hover {
         color: #e07e27; }
 
 .sticky-wrapper {
@@ -112,24 +112,28 @@ div .normal-link-texts .cart-icon {
 @media only screen and (min-width: 1025px) {
   .wrapper {
     margin-right: 250px; } }
+.card-block {
+  height: 150px; }
+
 .sort-text h1, .sort-text h3 {
   text-align: center;
   margin-top: 20px; }
 
 .image-box {
   width: 100%;
-  height: 400px; }
+  height: 350px; }
   .image-box .card-img-top {
-    max-height: 400px; }
+    max-height: 350px; }
 
 .center-img {
-  line-height: 400px; }
+  line-height: 350px; }
 
 .price-cont {
+  text-align: center;
   position: absolute;
-  top: 0;
-  left: 26%;
-  transform: translate(0, -26%); }
+  top: 10%;
+  left: 30%;
+  transform: translate(-10%, -30%); }
 
 .product-price {
   visibility: hidden; }
@@ -138,6 +142,7 @@ div .normal-link-texts .cart-icon {
   text-align: center;
   position: relative; }
   .card-content .product-name {
+    text-align: center;
     letter-spacing: -0.1px;
     height: 60px;
     font-size: 15px;
@@ -145,14 +150,25 @@ div .normal-link-texts .cart-icon {
   .card-content .shop-link-cont {
     position: absolute;
     top: 20px;
-    left: 80px; }
+    left: 65px; }
+    .card-content .shop-link-cont .shop-btn {
+      margin-top: 10px; }
+    .card-content .shop-link-cont .outer-add-to-wish {
+      padding: 10px; }
+      .card-content .shop-link-cont .outer-add-to-wish .add-to-wish {
+        color: #000;
+        text-decoration: underline; }
+        .card-content .shop-link-cont .outer-add-to-wish .add-to-wish:hover {
+          color: #000; }
   .card-content .shop-link {
     visibility: hidden;
     font-size: 13px;
-    color: #000; }
+    color: #fff; }
     .card-content .shop-link:hover {
-      text-decoration: none;
-      color: #737373; }
+      text-decoration: none; }
+    .card-content .shop-link .btn-black {
+      background-color: #000;
+      border: 1px solid #000; }
   .card-content .admin-link-items .edit-width {
     width: 50%;
     text-align: center;
@@ -445,6 +461,8 @@ div .normal-link-texts .cart-icon {
   padding: 20px; }
   .container .users-table .user-status, .container .table .user-status {
     font-weight: 600; }
+.container .orders-table tr.view-orders {
+  cursor: pointer; }
 .container .ban-user {
   padding-bottom: 20px; }
 

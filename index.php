@@ -88,10 +88,14 @@
 		  </div>
 	</div>
 
+	<div id="modalDemo" style="display: none;">
+		<h2>Example of Uglipop</h2>
+	</div>
+
 	<?php require "assets/partials/footer.php" ?>
 	<script src="assets/js/main.js" type="text/javascript"></script>
+	<script src="assets/js/uglipop.js" type="text/javascript"></script>
     <script type="text/javascript">
-    	
 
     </script>
 </body>

@@ -140,6 +140,39 @@
 		exit;
 	}
 
+	/* ADD TO WISHLIST*/
+	if (isset($_POST['add_to_wish'])) {
+		session_start();
+		$prod_id = $_POST['prod_id'];
+		$username = $_SESSION['username'];
+
+		$sql = "SELECT id as user_id FROM users WHERE username = '$username'";
+		$result = mysqli_query($connection, $sql);
+		$row = mysqli_fetch_assoc($result);
+		extract($row); /* $user_id */
+
+		$sql = "SELECT COUNT(product_id) as num_product FROM wishlists WHERE product_id = '$prod_id'";
+		$result = mysqli_query($connection, $sql);
+		$row = mysqli_fetch_assoc($result);
+		extract($row); /* $num_product */
+
+		if ($num_product >= 1) {
+			echo "You have already saved this product in your Wish List";
+		}
+		else {
+			$sql = "INSERT INTO wishlists (user_id, product_id) VALUES ('$user_id', '$prod_id')";
+			mysqli_query($connection, $sql);
+
+			if (isset($_SESSION['wish'][$prod_id])) {
+					$_SESSION['wish'][$prod_id] += 1;	
+			}		
+			else{
+				$_SESSION['wish'][$prod_id] = 1;
+			}
+			echo 0;
+		}
+	}
+
 	if (isset($_POST['qtyChange'])) {   /* CHANGE ITEM'S QUANTITY*/
 		session_start();
 		$product_id = $_POST['id']; /*product_id*/
@@ -277,7 +310,6 @@
 	            <input type="submit" class="btn btn-danger delete-body" value="Yes">
 	            <input type="button" class="btn btn-success" data-dismiss='modal' value="No">
             </form>
-
 <?php endif; ?>
 
 <?php 
@@ -505,3 +537,39 @@
 	            <input type="button" class="btn btn-danger" data-dismiss='modal' value="No">
             </form>
 <?php	endif; ?>
+
+<?php 
+	if (isset($_POST['view_order'])) :
+		$order_id = $_POST['order_id'];
+		$username = $_POST['username'];
+		
+		$sql = "SELECT a.product_name as product_name, a.picture as picture, b.total_price as total_price, a.description as description, c.brand_name as brand FROM products a JOIN order_details b ON (a.id = b.product_id) JOIN brands c ON (a.brand_id = c.id) WHERE b.order_id = '$order_id'";
+		$result = mysqli_query($connection, $sql);
+		
+?>
+			<table class="table table-condensed view-order-table">
+				<caption><?php echo $username; ?></caption>
+				<thead>
+					<tr>
+						<th>Product Name</th>
+						<th>Brand</th>
+						<th>Description</th>
+						<th>Price</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php while($row = mysqli_fetch_assoc($result)):
+							extract($row); ?>
+							<tr>
+								<td><?php echo $product_name; ?></td>
+								<td><?php echo $brand; ?></td>
+								<td><?php echo $description; ?></td>
+								<td><?php echo $total_price; ?></td>
+							</tr>
+					<?php endwhile; ?>
+				</tbody>
+			</table>
+
+<?php endif; ?>
+
+
