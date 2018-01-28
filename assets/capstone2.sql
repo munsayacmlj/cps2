@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 23, 2018 at 04:18 PM
+-- Generation Time: Jan 28, 2018 at 04:54 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -82,8 +82,21 @@ INSERT INTO `genders` (`id`, `gender`) VALUES
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `order_date` date DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL
+  `user_id` int(11) DEFAULT NULL,
+  `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `order_date`, `user_id`, `status`) VALUES
+(26, '2018-01-24', 4, 'pending'),
+(28, '2018-01-26', 3, 'done'),
+(29, '2018-01-26', 3, 'done'),
+(30, '2018-01-26', 3, 'pending'),
+(31, '2018-01-27', 9, 'pending'),
+(32, '2018-01-28', 6, 'pending');
 
 -- --------------------------------------------------------
 
@@ -98,6 +111,25 @@ CREATE TABLE `order_details` (
   `product_id` int(11) DEFAULT NULL,
   `order_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`id`, `quantity`, `total_price`, `product_id`, `order_id`) VALUES
+(70, 1, 62500, 45, 28),
+(71, 1, 62500, 45, 28),
+(72, 1, 62500, 45, 28),
+(73, 1, 62500, 45, 28),
+(74, 1, 62500, 45, 28),
+(77, 1, 24000, 31, 29),
+(78, 1, 23791, 37, 29),
+(82, 1, 43000, 14, 31),
+(84, 1, 23000, 16, 31),
+(85, 1, 7200, 9, 31),
+(86, 1, 119300, 26, 31),
+(87, 1, 39750, 46, 31),
+(105, 1, 32140, 58, 32);
 
 -- --------------------------------------------------------
 
@@ -121,8 +153,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `product_name`, `price`, `picture`, `description`, `brand_id`, `gender_id`, `product_type_id`) VALUES
-(1, 'Allen Edmonds Dark Red Checkered Shirt', 4900, 'assets/images/allen_edmonds_shirt_1_m.jpg', 'Cotton Shirt', 9, 1, 3),
-(2, 'Allen Edmonds Black and White Checkered Shirt', 4900, 'assets/images/allen_edmonds_shirt_2_m.jpg', 'Cotton Shirt', 9, 1, 3),
+(1, 'Allen Edmonds Dark Red Checkered Shirt', 7900, 'assets/images/allen_edmonds_shirt_1_m.jpg', 'Cotton Shirt', 9, 1, 3),
 (3, 'Allen Edmonds Dark Purple Checkered Shirt', 4900, 'assets/images/allen_edmonds_shirt_3_m.jpg', 'Cotton Shirt', 9, 1, 3),
 (4, 'Allen Edmonds Light Blue Checkered Shirt', 4900, 'assets/images/allen_edmonds_shirt_4_m.jpg', 'Cotton Shirt', 9, 1, 3),
 (5, 'Allen Edmonds Black and White Casual Shoes', 19750, 'assets/images/allen_edmonds_shoes_1_m.jpg', 'Nice Shoes', 9, 1, 2),
@@ -154,8 +185,8 @@ INSERT INTO `products` (`id`, `product_name`, `price`, `picture`, `description`,
 (31, 'Black Cotton T-Shirt with Gucci Web Logo', 24000, 'assets/images/gucci_shirt_3_m.jpg', 'Cotton Shirt', 4, 1, 3),
 (32, 'Light Pink Shirt with Ribbon', 32000, 'assets/images/gucci_shirt_3_w.jpg', 'Nice Shirt', 4, 2, 3),
 (33, 'Navy Blue Mid Cut Casual Shoes', 34362, 'assets/images/jimmy_choo_shoes_1_m.jpg', 'Nice Shoes', 14, 1, 2),
-(34, 'Pointed Suede Pumps in Black and Gold', 34900, 'assets/images/jimmy_choo_shoes_1_w.jpg', 'Nice Pumps', 14, 2, 2),
-(35, 'Slip on Sneakers for Men on Black', 14114, 'assets/images/jimmy_choo_shoes_2_m.jpg', 'Nice Shoes', 14, 1, 2),
+(34, 'Pointed Suede Pumps in Black and Gold', 33668, 'assets/images/jimmy_choo_shoes_1_w.jpg', 'Nice Pumps', 14, 2, 2),
+(35, 'Gum Sole High Cut Blue Leather Sneakers', 14114, 'assets/images/jimmy_choo_shoes_2_m.jpg', 'Nice Shoes', 14, 1, 2),
 (36, 'Pointed Suede Crystal White Pumps with Glitters', 35000, 'assets/images/jimmy_choo_shoes_2_w.jpg', 'Nice Pumps', 14, 2, 2),
 (37, 'Cassius Black Leather High Top Sneakers', 23791, 'assets/images/jimmy_choo_shoes_3_m.jpg', 'Nice Sneakers', 14, 1, 2),
 (38, 'Pointed Suede Beige Pump with Pearls', 43930, 'assets/images/jimmy_choo_shoes_3_w.jpg', 'Nice Pumps', 14, 2, 2),
@@ -168,7 +199,7 @@ INSERT INTO `products` (`id`, `product_name`, `price`, `picture`, `description`,
 (45, 'Ralph Lauren White and Blue Polo Shirt', 62500, 'assets/images/ralph_lauren_shirt_4_m.jpg', 'Nice Shirt', 5, 1, 3),
 (46, 'Tanger Sandals with crisscrossed ties in black suede', 39750, 'assets/images/saint_laurent_shoes_1_w.jpg', 'Nice Sandals', 1, 2, 2),
 (47, 'Tanger Sandals with crisscrossed ties in crimson red', 39750, 'assets/images/saint_laurent_shoes_2_w.jpg', 'Nice Sandals', 1, 2, 2),
-(48, 'Short Sleeves Polo', 15500, 'assets/images/salvatore_ferragamo_shirt_1_m.jpg', 'Nice Polo', 8, 1, 3),
+(48, 'Short Sleeves Polo', 13800, 'assets/images/salvatore_ferragamo_shirt_1_m.jpg', 'Nice Polo', 8, 1, 3),
 (49, 'Short Sleeves T-Shirt', 14500, 'assets/images/salvatore_ferragamo_shirt_2_m.jpg', 'Nice T-Shirt', 8, 1, 3),
 (50, 'Brown Casual Ferragamo Shoes', 26500, 'assets/images/salvatore_ferragamo_shoes_1_m.jpg', 'Nice Shoes', 8, 1, 2),
 (51, 'Peony Petal Bow Pump Shoe', 29750, 'assets/images/salvatore_ferragamo_shoes_1_w.jpg', 'Nice Pump', 8, 2, 2),
@@ -182,8 +213,8 @@ INSERT INTO `products` (`id`, `product_name`, `price`, `picture`, `description`,
 (59, 'Beige Large Handbag', 150000, 'assets/images/versace_bag_1_w.jpg', 'Versace on the floor', 2, 2, 1),
 (60, 'Versace Black Body bag', 32500, 'assets/images/versace_bag_2_m.jpg', 'Versace on the floor', 2, 1, 1),
 (61, 'Black Large Handbag', 199000, 'assets/images/versace_bag_2_w.jpg', 'Versace on the floor', 2, 2, 1),
-(62, 'Summer Sunset T-Shirt', 56000, 'assets/images/versace_shirt_1_m.jpg', 'Versace on the floor.', 2, 1, 3),
-(63, 'Brown Leather Jacket', 78899, 'assets/images/versace_shirt_2_m.jpg', 'Versace on the floor', 2, 1, 3);
+(66, 'Dark Brown Leather Jacket', 62399, 'assets/images/versace_shirt_2_m_2018-01-25_a.jpg', 'Versace on the floor', 2, 1, 3),
+(68, 'Sunset Summer Golden Shirt', 12800, 'assets/images/versace_shirt_1_m_2018-01-25_a_2018-01-27_a.jpg', 'Versace hit the floor', 2, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -236,16 +267,53 @@ CREATE TABLE `users` (
   `last_name` varchar(255) DEFAULT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role_id` int(11) DEFAULT NULL
+  `role_id` int(11) DEFAULT NULL,
+  `status_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `password`, `role_id`) VALUES
-(1, NULL, NULL, 'admin', 'admin', 2),
-(2, 'Mark', 'Munsayac', 'mark', 'password', 1);
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `password`, `role_id`, `status_id`) VALUES
+(3, 'Elon', 'Musk', 'elonmusk', '8de1d5f15dfc6c31d469833767992297779a7a98', 1, 1),
+(4, 'Mark', 'Munsayac', 'markmunsayac', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 1, 1),
+(5, NULL, NULL, 'admin', 'D033E22AE348AEB5660FC2140AEC35850C4DA997', 2, 1),
+(6, 'Lorence', 'Munsayac', 'lorence', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 1, 1),
+(7, 'bose', 'aomine', 'boseaomine', 'd033e22ae348aeb5660fc2140aec35850c4da997', 2, 1),
+(8, NULL, NULL, 'admin2', 'd033e22ae348aeb5660fc2140aec35850c4da997', 2, 1),
+(9, 'Nikola', 'Tesla', 'tesla', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_status`
+--
+
+CREATE TABLE `user_status` (
+  `id` int(11) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_status`
+--
+
+INSERT INTO `user_status` (`id`, `status`) VALUES
+(1, 'ok'),
+(2, 'banned');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlists`
+--
+
+CREATE TABLE `wishlists` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -304,7 +372,22 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `role_id` (`role_id`);
+  ADD KEY `role_id` (`role_id`),
+  ADD KEY `status_id` (`status_id`);
+
+--
+-- Indexes for table `user_status`
+--
+ALTER TABLE `user_status`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -326,19 +409,19 @@ ALTER TABLE `genders`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `product_types`
@@ -356,7 +439,19 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `user_status`
+--
+ALTER TABLE `user_status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -387,7 +482,15 @@ ALTER TABLE `products`
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`status_id`) REFERENCES `user_status` (`id`);
+
+--
+-- Constraints for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  ADD CONSTRAINT `wishlists_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `wishlists_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
