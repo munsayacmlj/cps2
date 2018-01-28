@@ -29,6 +29,13 @@ h1, h2, h3, h4, h5, h6 {
 .row {
   margin: 0; }
 
+.col-md-8 {
+  padding: 0; }
+
+.footer .nav-link,
+.footer .social {
+  color: #999; }
+
 .header-top {
   font-size: 12px;
   background-color: #e1e1e1;
@@ -46,7 +53,7 @@ h1, h2, h3, h4, h5, h6 {
       color: #000;
       font-size: 12px; }
       .header-top #header-top-right .welcome-user:hover {
-        color: #e07e27; }
+        color: #000; }
     .header-top #header-top-right .user-wishlist {
       color: #000; }
       .header-top #header-top-right .user-wishlist:hover {
@@ -64,10 +71,16 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 5px; }
 
 .logo {
-  margin: 6px 0; }
+  z-index: 1000; }
   .logo img {
-    height: 50px; }
+    height: 80px; }
 
+@media only screen and (max-width: 1024px) {
+  .logo img {
+    display: none; } }
+@media only screen and (min-width: 1025px) {
+  .logo {
+    position: absolute; } }
 .site-slogan {
   color: #777777;
   font-size: 11px;
@@ -79,23 +92,35 @@ h1, h2, h3, h4, h5, h6 {
 ul .text-muted {
   color: #999999 !important; }
 ul a.contact-num {
-  color: #e07e27; }
+  color: #000; }
 ul a.link-dark {
   color: #333333;
   text-decoration: none; }
 ul a.link-dark:hover {
   text-decoration: underline; }
 
+#index-body {
+  background-image: url("../images/bg/Brioni_Store_Paris.jpg");
+  height: 100vh; }
+
 .bg-custom {
-  background-color: #292c2f !important;
-  border-top: 1px solid #ffffff;
-  border-bottom: 2px solid #f1f1f1f1; }
+  background-color: transparent !important;
+  border-top: 1px solid #ffffff; }
 
 div .container .row {
   width: 100%; }
-div .normal-link-texts a.nav-link {
+div .dropdown-menu {
+  font-size: 13px; }
+  div .dropdown-menu .dropdown-item:focus {
+    background-color: #fff !important; }
+div .nav-link-index {
+  color: #fff;
   font-size: 1em !important; }
-div .normal-link-texts .cart-icon {
+div .black {
+  color: #000; }
+div .nav-link {
+  font-size: 1em !important; }
+div .cart-icon {
   margin-bottom: 2px; }
 
 .nav-margin {
@@ -106,34 +131,33 @@ div .normal-link-texts .cart-icon {
   font-size: 12px; }
   .header-button a, .header-search a {
     color: #ffffff; }
-  .header-button .btn-default, .header-search .btn-default {
-    background-color: #e07e27;
-    border-color: #cc7324; }
+  .header-button .no-bg-btn, .header-search .no-bg-btn {
+    background-color: transparent;
+    border: 1px solid #999;
+    border-left: none; }
 
 .navbar-bg-custom {
   background-color: #fcfcfc; }
 
-.nav-link {
-  color: #bbb; }
-
-.nav-link:hover {
-  color: #fff; }
-
-.wrapper {
-  /* left-side */ }
-  .wrapper .left-side {
+.items-wrapper {
+  padding-top: 90px; }
+  .items-wrapper .left-side {
     height: 500px;
     background-color: lightgray; }
 
 @media only screen and (min-width: 1025px) {
-  .wrapper {
+  .items-wrapper {
     margin-right: 250px; } }
 .card-block {
   height: 150px; }
 
-.sort-text h1, .sort-text h3 {
-  text-align: center;
-  margin-top: 20px; }
+.sort-text {
+  text-align: center; }
+  .sort-text .title {
+    font-family: LabGrotesque-Bold,sans-serif;
+    font-size: 25px;
+    margin-top: 20px;
+    padding-top: 30px; }
 
 .image-box {
   width: 100%;
@@ -539,7 +563,17 @@ ol, ul {
     font-weight: 600; }
 .container .orders-table tr.view-orders {
   cursor: pointer; }
+  .container .orders-table tr.view-orders td {
+    padding: 0.945rem; }
+.container .orders-table-btn td {
+  padding-top: 0.78rem;
+  padding-bottom: 0.74rem; }
 .container .ban-user {
   padding-bottom: 20px; }
+
+.btn-xs {
+  padding: 0.2rem 0.2rem;
+  font-size: 0.7rem;
+  line-height: 1.28; }
 
 /*# sourceMappingURL=styles.css.map */

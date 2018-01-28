@@ -28,6 +28,7 @@
 			$new_loc = (string)$_SERVER['HTTP_REFERER'];			
 			echo "<script>alert('You cannot delete this item. Someone is currently buying this item.');
 					window.location.replace(\"$new_loc\")</script>";
+			// echo 0;
 			exit;
 		}
 		else{
@@ -101,6 +102,9 @@
 
 	if (isset($_GET['delete_order'])) {
 		$order_id = $_GET['order_id'];
+		$sql = "DELETE FROM order_details WHERE order_id = '$order_id'";
+		mysqli_query($connection, $sql);
+		
 		$sql = "DELETE FROM orders WHERE id = '$order_id'";
 		mysqli_query($connection, $sql);
 		header('location: ' . $_SERVER['HTTP_REFERER']);

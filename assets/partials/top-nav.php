@@ -45,24 +45,24 @@
 						 		<span class="welcome-user">My Account / <?php echo $first_name . " " . $last_name; ?></span>
 						 	</li>
 						 	<li class=list-inline-item>
-				 			<?php if (isset($_SESSION['wish'])): ?>
 				 				<div id="div-wish-list">
+				 			<?php if (isset($_SESSION['wish'])): ?>
 							 		<a href="wishlist.php?user=<?php echo $_SESSION['username']; ?>" class="user-wishlist">Wish List (<?php echo array_sum($_SESSION['wish']); ?>)</a>
-				 				</div>
 					 		<?php else: ?>
 									<a href="#" class="user-wishlist">Wish List</a>
+				 				</div>
 				 			<?php endif ?>
 						 	</li>
 							
 		                      <li class="list-inline-item">
+			                        <div id="div-shopping-bag">
 							<?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'regular'): ?>
 		                        <?php if(isset($_SESSION['cart'])): ?>
-			                        <div id="div-shopping-bag">
 			                          <a class="shopping-bag-link" id="elon" href="shopping_bag.php?user=<?php echo $_SESSION['username']; ?>">Shopping Bag (<?php echo array_sum($_SESSION['cart']); ?>)</a>
-		                        	</div>	
 		                        <?php else: ?>
 		                          <a class="shopping-bag-link" href="shopping_bag.php">Shopping Bag</a>
 		                        <?php endif;  ?>
+		                        	</div>	
 		                    <?php endif ?>
 		                      </li>
 

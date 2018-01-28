@@ -310,6 +310,8 @@
 	            <input type="submit" class="btn btn-danger delete-body" value="Yes">
 	            <input type="button" class="btn btn-success" data-dismiss='modal' value="No">
             </form>
+  			<!-- <input type="button" class="btn btn-danger delete-body" data-id="<?php echo $del_id; ?>" value="Yes">
+            <input type="button" class="btn btn-success" data-dismiss='modal' value="No"> -->
 <?php endif; ?>
 
 <?php 
@@ -514,7 +516,10 @@
 		$username = $_POST['username'];
 		$quantity_ordered = $_POST['quantity'];
 ?>
-			<h4 class="warning">Do you want to delete this order?</h4>
+			<div class="warning">
+				<h4>Do you want to delete this order?</h4>
+				<h6>This will also delete all items in the cart.</h6>
+			</div>
   			<div class="ban-user">
   				<div class="ban-username form-group">
   					<label for="username">Username:</label>

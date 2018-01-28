@@ -25,16 +25,16 @@
                       if (isset($_SESSION['username']) && $_SESSION['role'] == 'admin') : ?>
                          
                           <li class="nav-item">
-                            <a class="nav-link black" href="items.php?search_all=true">All Items</a>
+                            <a class="nav-link-index nav-link" href="items.php?search_all=true">All Items</a>
                           </li>
 
                     <?php endif; ?>
 
                     <li class="nav-item">
-                      <a class="nav-link black" href="items.php?new=true">New Arrivals</a>
+                      <a class="nav-link-index nav-link" href="items.php?new=true">New Arrivals</a>
                     </li>                    
                     <li class="nav-item dropdown">
-                          <a class="nav-link black men-items" href="items.php?men=true" id="navbarDropdown">Men</a>
+                          <a class="nav-link-index nav-link men-items" href="items.php?men=true" id="navbarDropdown">Men</a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                               <a class="dropdown-item" href="items.php?men=true&top=true">Top</a>
                               <a class="dropdown-item" href="items.php?men=true&bag=true">Bag</a>
@@ -44,7 +44,7 @@
                     
 
                     <li class="nav-item dropdown">
-                          <a class="nav-link black" href="items.php?women=true" id="navbarDropdown">Women</a>
+                          <a class="nav-link-index nav-link" href="items.php?women=true" id="navbarDropdown">Women</a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                               <a class="dropdown-item" href="items.php?women=true&top=true">Top</a>
                               <a class="dropdown-item" href="items.php?women=true&bag=true">Bag</a>
@@ -52,7 +52,7 @@
                           </div>
                     </li>
                     <li class="nav-item dropdown">
-                          <a class="nav-link black" href="#" id="navbarDropdown">Brands</a>
+                          <a class="nav-link-index nav-link" href="#" id="navbarDropdown">Brands</a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                               <?php 
                                 require "connection.php";
@@ -69,10 +69,10 @@
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link black" href="#">About</a>
+                      <a class="nav-link-index nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link black" href="#">Story</a>
+                      <a class="nav-link-index nav-link" href="#">Story</a>
                     </li>
                     <!-- <?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'regular'): ?>
                       <li class="nav-item">

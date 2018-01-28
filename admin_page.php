@@ -78,47 +78,85 @@
 					endwhile; ?>
 			</tbody>
 		</table>
-		
-		<table class="table table-condensed table-hover col-md-auto orders-table">
-			<caption>List of orders</caption>
-			<thead>
-				<tr>
-					<th>User ID</th>
-					<th>User</th>
-					<th>Order ID</th>
-					<th>Date Ordered</th>
-					<th>Quantity</th>
-					<th colspan="3">Status</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php 
-					
-					$sql = "SELECT b.id as order_id, a.id as user_id, a.username as username, b.order_date as date_ordered, 
-							b.status as order_status, COUNT(quantity) as quantity
-							FROM users a LEFT JOIN orders b ON (a.id = b.user_id) LEFT JOIN order_details c ON (b.id = c.order_id) WHERE a.role_id = 1 GROUP BY b.id";
-					$result = mysqli_query($connection, $sql);
-					while ($row = mysqli_fetch_assoc($result)): 
-						extract($row);
-				 ?>
-					<tr class="view-orders" data-order-id = "<?php echo $order_id; ?>" data-username="<?php echo $username; ?>">
-						<td><?php echo $user_id; ?></td>
-						<td><?php echo $username; ?></td>
-						<td><?php echo $order_id; ?></td>
-						<td><?php echo $date_ordered; ?></td>
-						<td><?php echo $quantity; ?></td>
-						<td><?php echo $order_status; ?></td>
-						<?php if ($order_status == 'done'): ?>
-							<td><button class="btn btn-primary" disabled>Completed</button></td>
-						<?php else: ?>
-							<td><a href="#" class="btn btn-success order-complete-btn" data-user-id="<?php echo $user_id; ?>" data-order-id="<?php echo $order_id; ?>" data-toggle="modal" data-target="#myModal">Complete</a></td>
-						<?php endif; ?>
-						<td><a href="#" class="btn btn-danger order-delete-btn" data-username="<?php echo $username; ?>" data-order-id="<?php echo $order_id; ?>" data-quantity="<?php echo $quantity; ?>" data-toggle="modal" data-target="#myModal">Delete</a></td>
+		<div class="col-md-10">
+			<table class="table table-condensed table-hover orders-table">
+				<caption>List of orders</caption>
+				<thead>
+					<tr>
+						<th>User ID</th>
+						<th>User</th>
+						<th>Order ID</th>
+						<th>Date Ordered</th>
+						<th>Quantity</th>
+						<th colspan="3">Status</th>
 					</tr>
-				<?php endwhile; ?>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<?php 
+						
+						$sql = "SELECT b.id as order_id, a.id as user_id, a.username as username, b.order_date as date_ordered, 
+								b.status as order_status, COUNT(quantity) as quantity
+								FROM users a LEFT JOIN orders b ON (a.id = b.user_id) LEFT JOIN order_details c ON (b.id = c.order_id) WHERE a.role_id = 1 GROUP BY b.id";
+						$result = mysqli_query($connection, $sql);
+						while ($row = mysqli_fetch_assoc($result)): 
+							extract($row);
+					 ?>
+						<tr class="view-orders" data-order-id = "<?php echo $order_id; ?>" data-username="<?php echo $username; ?>">
+							<td><?php echo $user_id; ?></td>
+							<td><?php echo $username; ?></td>
+							<td><?php echo $order_id; ?></td>
+							<td><?php echo $date_ordered; ?></td>
+							<td><?php echo $quantity; ?></td>
+							<td><?php echo $order_status; ?></td>
+							<!-- <?php if ($order_status == 'done'): ?>
+								<td><button class="btn btn-primary" disabled>Completed</button></td>
+							<?php else: ?>
+								<td><a href="#" class="btn btn-success order-complete-btn" data-user-id="<?php echo $user_id; ?>" data-order-id="<?php echo $order_id; ?>" data-toggle="modal" data-target="#myModal">Complete</a></td>
+							<?php endif; ?>
+							<td><a href="#" class="btn btn-danger order-delete-btn" data-username="<?php echo $username; ?>" data-order-id="<?php echo $order_id; ?>" data-quantity="<?php echo $quantity; ?>" data-toggle="modal" data-target="#myModal">Delete</a></td> -->
+						</tr>
+					<?php endwhile; ?>
+				</tbody>
+			</table>
+		</div>
 
+		<div class="col-md-2">
+			<table class="table table-condensed table-hover orders-table-btn">
+					<tr>
+						<th colspan="2">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php 
+						
+						$sql = "SELECT b.id as order_id, a.id as user_id, a.username as username, b.order_date as date_ordered, 
+								b.status as order_status, COUNT(quantity) as quantity
+								FROM users a LEFT JOIN orders b ON (a.id = b.user_id) LEFT JOIN order_details c ON (b.id = c.order_id) WHERE a.role_id = 1 GROUP BY b.id";
+						$result = mysqli_query($connection, $sql);
+						while ($row = mysqli_fetch_assoc($result)): 
+							extract($row);
+					 ?>
+					<tr>
+							<?php if ($order_status == 'done'): ?>
+								<td><button class="btn btn-sm" disabled>Completed</button></td>
+								<td><button class="btn btn-sm" disabled>Disabled</button></td>
+							<?php else: ?>
+								<td>
+									<a href="#" class="btn btn-success btn-sm order-complete-btn" data-user-id="<?php echo $user_id; ?>" data-order-id="<?php echo $order_id; ?>" data-toggle="modal" data-target="#myModal">Complete</a>
+								</td>
+								<td>
+								<a href="#" class="btn btn-danger btn-sm order-delete-btn" data-username="<?php echo $username; ?>" data-order-id="<?php echo $order_id; ?>" data-quantity="<?php echo $quantity; ?>" data-toggle="modal" data-target="#myModal">Delete</a>
+								</td>
+							<?php endif; ?>
+							
+							<!-- <td>
+								<a href="#" class="btn btn-danger btn-sm order-delete-btn" data-username="<?php echo $username; ?>" data-order-id="<?php echo $order_id; ?>" data-quantity="<?php echo $quantity; ?>" data-toggle="modal" data-target="#myModal">Delete</a>
+							</td> -->
+					</tr>
+					<?php endwhile; ?>
+				</tbody>
+			</table>
+		</div>
 	</div> <!-- /.row -->
 </div>	<!-- /.container -->
 
