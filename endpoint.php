@@ -9,12 +9,22 @@
 		$username = $_POST['reg-username'];
 		$password = sha1($_POST['reg-password']);
 
-		$sql = "INSERT INTO users (first_name, last_name, username, password, role_id, status_id)
-				VALUES ('$first_name', '$last_name', '$username', '$password', 1, 1)";
-		mysqli_query($connection, $sql);
+		$sql = "SELECT * FROM users WHERE username = '$username'";
+		$res = mysqli_query($connection, $sql);
+		if (mysqli_num_rows($res) == 0) {
+			$sql = "INSERT INTO users (first_name, last_name, username, password, role_id, status_id)
+					VALUES ('$first_name', '$last_name', '$username', '$password', 1, 1)";
+			mysqli_query($connection, $sql);
+			header('location: login.php');
+			exit;
+		}
+		else{
+			$new_loc = (string)$_SERVER['HTTP_REFERER'];
+			echo "<script>alert('Username exists!');
+							window.location.replace(\"$new_loc\")</script>";
+		}
 
-		header('location: login.php');
-		exit;
+
 	}
 
 	if (isset($_GET['add_to_cart'])) {
@@ -595,8 +605,9 @@
 	if (isset($_POST['user_order'])) :
 		$order_id = $_POST['order_id'];
 
-		$sql = "SELECT a.product_name as product_name, a.description as description, a.price as price FROM
-				products a JOIN order_details b ON (a.id = b.product_id) JOIN orders c ON (b.order_id = c.id )  WHERE c.id = '$order_id'";
+		$sql = "SELECT a.id as p_id, a.product_name as product_name, a.description as description, a.price as price, 
+				d.brand_name as brand_name FROM
+				products a JOIN order_details b ON (a.id = b.product_id) JOIN orders c ON (b.order_id = c.id ) JOIN brands d ON (a.brand_id = d.id) WHERE c.id = '$order_id'";
 		$res = mysqli_query($connection, $sql); 
 ?>
 			<table class="table table-condensed view-order-table">
@@ -612,11 +623,11 @@
 				<tbody>
 					<?php while($row = mysqli_fetch_assoc($res)):
 						extract($row); 
-						$sql = "SELECT brand_name FROM brands WHERE id = 
-								(SELECT brand_id FROM products WHERE product_name = '$product_name')";
-						$brand_res = mysqli_query($connection, $sql);
-						$brand_row = mysqli_fetch_assoc($brand_res);
-						extract($brand_row);		
+						// $sql = "SELECT brand_name FROM brands WHERE id = 
+						// 		(SELECT brand_id FROM products WHERE product_name = '$product_name')";
+						// $brand_res = mysqli_query($connection, $sql);
+						// $brand_row = mysqli_fetch_assoc($brand_res);
+						// extract($brand_row);		
 					?>
 							<tr>
 								<td><?php echo $product_name; ?></td>
@@ -625,17 +636,19 @@
 								<td>Php <?php echo number_format($price,2); ?></td>
 							</tr>
 					<?php endwhile; ?>
+					<?php 
+						$sql = "SELECT SUM(a.price) as total_price FROM products a JOIN order_details b ON (a.id = b.product_id)
+							JOIN orders c ON (b.order_id = c.id) WHERE c.id = '$order_id'";
+							$res = mysqli_query($connection, $sql);
+							$row = mysqli_fetch_assoc($res);
+							extract($row);
+					 ?>
+							<tr>
+								<td>Total: </td>
+								<td></td>
+								<td></td>
+								<td>Php <?php echo number_format($total_price, 2); ?></td>
+							</tr>
 				</tbody>
 			</table>
-			<div>
-				<?php 
-					$sql = "SELECT SUM(a.price) as total_price FROM products a JOIN order_details b ON (a.id = b.product_id)
-							JOIN orders c ON (b.order_id = c.id) WHERE c.id = '$order_id'";
-					$res = mysqli_query($connection, $sql);
-					$row = mysqli_fetch_assoc($res);
-					extract($row);
-				 ?>
-				 <span class="total" style="float: left;">Total: </span>
-				 <span class="order_total_price" style="float: right;">Php <?php echo number_format($total_price,2); ?></span>
-			</div>
 <?php endif; ?>

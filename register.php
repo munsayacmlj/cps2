@@ -37,13 +37,13 @@
 							
 
 							<div class="form-group">
-								<label for="exampleInputEmail1">Username</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="reg-username" autocomplete="new-password">
-								<small id="chkUsr" class="form-text text-muted"></small>
+								<label for="InputUsername">Username</label>
+								<input type="text" class="form-control" id="InputUsername" aria-describedby="emailHelp" name="reg-username" autocomplete="new-password">
+								<span id="chkUsr" class="form-text"></span>
 							</div>
 							<div class="form-group">
-								<label for="exampleInputPassword1">Password</label>
-								<input type="password" class="form-control" id="exampleInputPassword1" name="reg-password" autocomplete="new-password">
+								<label for="InputPassword">Password</label>
+								<input type="password" class="form-control" id="InputPassword" name="reg-password" autocomplete="new-password">
 							</div>
 							<button type="submit" name="register" class="btn btn-primary" id="submitBtn">Create your MLJM account</button>
 							
@@ -78,10 +78,6 @@
 		    </div>
 		</div> <!-- /.login-page-footer -->
 	</div> <!-- /.login-page -->
-
-
-<?php //require "assets/partials/footer.php" ?>
-
-
 </body>
+<script src="assets/js/main.js"></script>
 </html>

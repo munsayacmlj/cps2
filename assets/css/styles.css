@@ -68,7 +68,10 @@ h1, h2, h3, h4, h5, h6 {
       color: #000; }
 
 .sticky-wrapper {
-  color: #bbb; }
+  color: #bbb;
+  position: sticky;
+  top: 0;
+  z-index: 5; }
 
 .list-inline {
   margin-top: 5px;
@@ -77,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
 .logo {
   z-index: 1000; }
   .logo img {
-    height: 80px; }
+    height: 100px; }
 
 @media only screen and (max-width: 1024px) {
   .logo img {
@@ -108,7 +111,7 @@ ul a.link-dark:hover {
   height: 100vh; }
 
 .bg-custom {
-  background-color: transparent !important;
+  background-color: transparent;
   border-top: 1px solid #ffffff; }
 
 div .container .row {
@@ -150,10 +153,15 @@ div .cart-icon {
   .items-wrapper .left-side {
     height: 500px;
     background-color: lightgray; }
+  .items-wrapper .page-btns-container {
+    text-align: center;
+    padding-bottom: 40px; }
+    .items-wrapper .page-btns-container a.page-btn {
+      padding: 10px; }
 
-.card-block {
-  height: 150px;
-  position: relative; }
+.active, .page-btn:hover {
+  background-color: #666;
+  color: #fff; }
 
 .sort-text {
   text-align: center; }
@@ -189,9 +197,17 @@ div .cart-icon {
 .product-price {
   visibility: hidden; }
 
+.card-block {
+  height: 150px;
+  position: relative; }
+
 .card-content {
   text-align: center;
-  position: relative; }
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; }
   .card-content .product-name {
     text-align: center;
     letter-spacing: -0.1px;
@@ -200,7 +216,7 @@ div .cart-icon {
     opacity: 1; }
   .card-content .shop-link-cont {
     position: absolute;
-    top: 20px;
+    top: 30px;
     left: 50px; }
     .card-content .shop-link-cont .shop-btn {
       margin-top: 10px; }
@@ -418,9 +434,12 @@ ol, ul {
   transform: translate(-50%, -50%); }
   .inner-empty-cart .empty-bag {
     padding-bottom: 10px; }
-  .inner-empty-cart .go-back {
-    color: #000;
-    text-decoration: underline; }
+
+.go-back {
+  color: #000;
+  text-decoration: underline; }
+  .go-back:hover {
+    color: #000; }
 
 .item-row {
   width: 100%; }
@@ -485,10 +504,6 @@ ol, ul {
 .proceed {
   height: auto;
   padding: 60px; }
-  .proceed .back-to-shopping-btn {
-    float: left;
-    cursor: pointer;
-    text-decoration: underline; }
   .proceed .next-page-button {
     float: right;
     color: #fff;
@@ -582,7 +597,16 @@ ol, ul {
   font-size: 0.7rem;
   line-height: 1.28; }
 
-.user-order-table tr {
-  cursor: pointer; }
+/* Account Page */
+.account-wrapper {
+  margin-top: 50px; }
+  .account-wrapper .account-page-title {
+    padding: 30px 0;
+    text-align: center; }
+    .account-wrapper .account-page-title .acc {
+      font-size: 25px;
+      font-family: LabGrotesque-Bold,sans-serif; }
+  .account-wrapper .user-order-table tr {
+    cursor: pointer; }
 
 /*# sourceMappingURL=styles.css.map */

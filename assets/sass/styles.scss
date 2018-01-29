@@ -112,6 +112,9 @@ h1,h2,h3,h4,h5,h6{
 
 .sticky-wrapper{
 	color: #bbb;
+	position: sticky;
+	top: 0;
+	z-index: 5;
 }
 
 .list-inline{
@@ -123,7 +126,7 @@ h1,h2,h3,h4,h5,h6{
 		z-index: 1000;
 		// float: left;
 		img{
-			height: 80px;
+			height: 100px;
 		}
 	}
 	@media only screen and (max-width: 1024px){
@@ -174,7 +177,7 @@ ul{
 }
 
 .bg-custom{
-	background-color: transparent !important;
+	background-color: transparent;
 	border-top: 1px solid #ffffff;
 	// border-bottom: 2px solid #f1f1f1f1;
 }
@@ -252,6 +255,19 @@ div{
 		height: 500px;
 		background-color: lightgray;
 	}
+
+	.page-btns-container{
+		text-align: center;
+		padding-bottom: 40px;
+		a.page-btn{
+			padding: 10px;
+		}
+	}
+}
+
+.active, .page-btn:hover {
+	background-color: #666;
+	color: #fff;
 }
 
 @media only screen and (min-width: 1025px){
@@ -260,10 +276,7 @@ div{
 	}
 }
 
-.card-block{
-	height: 150px;
-	position: relative;	
-}
+
 
 .sort-text{
 	text-align: center;
@@ -311,9 +324,17 @@ div{
 		// top : 0;
 		// left: 0;
 	}
+.card-block{
+	height: 150px;
+	position: relative;	
+}	
 .card-content{
 	text-align: center;
-	position: relative;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	.product-name{
 		text-align: center;
 		letter-spacing: -0.1px;
@@ -325,7 +346,7 @@ div{
 	
 	.shop-link-cont{
 		position: absolute;
-		top: 20px;
+		top: 30px;
 		left: 50px;
 		// transform: translate(-20px, -50px);
 		.shop-btn{
@@ -653,9 +674,12 @@ ol, ul{
 	.empty-bag{
 		padding-bottom: 10px;
 	}
-	.go-back{
+}
+.go-back{
+	color: #000;
+	text-decoration: underline;
+	&:hover{
 		color: #000;
-		text-decoration: underline;
 	}
 }
 
@@ -766,11 +790,6 @@ ol, ul{
 .proceed{
 	height: auto;
 	padding: 60px;
-	.back-to-shopping-btn{
-		float: left;
-		cursor:pointer;
-		text-decoration: underline;
-	}
 	.next-page-button{
 		float: right;
 		color: #fff;
@@ -919,9 +938,22 @@ ol, ul{
   @include button-size(.2rem, .2rem, 0.7rem, 1.28, .2rem);
 }
 
+/* Account Page */
+.account-wrapper{
+	margin-top: 50px;
+	.account-page-title{
+		padding: 30px 0;
+		text-align: center;
+		.acc{
+			font-size: 25px;
+			font-family: LabGrotesque-Bold,sans-serif;
+		}
+	}
 
-.user-order-table{
-	tr{
-		cursor: pointer;
+	.user-order-table{
+		tr{
+			cursor: pointer;
+		}
 	}
 }
+

@@ -96,7 +96,7 @@
 		<div class="inner-empty-cart">
 			<div class="empty-bag">Your Shopping Bag is empty</div>
 			<div>
-				<a href="index.php?new=true" class="go-back">Back to shopping</a>
+				<a href="items.php?new=true&page=1" class="go-back">Back to shopping</a>
 			</div>
 		</div>
 	
@@ -123,7 +123,7 @@
 		</div>
 	</div>
 	<div class="box proceed">
-		<span class="back-to-shopping-btn go-back">Back to shopping</span>
+		<a href="items.php?new=true&page=1" class="go-back">Back to shopping</a>
 		<button class="next-page-button">
 			<span>Proceed to checkout</span>
 		</button>
@@ -145,10 +145,10 @@
 	<?php //require "assets/partials/footer.php" ?>
 	<script src="assets/js/main.js" type="text/javascript"></script>
     <script type="text/javascript">
-    	$('.go-back').click(function() {
-    		history.go(-1);
-    		return false;
-    	});
+    	// $('.go-back').click(function() {
+    	// 	history.go(-1);
+    	// 	return false;
+    	// });
 
     	$('.trash-can').click(function() {
     		var id = $(this).data('id');

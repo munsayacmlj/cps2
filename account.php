@@ -11,15 +11,14 @@
 	<?php require "get_page_title.php"; ?>
 	
 	
-	<div class="container">
-		<h3>
-			<?php 
-				echo $_SESSION['username'];
-			 ?>
-		</h3>
-
+	<div class="container account-wrapper">
+		<div class="account-page-title">
+			<span class="acc">Account</span>
+		</div>
+		<div class="row">
+			
 		<table class="table table-condensed table-hover col-md-auto user-order-table">
-			<caption>Order List</caption>
+			<caption>Transaction Details</caption>
 			<thead>
 				<tr>
 					<th>Order ID</th>
@@ -40,7 +39,7 @@
 					// echo $id;
 
 					$sql = "SELECT c.id as order_id, c.order_date as date_ordered, c.status as order_status, COUNT(quantity) as quantity FROM products a JOIN order_details b ON (a.id = b.product_id)
-							JOIN orders c ON (b.order_id = c.id) WHERE c.user_id = (SELECT id FROM users WHERE username = '$username') AND c.status IN ('done', 'pending') GROUP BY order_id ORDER BY c.status";
+							JOIN orders c ON (b.order_id = c.id) WHERE c.user_id = (SELECT id FROM users WHERE username = '$username') AND c.status = 'done' GROUP BY order_id ORDER BY c.status";
 					$res = mysqli_query($connection, $sql);
 					while ($row = mysqli_fetch_assoc($res)) : 
 							extract($row);
@@ -50,11 +49,13 @@
 						<td><?php echo $date_ordered; ?></td>
 						<td><?php echo $quantity; ?></td>
 						<td><?php echo $order_status; ?></td>
+
 					</tr>
 			  <?php endwhile; ?>
 			</tbody>
 		</table>
-	</div>
+		</div>
+	</div> <!-- /.container -->
 
 	<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
@@ -67,9 +68,6 @@
 			      </div>
 			      <div class="user-modal-body">
 			        
-			      </div>
-			      <div class="modal-footer">
-			      	
 			      </div>
 			    </div>
 		  </div>

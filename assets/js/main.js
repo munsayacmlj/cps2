@@ -20,8 +20,58 @@ $('.card').mouseout(function(){
 	$("."+idd, ".shop-link").css('visibility', 'hidden');
 });
 
+$('input[name=reg-username]').on('input', function() {
+	var username = $('input[name=reg-username]').val();
+
+	$.ajax({
+		url: 'authenticate.php',
+		type: 'POST',
+		data: {
+			auth_username: true,
+			username: username
+		},
+		success:function(data) {
+			if (data == 'invalid') {
+				$('#chkUsr').css('color', 'red');
+				$('#chkUsr').html('username exists');
+			}
+			else if (data == 'valid') {
+				$('#chkUsr').css('color', 'green');
+				$('#chkUsr').html('valid');	
+			}
+			else if (data == 'blank') {
+				$('#chkUsr').css('color', 'red');
+				$('#chkUsr').html('username cannot be blank');
+			}
+
+		}
+	});
+});
+
+
+
+
 $('document').ready(function(){
 
+	$('#submitBtn').click(function(e) {
+		var formData = $('#loginForm').serialize();
+		$.ajax({
+			url: $('#loginForm').attr('action'),
+			type: 'POST',
+			data: formData,
+			success:function(data) {
+				if (data == -2) {
+					alert("Invalid username/password. Please Try Again.");
+				}
+				else if (data == -1) {
+					alert("The BAN HAMMER has been executed by the admin.");
+				}
+			},
+			error:function(err){
+				alert("nothing");
+			}
+		});
+	});
 
 	$('.edit-item').click(function(){
 		var index = $(this).data('index');
@@ -88,6 +138,7 @@ $('document').ready(function(){
 			success:function(data){
 				if (data == 1) {
 					$('#div-shopping-bag').load(' #div-shopping-bag');
+					$('#ifEmptyBag').load(' #ifEmptyBag');
 				}
 			}
 		});
@@ -138,5 +189,18 @@ $('document').ready(function(){
 			}
 		});
 		return false;
+	});
+
+	var scrollStart = 0;
+	var startChange = $("#data-row");
+	var offset = startChange.offset();
+	$(document).scroll(function() {
+		scroll_start = $(this).scrollTop();
+		if (scroll_start > offset.top) {
+			$('.bg-custom').css('background-color', 'rgb(251,251,251)');
+		}
+		else {
+			$('.bg-custom').css('background-color', 'transparent');
+		}
 	});
 });

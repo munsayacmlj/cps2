@@ -9,27 +9,24 @@
 				echo "New Arrivals";
 			}
 
-			if (isset($_GET['men'])) {
-				if (isset($_GET['top']))
-					echo "Tops for Men";
-				else if (isset($_GET['bag']))
-					echo "Bags for Men";
-				else if(isset($_GET['shoe']))
+			if (isset($_GET['allmen'])) 
+				echo "Men";
+			if (isset($_GET['mtop']))
+				echo "Tops for Men";
+			else if (isset($_GET['mbag']))
+				echo "Bags for Men";
+			else if(isset($_GET['mshoe']))
 					echo "Shoes for Men";
-				else
-					echo "Men";
-			}
 
-			if (isset($_GET['women'])) {
-				if (isset($_GET['top']))
-					echo "Tops for Women";
-				else if (isset($_GET['bag']))
-					echo "Bags for Women";
-				else if(isset($_GET['shoe']))
-					echo "Shoes for Women";
-				else
-					echo "Women";
-			}
+			if (isset($_GET['allwomen'])) 
+				echo "Women";
+			if (isset($_GET['wtop']))
+				echo "Tops for Women";
+			else if (isset($_GET['wbag']))
+				echo "Bags for Women";
+			else if(isset($_GET['wshoe']))
+				echo "Shoes for Women";
+				
 
 			if(isset($_GET['brand'])){
 

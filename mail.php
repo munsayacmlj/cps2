@@ -20,21 +20,20 @@ if (isset($_POST['sendEmail'])) {
     $mail->isSMTP();                                      // Set mailer to use SMTP
     $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = 'munsayacmlj@gmail.com';                 // SMTP username
-    $mail->Password = 'Headlines34';                           // SMTP password
+    $mail->Username = 'boseaomine@gmail.com';                 // SMTP username
+    $mail->Password = 'aokijiaomine';                           // SMTP password
     $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 587;                                    // TCP port to connect to
 
-    $mail->SMTPOptions = array(
-    'ssl' => array(
-    'verify_peer' => false,
-    'verify_peer_name' => false,
-    'allow_self_signed' => true
-    )
-    );
+    // $mail->SMTPOptions = array(
+    // 'ssl' => array(
+    // 'verify_peer' => false,
+    // 'verify_peer_name' => false,
+    // 'allow_self_signed' => true
+    // )
+    // );
     //Recipients
-    $mail->addReplyTo($from, 'hello');
-    $mail->setFrom($from, $_SESSION['username']);
+    $mail->setFrom('boseaomine@gmail.com', $_SESSION['username']);
     $mail->addAddress('munsayacmlj@gmail.com', 'Mark Munsayac');     // Add a recipient
 
     //Content
@@ -46,7 +45,7 @@ if (isset($_POST['sendEmail'])) {
     if ($mail->send()) {
     	# code...
 		$autoemail = new PHPMailer();
-		$mail->setFrom('munsayacmlj@gmail.com', 'Admin');
+		$mail->setFrom('boseaomine@gmail.com', 'Admin');
 		$mail->addAddress($from);
 		$mail->Subject = 'Autoresponse';
 		$mail->Body = 'We receieved your message. We will contact you soon.';

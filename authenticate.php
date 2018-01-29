@@ -55,16 +55,40 @@
 						}
 					}
 				}
+				echo 1;
 				header('location: index.php');		
+				exit;
 			}
 			elseif ($user_status == 'banned'){
-				echo "The BAN HAMMER has been executed by the admin";
+				// echo "banned";
+				echo -1;
+				header('location: login.php');
+				exit;
 			}
 		}
 		else{
-			echo "Failed to login. Incorrect login credentials. <br>";
-			echo "Login again <a href='login.php' style='color: red'>here</a>";
+			// echo "Failed to login. Incorrect login credentials. <br>";
+			// echo "Login again <a href='login.php' style='color: red'>here</a>";
+			// echo "incorrect";
+			echo -2;
+			header('location: login.php');
+			exit;
 		}
 	}
 
+
+
+	if (isset($_POST['auth_username'])) {
+		$username = $_POST['username'];
+		$sql = "SELECT * FROM users WHERE username = '$username'";
+		$res = mysqli_query($connection, $sql);
+		if (mysqli_num_rows($res) > 0) {
+			echo "invalid";
+		}
+		else if (strlen(trim($username)) == 0) {
+			echo 'blank';
+		}
+		else
+			echo 'valid';
+	}
  ?>

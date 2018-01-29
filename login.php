@@ -22,7 +22,7 @@
 						<div class="sign-in-text">
 							<h1>Sign in</h1>
 						</div>
-						<form action="authenticate.php" method="POST">
+						<form action="authenticate.php" method="POST" id="loginForm">
 						
 							<div class="form-group">
 								<label for="exampleInputEmail1">Username</label>
@@ -35,10 +35,10 @@
 							</div>
 							<button type="submit" name="login" class="btn btn-primary" id="submitBtn">Sign in</button>
 							
-							<div class="form-check">
+							<!-- <div class="form-check">
 								<input type="checkbox" class="form-check-input" id="exampleCheck1">
 								<label class="form-check-label" for="exampleCheck1">Remember Me</label>
-							</div>
+							</div> -->
 						</form>
 						
 						<div class="reg-page-button">
@@ -66,10 +66,8 @@
 		    </div>
 		</div> <!-- /.login-page-footer -->
 	</div> <!-- /.login-page -->
-
-
-<?php //require "assets/partials/footer.php" ?>
-
-
+	
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/alertify.js" type="text/javascript"></script>
 </body>
 </html>

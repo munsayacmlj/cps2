@@ -1,4 +1,4 @@
-<div class="sticky-wrapper bg-dark bg-custom">
+<div class="sticky-wrapper bg-custom">
   <div class="container">
     <div class="row">
             <span class="col-md-auto d-none d-sm-none d-md-none d-lg-block logo">
@@ -31,24 +31,24 @@
                     <?php endif; ?>
 
                     <li class="nav-item">
-                      <a class="nav-link black" href="items.php?new=true">New Arrivals</a>
+                      <a class="nav-link black" href="items.php?new=true&page=1">New Arrivals</a>
                     </li>                    
                     <li class="nav-item dropdown">
-                          <a class="nav-link black men-items" href="items.php?men=true" id="navbarDropdown">Men</a>
+                          <a class="nav-link black men-items" href="items.php?allmen=true&page=1" id="navbarDropdown">Men</a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="items.php?men=true&top=true">Top</a>
-                              <a class="dropdown-item" href="items.php?men=true&bag=true">Bag</a>
-                              <a class="dropdown-item" href="items.php?men=true&shoe=true">Shoes</a>
+                              <a class="dropdown-item" href="items.php?men=true&mtop=true&page=1">Top</a>
+                              <a class="dropdown-item" href="items.php?men=true&mbag=true&page=1">Bag</a>
+                              <a class="dropdown-item" href="items.php?men=true&mshoe=true&page=1">Shoes</a>
                           </div>
                     </li>
                     
 
                     <li class="nav-item dropdown">
-                          <a class="nav-link black" href="items.php?women=true" id="navbarDropdown">Women</a>
+                          <a class="nav-link black" href="items.php?allwomen=true&page=1" id="navbarDropdown">Women</a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="items.php?women=true&top=true">Top</a>
-                              <a class="dropdown-item" href="items.php?women=true&bag=true">Bag</a>
-                              <a class="dropdown-item" href="items.php?women=true&shoe=true">Shoes</a>
+                              <a class="dropdown-item" href="items.php?women=true&wtop=true&page=1">Top</a>
+                              <a class="dropdown-item" href="items.php?women=true&wbag=true&page=1">Bag</a>
+                              <a class="dropdown-item" href="items.php?women=true&wshoe=true&page=1">Shoes</a>
                           </div>
                     </li>
                     <li class="nav-item dropdown">
