@@ -42,14 +42,16 @@
 								extract($row);
 						 ?>
 						 	<li class="list-inline-item">
-						 		<span class="welcome-user">My Account / <?php echo $first_name . " " . $last_name; ?></span>
+						 		<a href="account.php?account=<?php echo $_SESSION['username']; ?>" class="account-link">
+						 			<span class="welcome-user">My Account / <?php echo $first_name . " " . $last_name; ?></span>
+						 		</a>
 						 	</li>
 						 	<li class=list-inline-item>
 				 				<div id="div-wish-list">
 				 			<?php if (isset($_SESSION['wish'])): ?>
 							 		<a href="wishlist.php?user=<?php echo $_SESSION['username']; ?>" class="user-wishlist">Wish List (<?php echo array_sum($_SESSION['wish']); ?>)</a>
 					 		<?php else: ?>
-									<a href="#" class="user-wishlist">Wish List</a>
+									<a href="wishlist.php?user=<?php echo $_SESSION['username']; ?>" class="user-wishlist">Wish List</a>
 				 				</div>
 				 			<?php endif ?>
 						 	</li>

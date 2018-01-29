@@ -73,7 +73,14 @@
 					</li>	
 
 					<?php endforeach; ?>
-				
+			<?php else: ?>
+			<li class="wish-title col-md-12">
+				<div>
+					<h5>Wish List</h5>
+					<p>Save up to ten of your most wanted items to follow their availability and add them directly to your Shopping Bag.</p>
+				</div>
+			</li>
+
 			<?php endif; ?>
 			</ol>
 		

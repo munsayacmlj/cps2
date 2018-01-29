@@ -228,6 +228,7 @@
 			}
 		}
 		
+		echo 1;
 	}
 
 	if (isset($_GET['delete_item_from_cart'])) {
@@ -588,3 +589,53 @@
 
 	}
  ?>
+
+<?php 
+	
+	if (isset($_POST['user_order'])) :
+		$order_id = $_POST['order_id'];
+
+		$sql = "SELECT a.product_name as product_name, a.description as description, a.price as price FROM
+				products a JOIN order_details b ON (a.id = b.product_id) JOIN orders c ON (b.order_id = c.id )  WHERE c.id = '$order_id'";
+		$res = mysqli_query($connection, $sql); 
+?>
+			<table class="table table-condensed view-order-table">
+				<caption>Order ID: <?php echo $order_id; ?></caption>
+				<thead>
+					<tr>
+						<th>Product Name</th>
+						<th>Brand</th>
+						<th>Description</th>
+						<th>Price</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php while($row = mysqli_fetch_assoc($res)):
+						extract($row); 
+						$sql = "SELECT brand_name FROM brands WHERE id = 
+								(SELECT brand_id FROM products WHERE product_name = '$product_name')";
+						$brand_res = mysqli_query($connection, $sql);
+						$brand_row = mysqli_fetch_assoc($brand_res);
+						extract($brand_row);		
+					?>
+							<tr>
+								<td><?php echo $product_name; ?></td>
+								<td><?php echo $brand_name; ?></td> 
+								<td><?php echo $description; ?></td>
+								<td>Php <?php echo number_format($price,2); ?></td>
+							</tr>
+					<?php endwhile; ?>
+				</tbody>
+			</table>
+			<div>
+				<?php 
+					$sql = "SELECT SUM(a.price) as total_price FROM products a JOIN order_details b ON (a.id = b.product_id)
+							JOIN orders c ON (b.order_id = c.id) WHERE c.id = '$order_id'";
+					$res = mysqli_query($connection, $sql);
+					$row = mysqli_fetch_assoc($res);
+					extract($row);
+				 ?>
+				 <span class="total" style="float: left;">Total: </span>
+				 <span class="order_total_price" style="float: right;">Php <?php echo number_format($total_price,2); ?></span>
+			</div>
+<?php endif; ?>

@@ -2,11 +2,13 @@
 	ob_start();
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\SMTP;
 
 	require "assets/PHPMailer/src/Exception.php";
 	require "assets/PHPMailer/src/PHPMailer.php";
 	require "assets/PHPMailer/src/SMTP.php";
 	session_start();
+
 if (isset($_POST['sendEmail'])) {
 	$from = $_POST['email'];
 	$body = $_POST['message'];
@@ -23,6 +25,13 @@ if (isset($_POST['sendEmail'])) {
     $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 587;                                    // TCP port to connect to
 
+    $mail->SMTPOptions = array(
+    'ssl' => array(
+    'verify_peer' => false,
+    'verify_peer_name' => false,
+    'allow_self_signed' => true
+    )
+    );
     //Recipients
     $mail->addReplyTo($from, 'hello');
     $mail->setFrom($from, $_SESSION['username']);

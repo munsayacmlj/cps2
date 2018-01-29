@@ -16,8 +16,15 @@
 	</div>
 	
 	<div class="items-wrapper">
+		<?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'admin'): ?>
+			<div class="add-item-btn-outer">
+				<span class="add-item-btn-inner">
+					<input type="button" class="btn btn-secondary" id="add-item" name="add_item" value="Add Item">
+				</span>
+			</div>	
+		<?php endif ?>
 		<div class="row">
-			<div class="left-side col-md-2">
+			<!-- <div class="left-side col-md-2">
 				<?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'admin'): ?>
 					<div class="add-item-btn-outer">
 						<span class="add-item-btn-inner">
@@ -36,11 +43,11 @@
 
 
 				</div>
-			</div>
+			</div> -->
 
 
 
-			<div class="right-side col-md-10">
+			<!-- <div class="right-side col-md-auto"> -->
 				<div class="row" id="data-row">
 					<?php 
 						require "connection.php";
@@ -65,7 +72,7 @@
 						}
 					?>	
 				</div> <!-- /.row -->
-			</div> <!-- /.container -->
+			<!-- </div> /.container -->
 			
 		</div>
 	</div>

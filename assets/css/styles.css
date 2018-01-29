@@ -59,6 +59,10 @@ h1, h2, h3, h4, h5, h6 {
       .header-top #header-top-right .user-wishlist:hover {
         text-decoration: none;
         color: #000; }
+    .header-top #header-top-right .account-link {
+      cursor: pointer; }
+      .header-top #header-top-right .account-link:hover {
+        text-decoration: none; }
     .header-top #header-top-right .shopping-bag-link:hover {
       text-decoration: none;
       color: #000; }
@@ -140,16 +144,16 @@ div .cart-icon {
   background-color: #fcfcfc; }
 
 .items-wrapper {
+  width: 70%;
+  margin: 0 auto;
   padding-top: 90px; }
   .items-wrapper .left-side {
     height: 500px;
     background-color: lightgray; }
 
-@media only screen and (min-width: 1025px) {
-  .items-wrapper {
-    margin-right: 250px; } }
 .card-block {
-  height: 150px; }
+  height: 150px;
+  position: relative; }
 
 .sort-text {
   text-align: center; }
@@ -197,7 +201,7 @@ div .cart-icon {
   .card-content .shop-link-cont {
     position: absolute;
     top: 20px;
-    left: 65px; }
+    left: 50px; }
     .card-content .shop-link-cont .shop-btn {
       margin-top: 10px; }
     .card-content .shop-link-cont .outer-add-to-wish {
@@ -255,7 +259,8 @@ div .cart-icon {
     color: #000;
     font-weight: 600; }
     .login-page .login-container #login .sign-in-text h1 {
-      font-weight: 500 !important; }
+      font-weight: 500 !important;
+      font-size: 27px; }
     .login-page .login-container #login #submitBtn {
       width: 100%;
       font-size: 14px;
@@ -396,6 +401,10 @@ ol, ul {
       width: 100%; }
 
 /* Shopping bag */
+#shopping-wrapper {
+  padding: 40px 0;
+  margin-top: 50px; }
+
 .cart-container {
   width: 100%; }
 
@@ -414,8 +423,7 @@ ol, ul {
     text-decoration: underline; }
 
 .item-row {
-  width: 100%;
-  border-bottom: 1px solid #eaeaea; }
+  width: 100%; }
   .item-row .row {
     margin: 0; }
   .item-row .outer-row {
@@ -423,8 +431,6 @@ ol, ul {
     border-bottom: 1px solid #eaeaea; }
     .item-row .outer-row:first-child {
       padding-top: 0; }
-    .item-row .outer-row:last-child {
-      border-bottom: none; }
   .item-row .image-col {
     height: 200px;
     line-height: 200px;
@@ -575,5 +581,8 @@ ol, ul {
   padding: 0.2rem 0.2rem;
   font-size: 0.7rem;
   line-height: 1.28; }
+
+.user-order-table tr {
+  cursor: pointer; }
 
 /*# sourceMappingURL=styles.css.map */

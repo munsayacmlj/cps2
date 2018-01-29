@@ -76,7 +76,7 @@ $('document').ready(function(){
 
 	$('.selecta').on('change', function() {
 		var id = $(this).data('index');
-		var qty = $('#'+id).val();
+		var qty = $(this).val();
 		$.ajax({
 			url: 'endpoint.php',
 			type: 'POST',
@@ -86,8 +86,9 @@ $('document').ready(function(){
 				qty: qty 
 			},
 			success:function(data){
-				// alert(data);
-				location.reload();
+				if (data == 1) {
+					$('#div-shopping-bag').load(' #div-shopping-bag');
+				}
 			}
 		});
 	});

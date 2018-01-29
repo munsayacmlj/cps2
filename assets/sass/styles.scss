@@ -93,6 +93,13 @@ h1,h2,h3,h4,h5,h6{
 			}
 		}
 
+		.account-link{
+			cursor: pointer;
+			&:hover{
+				text-decoration: none;
+			}
+		}
+
 		.shopping-bag-link{
 
 			&:hover{
@@ -238,6 +245,8 @@ div{
 	// height: 100vh;
 }
 .items-wrapper{
+	width: 70%;
+	margin: 0 auto;
 	padding-top: 90px;
 	.left-side{
 		height: 500px;
@@ -247,12 +256,13 @@ div{
 
 @media only screen and (min-width: 1025px){
 	.items-wrapper{
-		margin-right: 250px;
+		// margin-right: 250px;
 	}
 }
 
 .card-block{
 	height: 150px;
+	position: relative;	
 }
 
 .sort-text{
@@ -316,7 +326,8 @@ div{
 	.shop-link-cont{
 		position: absolute;
 		top: 20px;
-		left: 65px;
+		left: 50px;
+		// transform: translate(-20px, -50px);
 		.shop-btn{
 			margin-top: 10px;
 		}
@@ -420,6 +431,7 @@ div{
             .sign-in-text{
                 h1{
                     font-weight: 500 !important;
+                    font-size: 27px;
                 }
             }
             
@@ -621,6 +633,11 @@ ol, ul{
 
 
 /* Shopping bag */
+#shopping-wrapper{
+	padding: 40px 0;
+	margin-top: 50px;
+}
+
 .cart-container{
 	width: 100%;
 }
@@ -644,7 +661,7 @@ ol, ul{
 
 .item-row{
 	width: 100%;
-	border-bottom: 1px solid #eaeaea;
+	// border-bottom: 1px solid #eaeaea;
 
 	.row{
 		margin: 0;
@@ -656,9 +673,9 @@ ol, ul{
 		&:first-child{
 			padding-top: 0;
 		}
-		&:last-child{
-			border-bottom: none;
-		}
+		// &:last-child{
+		// 	border-bottom: none;
+		// }
 	}
 	.image-col{
 		height: 200px;
@@ -900,4 +917,11 @@ ol, ul{
 .btn-xs {
   // line-height: ensure proper height of button next to extra small input 
   @include button-size(.2rem, .2rem, 0.7rem, 1.28, .2rem);
+}
+
+
+.user-order-table{
+	tr{
+		cursor: pointer;
+	}
 }
