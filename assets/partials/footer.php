@@ -6,18 +6,18 @@
                 <div class="row">
                     <div class="col-6">
                         <ul class="list-unstyled">
-                            <li><a href="">Product</a></li>
-                            <li><a href="">Benefits</a></li>
-                            <li><a href="">Partners</a></li>
-                            <li><a href="">Team</a></li>
+                            <li><a href="#!">Product</a></li>
+                            <li><a href="#!">Benefits</a></li>
+                            <li><a href="#!">Partners</a></li>
+                            <li><a href="#!">Team</a></li>
                         </ul>
                     </div>
                     <div class="col-6">
                         <ul class="list-unstyled">
-                            <li><a href="">Documentation</a></li>
-                            <li><a href="">Support</a></li>
-                            <li><a href="">Legal Terms</a></li>
-                            <li><a href="">About</a></li>
+                            <li><a href="#!">Documentation</a></li>
+                            <li><a href="#!">Support</a></li>
+                            <li><a href="#!">Legal Terms</a></li>
+                            <li><a href="#!">About</a></li>
                         </ul>
                     </div>
                 </div>

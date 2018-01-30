@@ -5,7 +5,7 @@
     <?php require "assets/partials/head.php"; ?>
     
 </head>
-<body>
+<body class="body-with-footer">
 	<?php require "assets/partials/top-nav.php" ?>
 	<?php require "assets/partials/navigation.php" ?>
 	<?php require "get_page_title.php"; ?>
@@ -15,7 +15,7 @@
 		</h1>
 	</div>
 	
-	<div class="items-wrapper">
+	<div class="items-wrapper container">
 		<?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'admin'): ?>
 			<div class="add-item-btn-outer">
 				<span class="add-item-btn-inner">
@@ -25,81 +25,66 @@
 		<?php endif ?>
 				<div class="row" id="data-row">
 					<?php 
-						
-						if (isset($_GET['search_all'])) {
-							require "all_items.php";
-							function get_method(){
-								echo "search_all";
-							}
-						}
-						
-					 	if (isset($_GET['new'])) {
+						if (isset($_GET['new'])) {
 					 		require "new_arrivals.php";
 					 		function get_method(){
 					 			echo "new";
 					 		}
 					 	}
-						if (isset($_GET['allmen'])) {
+						elseif (isset($_GET['allmen'])) {
 							require "men.php";
 							function get_method() {
 								echo "allmen";
 							}
 						}
-
-						if (isset($_GET['mshoe'])) {
+						elseif (isset($_GET['mshoe'])) {
 							require "men.php";
 							function get_method() {
 								echo "men=true&mshoe";
 							}
 						}
-
-						if (isset($_GET['mbag'])) {
+						elseif (isset($_GET['mbag'])) {
 							require "men.php";
 							function get_method() {
 								echo "men=true&mbag";
 							}
 						}
-
-						if (isset($_GET['mtop'])) {
+						elseif (isset($_GET['mtop'])) {
 							require "men.php";
 							function get_method() {
 								echo "men=true&mtop";
 							}
 						}
-
-						if (isset($_GET['allwomen'])) {
+						elseif (isset($_GET['allwomen'])) {
 							require "women.php";
 							function get_method() {
 								echo "allwomen";
 							}
 						}
-
-						if (isset($_GET['wshoe'])) {
+						elseif (isset($_GET['wshoe'])) {
 						 	require "women.php";
 						 	function get_method() {
 								echo "women=true&wshoe";
 							}
 						}
-
-						if (isset($_GET['wbag'])) {
+						elseif (isset($_GET['wbag'])) {
 						 	require "women.php";
 						 	function get_method() {
 								echo "women=true&wbag";
 							}
 						}
-						if (isset($_GET['wtop'])) {
+						elseif (isset($_GET['wtop'])) {
 						 	require "women.php";
 						 	function get_method() {
 								echo "women=true&wtop";
 							}
 						}
-						
-						// if (isset($_GET['allen_edmonds'])) {
-						// 	require "display_brands.php";
-						// 	function get_method() {
-						// 		echo "brand=true&allen_edmonds";
-						// 	}
-						// }
+						elseif (isset($_GET['search_all'])) {
+					 		require "all_items.php";
+								function get_method(){
+									echo "search_all";
+								}
+					 	}
 
 						foreach ($_GET as $key => $value) {
 							switch ($key) {
@@ -197,7 +182,6 @@
 							break;
 							} /* switch */
 						}
-
 					?>
 				</div> <!-- /.row -->
 				
@@ -208,7 +192,7 @@
 					</span>
 			<?php endfor;?>
 		</div>
-		</div> <!-- /.items-wrapper -->
+	</div> <!-- /.items-wrapper /.container -->
 
 	
 

@@ -82,6 +82,7 @@ $('document').ready(function(){
 		});
 	});
 
+	
 	$('.edit-item').click(function(){
 		var index = $(this).data('index');
 		$.ajax({
@@ -163,12 +164,17 @@ $('document').ready(function(){
 				id : prod_id
 			},
 			success:function(data) {
-				var delay = alertify.get('notifier','delay');
-				 alertify.set('notifier','delay', 2);
-				 alertify.set('notifier','position', 'top-right');
-				 alertify.success('Product added to Shopping Bag.');
-				 alertify.set('notifier','delay', delay);
-				 $('#div-shopping-bag').load(' #div-shopping-bag');
+				if (data != 5) {
+					var delay = alertify.get('notifier','delay');
+					 alertify.set('notifier','delay', 2);
+					 alertify.set('notifier','position', 'top-right');
+					 alertify.success('Product added to Shopping Bag.');
+					 alertify.set('notifier','delay', delay);
+					 $('#div-shopping-bag').load(' #div-shopping-bag');
+				}
+				else {
+					alertify.alert("Oopps!", "You cannot order the same item more than 5 times.").show();
+				}
 			}
 		});
 		return false;
@@ -184,10 +190,7 @@ $('document').ready(function(){
 				prod_id : prod_id
 			},
 			success:function(data) {
-				if (data != 0) {
-					alertify.alert("Oopps!",data).show();
-				}
-				else{
+				if (data == 0) {
 					var delay = alertify.get('notifier','delay');
 					 alertify.set('notifier','delay', 2);
 					 alertify.set('notifier','position', 'top-right');
@@ -195,21 +198,11 @@ $('document').ready(function(){
 					 alertify.set('notifier','delay', delay);
 					$('#div-wish-list').load(' #div-wish-list');
 				}
+				else{
+					alertify.alert("Oopps!",data).show();
+				}
 			}
 		});
 		return false;
 	});
-
-	// var scrollStart = 0;
-	// var startChange = $("#data-row");
-	// var offset = startChange.offset();
-	// $(document).scroll(function() {
-	// 	scroll_start = $(this).scrollTop();
-	// 	if (scroll_start > offset.top) {
-	// 		$('.bg-custom').css('background-color', 'rgb(251,251,251)');
-	// 	}
-	// 	else {
-	// 		$('.bg-custom').css('background-color', 'transparent');
-	// 	}
-	// });
 });

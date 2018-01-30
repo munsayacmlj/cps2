@@ -25,20 +25,20 @@
 						<form action="authenticate.php" method="POST" id="loginForm">
 						
 							<div class="form-group">
-								<label for="exampleInputEmail1">Username</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" id="usernameLoginInput" autocomplete="new-password" required>
+								<label for="usernameLoginInput">Username</label>
+								<input type="text" class="form-control" name="username" id="usernameLoginInput" autocomplete="new-password" required>
 								<small id="chkUsr" class="form-text text-muted"></small>
 							</div>
 							<div class="form-group">
-								<label for="exampleInputPassword1">Password</label>
-								<input type="password" class="form-control" id="exampleInputPassword1" name="password" autocomplete="new-password" required>
+								<label for="loginPassword">Password</label>
+								<input type="password" class="form-control" id="loginPassword" name="password" autocomplete="new-password" required>
 							</div>
-							<button type="submit" name="login" class="btn btn-primary" id="submitBtn">Sign in</button>
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input" id="rememberMe">
+								<label class="form-check-label" for="rememberMe">Remember Me</label>
+							</div>
+							<button type="submit" name="login" class="btn btn-black" id="logSubmitBtn">Sign in</button>
 							
-							<!-- <div class="form-check">
-								<input type="checkbox" class="form-check-input" id="exampleCheck1">
-								<label class="form-check-label" for="exampleCheck1">Remember Me</label>
-							</div> -->
 						</form>
 						
 						<div class="reg-page-button">
@@ -71,5 +71,36 @@
 	
 	<script src="assets/js/main.js"></script>
 	<script src="assets/js/alertify.js" type="text/javascript"></script>
+	<script src="assets/js/jquery.cookie.js"></script>
+	<script>
+		/*COOKIE LOGIN*/
+		$('#loginForm').on('submit', function() {
+
+			if ($('#rememberMe').is(':checked')) {
+				var username = $('#usernameLoginInput').val();
+				var password = $('#loginPassword').val();
+
+				$.cookie('username', username, { expires: 7 });
+				$.cookie('password', password, { expires: 7 });
+				$.cookie('remember', true, { expires: 7});
+			}
+			else {
+				$.cookie('username', "");
+				$.cookie('password', "");
+				$.cookie('remember', null);
+			}
+		});
+
+		var remember = $.cookie('remember');
+		if (remember == 'true') {
+			var username = $.cookie('username');
+			var password = $.cookie('password');
+			$('#usernameLoginInput').val(username);
+			$('#loginPassword').val(password);
+			$('#rememberMe').val('on');
+
+		}
+		/* END COOKIE LOGIN */
+	</script>
 </body>
 </html>

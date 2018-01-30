@@ -66,9 +66,7 @@
 									<span class="value"><?php echo $description; ?></span>
 								</div>
 							</div>
-							<!-- <button type="button" >Add to Shopping Bag</button> -->
-							<!-- <a href="endpoint.php?add_to_cart=true&id=<?php echo $product_id; ?>" class="btn btn-black add-btn">Add to Shopping Bag</a> -->
-							<button class="btn btn-black add-btn" data-product-id="<?php echo $product_id; ?>">Add to Shopping Bag</button>
+							<button class="btn btn-black add-btn shop-btn" data-id="<?php echo $product_id; ?>">Add to Shopping Bag</button>
 						</div>
 					</li>	
 
@@ -92,28 +90,6 @@
 	<script src="assets/js/main.js" type="text/javascript"></script>
 	<script src="assets/js/uglipop.js" type="text/javascript"></script>
     <script type="text/javascript">
-
-    		$('.add-btn').click(function() {
-    			var product_id = $(this).data('product-id');
-    			// alert(product_id);
-    			$.ajax({
-    				url: 'endpoint.php',
-    				type: 'GET',
-    				data: {
-    					add_to_cart : true,
-    					id : product_id
-    				},
-    				success:function(data) {
-    					 var delay = alertify.get('notifier','delay');
-						 alertify.set('notifier','delay', 2);
-    					 alertify.set('notifier','position', 'top-right');
-						 alertify.warning('Added to shopping bag.');
-						 alertify.set('notifier','delay', delay);
-						 $('#div-shopping-bag').load(' #div-shopping-bag');
-    				}
-    			});
-    		});
-
     		$('.remove-wish-item').click(function() {
     			var product_id = $(this).data('product-id');
 

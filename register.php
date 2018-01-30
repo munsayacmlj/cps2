@@ -45,15 +45,24 @@
 								<label for="InputPassword">Password</label>
 								<input type="password" class="form-control" id="InputPassword" name="reg-password" autocomplete="new-password" required>
 							</div>
-							<button type="submit" name="register" class="btn btn-primary" id="submitBtn">Create your MLJM account</button>
+							<div class="registerBtnDiv">
+								<button type="submit" name="register" class="btn btn-black" id="regSubmitBtn">Create your MLJM account</button>
+							</div>
 							
 							<!-- <div class="form-check">
 								<input type="checkbox" class="form-check-input" id="exampleCheck1">
 								<label class="form-check-label" for="exampleCheck1">Remember Me</label>
 							</div> -->
 						</form>
-						
-						<div class="reg-page-button">
+						<div class="a-divider">
+							<div class="a-divider-inner">
+							</div>
+						</div>
+						<div class="a-row">
+							Already have an account?
+							<a href="login.php">Sign in</a>
+						</div>
+						<!-- <div class="reg-page-button">
 						    <div class="new-customer-divider">
 						        <span class="new-cust-text">New Customer?</span>
 						    </div>
@@ -67,7 +76,7 @@
                                     </a>
 						        </span>
 						    </div>
-						</div> <!-- /.reg-page-button -->
+						</div>  --><!-- /.reg-page-button -->
 					</div> <!-- /.login -->
 				</div> <!-- /.row -->
 			</div> <!-- /.container -->

@@ -23,8 +23,6 @@
 			echo "<script>alert('Username exists!');
 							window.location.replace(\"$new_loc\")</script>";
 		}
-
-
 	}
 
 	if (isset($_GET['add_to_cart'])) {
@@ -78,9 +76,10 @@
 			$row = mysqli_fetch_assoc($result);
 			extract($row);
 			if($qty >= 5){
-					$new_loc = (string)$_SERVER['HTTP_REFERER'];			
-					echo "<script>alert('You cannot order the same item more than 5 times.');
-							window.location.replace(\"$new_loc\")</script>";
+					// $new_loc = (string)$_SERVER['HTTP_REFERER'];			
+					// echo "<script>alert('You cannot order the same item more than 5 times.');
+					// 		window.location.replace(\"$new_loc\")</script>";
+				echo 5;
 			}
 			else{
 				$sql = "INSERT INTO order_details (quantity, total_price, product_id, order_id)
@@ -102,7 +101,7 @@
 		else{  /* if there is no pending order from the session user */
 
 			$sql = "INSERT INTO orders (order_date, user_id, status) VALUES ('$date', '$user_id', 'pending')";
-			mysqli_query($connection, $sql);
+			mysqli_query($connection, $sql); /* creates pending order */
 
 			$sql = "SELECT id as order_id FROM orders WHERE user_id = '$user_id' AND status = 'pending'";
 			$result = mysqli_query($connection, $sql);
@@ -125,9 +124,10 @@
 			$row = mysqli_fetch_assoc($result);
 			extract($row);
 			if($qty >= 5){
-					$new_loc = (string)$_SERVER['HTTP_REFERER'];			
-					echo "<script>alert('You cannot order the same item more than 5 times.');
-							window.location.replace(\"$new_loc\")</script>";
+					// $new_loc = (string)$_SERVER['HTTP_REFERER'];			
+					// echo "<script>alert('You cannot order the same item more than 5 times.');
+					// 		window.location.replace(\"$new_loc\")</script>";
+				echo 5;
 			}
 			else{
 				$sql = "INSERT INTO order_details (quantity, total_price, product_id, order_id)
@@ -146,8 +146,8 @@
 				}
 			}	
 		}	
-		header('Location: ' . $_SERVER['HTTP_REFERER']);
-		exit;
+		// header('Location: ' . $_SERVER['HTTP_REFERER']);
+		// exit;
 	}
 
 	/* ADD TO WISHLIST*/
@@ -652,3 +652,4 @@
 				</tbody>
 			</table>
 <?php endif; ?>
+

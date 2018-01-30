@@ -1,4 +1,8 @@
 	
+	<!-- ALL VARIABLES CAME FROM men.php, women.php, new_arrivals.php, all_items.php
+		those php files queries the database. These variables are the column names extracted from the database.
+	 -->
+
 	<div class="col-12 col-md-3 card" id=<?php echo $prod_id; ?> data-index=<?php echo $prod_id; ?> style="width: 20rem; border: none;">
 		 <div class="image-box center-img">
 			  <img class="card-img-top" src="<?php echo $picture; ?>" title="<?php echo $product_name; ?>" alt="<?php echo $product_name; ?>">

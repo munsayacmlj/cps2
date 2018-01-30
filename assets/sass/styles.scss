@@ -1,18 +1,18 @@
-// @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
+/* @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);*/
 @import "_custom_mixins.scss";
 @import "_buttons.scss";
 
 body {
-    // font-family: 'Alegreya Sans', sans-serif;
+    /* font-family: 'Alegreya Sans', sans-serif;*/
     font-family: LabGrotesque-Regular,sans-serif;
     color: #4e5049;
-
 }
 
 *{
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 
 /* Sticky footer position and size
@@ -21,7 +21,7 @@ html {
   position: relative;
   min-height: 100vh;
 }
-body {
+.body-with-footer {
   /* Margin bottom by footer height */
   margin-bottom: 300px;
 }
@@ -35,7 +35,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .container{
-	padding: 0 !important;
+	// padding: 0 !important;
 }
 
 .row{
@@ -115,6 +115,7 @@ h1,h2,h3,h4,h5,h6{
 
 .sticky-wrapper{
 	color: #bbb;
+	position: -webkit-sticky;
 	position: sticky;
 	top: 0;
 	z-index: 5;
@@ -126,9 +127,9 @@ h1,h2,h3,h4,h5,h6{
 	margin-bottom: 5px;
 }
 	.logo{
-		// margin: 6px 0;
+		/* margin: 6px 0;*/
 		z-index: 1000;
-		// float: left;
+		/* float: left;*/
 		img{
 			height: 100px;
 		}
@@ -182,8 +183,8 @@ ul{
 
 .bg-custom, .home-nav-bg{
 	background-color: transparent;
-	// border-top: 1px solid #ffffff;
-	// border-bottom: 2px solid #f1f1f1f1;
+	/* border-top: 1px solid #ffffff;*/
+	/* border-bottom: 2px solid #f1f1f1f1;*/
 }
 
 div{
@@ -210,10 +211,10 @@ div{
 		}
         .nav-link{
             font-size: 1em !important;
-            // color: #2f3337;
-            // &:hover{
-            // 	color: #000;
-            // }
+            /* color: #2f3337;*/
+            /* &:hover{*/
+            /* 	color: #000;*/
+            /* }*/
         }
         
         .cart-icon{
@@ -248,24 +249,29 @@ div{
 
 
 .wrapper{
-	// background-image: url("../images/bg/Brioni_Store_Paris.jpg");
-	// height: 100vh;
+	/* background-image: url("../images/bg/Brioni_Store_Paris.jpg");*/
+	/* height: 100vh;*/
 }
+
+// @media only screen and () {
+
+// }
 .items-wrapper{
-	width: 70%;
-	margin: 0 auto;
-	padding-top: 90px;
+	// width: 70%;
+	// margin: 0 auto;
+	padding-top: 90px !important;
 	.left-side{
 		height: 500px;
 		background-color: lightgray;
 	}
 
-	.page-btns-container{
-		text-align: center;
-		padding-bottom: 40px;
-		a.page-btn{
-			padding: 10px;
-		}
+}
+.page-btns-container{
+	text-align: center;
+	padding-bottom: 40px;
+	padding-top: 10px;
+	a.page-btn{
+		padding: 10px;
 	}
 }
 
@@ -274,9 +280,19 @@ div{
 	color: #fff;
 }
 
+.active1, .admin-btn:hover{
+	background-color: #808080 !important;
+	color: #fff;
+}
+
+.admin-btn{
+	background-color: #d9d9d9;
+	color: #fff;
+}
+
 @media only screen and (min-width: 1025px){
 	.items-wrapper{
-		// margin-right: 250px;
+		/* margin-right: 250px;*/
 	}
 }
 
@@ -293,17 +309,18 @@ div{
 }
 
 .image-box{
-	// background-color: red;
+	/* background-color: red;*/
 	width: 100%;
 	height: 350px;
 
 	.card-img-top{
 		max-width: 240px;
-		// max-height: 350px;
+		/* max-height: 350px;*/
 	}
 }
 
 .center-img{
+	text-align: center;
 	line-height: 350px;
 }
 
@@ -312,24 +329,26 @@ div{
 	position: absolute;
 	top: 10%;
 	left: 30%;
-	transform: translate(-10%, -30%);
+	-webkit-transform: translate(-10%, -30%);
+	        transform: translate(-10%, -30%);
 }
 
 .btn{
 	border-radius: 0;
 }
 .btn-black{
+	color: #fff;
 	background-color: #000;
 	border: 1px solid #000;
 }
 .product-price{
 		visibility: hidden;
-		// position: absolute;
-		// top : 0;
-		// left: 0;
+		/* position: absolute;*/
+		/* top : 0;*/
+		/* left: 0;*/
 	}
 .card-block{
-	height: 150px;
+	height: 120px;
 	position: relative;	
 }	
 .card-content{
@@ -345,21 +364,21 @@ div{
 		height: 60px;
 		font-size: 15px;
 		opacity: 1;
-		// display: none;
+		/* display: none;*/
 	}
 	
 	.shop-link-cont{
 		position: absolute;
 		top: 30px;
 		left: 50px;
-		// transform: translate(-20px, -50px);
+		/* transform: translate(-20px, -50px);*/
 		.shop-btn{
 			margin-top: 10px;
 		}
 
 		.outer-add-to-wish{
 			padding: 10px;
-			// margin-top: 20px;
+			/* margin-top: 20px;*/
 			
 			.add-to-wish{
 				color: #000;
@@ -382,7 +401,7 @@ div{
 		
 
 	.admin-link-items{
-		// @include clear_them;	
+		/* @include clear_them;	*/
 
 		.edit-width{
 			width: 50%;
@@ -425,7 +444,7 @@ div{
 	
 	.logo-home{
 		position: relative;
-		// z-index: 1000;
+		/* z-index: 1000;*/
 		height: 100px;
 		img{
 			height: 80px;
@@ -444,26 +463,31 @@ div{
 		}
 
 		#login{
-			// width: 45%;
+			/* width: 45%;*/
 			margin: 0 auto;
-			// background-color: lightgray;
+			/* background-color: lightgray;*/
 			padding: 30px;
 			border: 1px solid #b6b6b6;
 			border-radius: 5px;
 			color: #000;
 			font-weight: 600;
-            
+            #logSubmitBtn{
+            	width: 100%;
+                font-size: 15px;
+                margin-top: 20px
+            }
             .sign-in-text{
                 h1{
                     font-weight: 500 !important;
                     font-size: 27px;
                 }
             }
-            
-            #submitBtn{
-                width: 100%;
-                font-size: 14px;
-                margin-bottom: 10px;
+            .registerBtnDiv{
+            	margin: 30px 0 30px;
+	            #regSubmitBtn{
+	                width: 100%;
+	                font-size: 15px;
+	            }
             }
             .reg-page-button{
                 
@@ -503,10 +527,12 @@ div{
 	                        color: #111;
 	                        text-decoration: none;
 	                        .ca-inner-button{
-	                            box-shadow: 0 1px 0 rgba(255,255,255,.6) inset;
+	                            -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.6) inset;
+	                                    box-shadow: 0 1px 0 rgba(255,255,255,.6) inset;
 	                            display: block;
 	                            position: relative;
 	                            border-radius: 2px;
+	                            background: -webkit-gradient(linear,left top, left bottom,from(#f7f8fa),to(#e7e9ec));
 	                            background: linear-gradient(to bottom,#f7f8fa,#e7e9ec);
 	                            text-align: center;
                             }
@@ -578,6 +604,34 @@ div{
 	}
 }
 
+.a-divider{
+	.a-divider-inner{
+		margin-bottom: -18px;
+		height: 44px;
+		background-color: transparent;
+		background: linear-gradient(to bottom,rgba(0,0,0,.14),rgba(0,0,0,.03) 3px,transparent);
+		z-index: 1;
+		&:after{
+			display: block;
+			width: 100%;
+			height: 44px;
+			background-color: transparent;
+			background: linear-gradient(to right,#fff,rgba(255,255,255,0),#fff);
+			z-index: 1;
+			content: "";
+		}
+	}
+}
+
+.a-row{
+	a{
+		color: #666;
+		&:hover{
+			color: #333;
+		}
+	}
+}
+
 
 /* Wish List */
 #wish-wrapper{
@@ -597,10 +651,10 @@ ol, ul{
 
 		}
 		li{
-			// display: inline-block;
+			/* display: inline-block;*/
 			margin-bottom: 50px;
 			vertical-align: top;
-			// width: 32.2%;
+			/* width: 32.2%;*/
 			.wish-items{
 				padding: 0 10px;
 				.edit{
@@ -637,7 +691,7 @@ ol, ul{
 						line-height: 1;
 						margin: 20px 0;
 						font-size: 18px;
-						// font-weight: 600;
+						/* font-weight: 600;*/
 					}
 					
 				}
@@ -671,7 +725,8 @@ ol, ul{
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
 	.empty-bag{
 		padding-bottom: 10px;
 	}
@@ -686,21 +741,21 @@ ol, ul{
 
 .item-row{
 	width: 100%;
-	// border-bottom: 1px solid #eaeaea;
+	/* border-bottom: 1px solid #eaeaea;*/
 
 	.row{
 		margin: 0;
 	}
 	.outer-row{
-		// margin-bottom: 30px;
+		/* margin-bottom: 30px;*/
 		padding: 30px 10px;
 		border-bottom: 1px solid #eaeaea;
 		&:first-child{
 			padding-top: 0;
 		}
-		// &:last-child{
-		// 	border-bottom: none;
-		// }
+		/* &:last-child{*/
+		/* 	border-bottom: none;*/
+		/* }*/
 	}
 	.image-col{
 		height: 200px;
@@ -746,7 +801,7 @@ ol, ul{
 				margin-left: 60px;
 				cursor: pointer;
 				a{
-					// color: #3E3F3A;
+					/* color: #3E3F3A;*/
 					&:hover{
 						text-decoration: none;
 					}
@@ -807,7 +862,7 @@ ol, ul{
 	padding: 27px 10px;
 	border-bottom: 1px solid #eaeaea;
 	@include clear_them;
-	// height: 118px;
+	/* height: 118px;*/
 }
 
 /* modal body */
@@ -872,7 +927,7 @@ ol, ul{
 		margin-bottom: 20px;
 	}
 	.selectables{
-		margin-left: 20px;
+		margin-left: 15px;
 		&:first-child{
 			margin-left: 0;
 		}
@@ -891,6 +946,10 @@ ol, ul{
 	background-color: lightgray;
 }
 
+#adminOuter{
+	padding-top: 40px;
+}
+
 .container{
 	.home-btn{
 		padding: 20px 0;
@@ -903,15 +962,15 @@ ol, ul{
 	}
 	.users-table, .table{
 		padding: 20px;
-		// max-width: 600px;
+		/* max-width: 600px;*/
 		.user-status{
-			// font-size: 16px;
+			/* font-size: 16px;*/
 			font-weight: 600;
 		}
 	}
 
 	.orders-table{
-		// float: left;
+		/* float: left;*/
 		tr.view-orders{
 			cursor: pointer;
 			td{
@@ -920,14 +979,14 @@ ol, ul{
 		}
 	}
 	.orders-table-btn{
-		// float: right;
+		/* float: right;*/
 		td{
 			padding-top: 0.78rem;
 			padding-bottom: 0.74rem;
 		}
 	}
 	.admin-logout{
-		// float: right;
+		/* float: right;*/
 	}
 	.ban-user{
 		padding-bottom: 20px;
@@ -935,7 +994,7 @@ ol, ul{
 }
 
 .btn-xs {
-  // line-height: ensure proper height of button next to extra small input 
+  /* line-height: ensure proper height of button next to extra small input */
   @include button-size(.2rem, .2rem, 0.7rem, 1.28, .2rem);
 }
 

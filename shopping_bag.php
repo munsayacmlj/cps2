@@ -145,10 +145,6 @@
 	<?php //require "assets/partials/footer.php" ?>
 	<script src="assets/js/main.js" type="text/javascript"></script>
     <script type="text/javascript">
-    	// $('.go-back').click(function() {
-    	// 	history.go(-1);
-    	// 	return false;
-    	// });
 
     	$('.trash-can').click(function() {
     		var id = $(this).data('id');

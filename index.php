@@ -5,7 +5,7 @@
     <?php require "assets/partials/head.php"; ?>
     
 </head>
-<body id="index-body">
+<body id="index-body" class="body-with-footer">
 	<?php require "assets/partials/top-nav.php" ?>
 	<?php require "assets/partials/home-nav.php" ?>
 	<?php require "get_page_title.php"; ?>

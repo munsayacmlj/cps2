@@ -25,7 +25,7 @@
                       if (isset($_SESSION['username']) && $_SESSION['role'] == 'admin') : ?>
                          
                           <li class="nav-item">
-                            <a class="nav-link black" href="items.php?search_all=true">All Items</a>
+                            <a class="nav-link black" href="items.php?search_all=true&page=1">All Items</a>
                           </li>
 
                     <?php endif; ?>
