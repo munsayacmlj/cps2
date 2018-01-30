@@ -11,14 +11,14 @@
 	<div class="login-page">
 		
 		<div class="logo-home">
-			<a href="index.php"><img src="assets/images/gitgud.jpg"></a>
+			<a href="index.php"><img src="assets/images/bg/tesla-logo.png"></a>
 		</div>
 
 
 		<div class="login-container">
 			<div class="container">
 				<div class="row">
-					<div id="login">
+					<div id="login" class="col-xs col-sm col-lg-5">
 						<div class="sign-in-text">
 							<h1>Sign in</h1>
 						</div>
@@ -48,9 +48,11 @@
 						    
 						    <div class="new-customer-button">
 						        <span id="create-account-button">
+                                        <a href="register.php"> 
                                     <span class="ca-inner-button">
-                                        <a href="register.php">Create your new account</a>
+                                        	Create your new account
                                     </span>
+                                        </a>
 						        </span>
 						    </div>
 						</div> <!-- /.reg-page-button -->

@@ -10,7 +10,9 @@
 	<?php require "assets/partials/home-nav.php" ?>
 	<?php require "get_page_title.php"; ?>
 	<div class="wrapper">
-		
+		<div id="data-row">
+			
+		</div>
 	
 		
 	</div>

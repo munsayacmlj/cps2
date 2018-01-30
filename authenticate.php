@@ -80,15 +80,24 @@
 
 	if (isset($_POST['auth_username'])) {
 		$username = $_POST['username'];
-		$sql = "SELECT * FROM users WHERE username = '$username'";
-		$res = mysqli_query($connection, $sql);
-		if (mysqli_num_rows($res) > 0) {
-			echo "invalid";
+		if (strlen($username) <= 4) {
+			echo "short";
 		}
 		else if (strlen(trim($username)) == 0) {
 			echo 'blank';
 		}
-		else
-			echo 'valid';
+		else {
+			$sql = "SELECT * FROM users WHERE username = '$username'";
+			$res = mysqli_query($connection, $sql);
+			if (mysqli_num_rows($res) > 0) {
+				echo "invalid";
+			}
+			else if (strlen(trim($username)) == 0) {
+				echo 'blank';
+			}
+			else
+				echo 'valid';
+		}
+
 	}
  ?>

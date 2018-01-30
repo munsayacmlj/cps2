@@ -6,9 +6,9 @@
                   <a href="index.php"><img src="assets/images//bg/tesla-logo.png"></a>
                 </span>
             </span>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+<!--             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon"></span>
-            </button>
+            </button> -->
             <div class="col-md-8 ml-lg-auto">
 
               <nav class="navbar navbar-expand-lg nav-margin">

@@ -52,10 +52,10 @@
 									<span class="label">Description:</span>
 									<span class="value"><?php echo $description; ?></span>
 								</div>
-								<div class="price">
+								<!-- <div class="price">
 									<span class="label">Price:</span>
 									<span class="value">Php <?php echo number_format($price,2); ?></span>
-								</div>
+								</div> -->
 							</div> <!-- /.desc-size -->
 
 							<div class="change-quantity col-md-4">

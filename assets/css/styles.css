@@ -36,6 +36,9 @@ h1, h2, h3, h4, h5, h6 {
 .footer .social {
   color: #999; }
 
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); }
+
 .header-top {
   font-size: 12px;
   background-color: #e1e1e1;
@@ -71,7 +74,8 @@ h1, h2, h3, h4, h5, h6 {
   color: #bbb;
   position: sticky;
   top: 0;
-  z-index: 5; }
+  z-index: 5;
+  border-top: 1px solid #ffffff; }
 
 .list-inline {
   margin-top: 5px;
@@ -110,9 +114,8 @@ ul a.link-dark:hover {
   background-image: url("../images/bg/Brioni_Store_Paris.jpg");
   height: 100vh; }
 
-.bg-custom {
-  background-color: transparent;
-  border-top: 1px solid #ffffff; }
+.bg-custom, .home-nav-bg {
+  background-color: transparent; }
 
 div .container .row {
   width: 100%; }
@@ -253,21 +256,20 @@ div .cart-icon {
 /* Login Page */
 .login-page .logo-home {
   position: relative;
-  height: 70px; }
+  height: 100px; }
   .login-page .logo-home img {
-    height: 55px;
+    height: 80px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); }
 .login-page .login-container {
-  width: 50%;
+  width: 70%;
   height: 100%;
   margin: 0 auto; }
   .login-page .login-container .row {
     margin: 0; }
   .login-page .login-container #login {
-    width: 55%;
     margin: 0 auto;
     padding: 30px;
     border: 1px solid #b6b6b6;
@@ -310,17 +312,17 @@ div .cart-icon {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%); }
-          .login-page .login-container #login .reg-page-button .new-customer-button #create-account-button .ca-inner-button {
-            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
-            display: block;
-            position: relative;
-            border-radius: 2px;
-            background: linear-gradient(to bottom, #f7f8fa, #e7e9ec); }
-            .login-page .login-container #login .reg-page-button .new-customer-button #create-account-button .ca-inner-button a {
-              padding: 5px 61px;
-              font-size: 15px;
-              color: #111;
-              text-decoration: none; }
+          .login-page .login-container #login .reg-page-button .new-customer-button #create-account-button a {
+            font-size: 15px;
+            color: #111;
+            text-decoration: none; }
+            .login-page .login-container #login .reg-page-button .new-customer-button #create-account-button a .ca-inner-button {
+              box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+              display: block;
+              position: relative;
+              border-radius: 2px;
+              background: linear-gradient(to bottom, #f7f8fa, #e7e9ec);
+              text-align: center; }
   .login-page .login-container .or-divider {
     display: inline-block; }
     .login-page .login-container .or-divider .inner {
@@ -516,7 +518,7 @@ ol, ul {
 
 .box {
   overflow: hidden;
-  padding: 27px 0;
+  padding: 27px 10px;
   border-bottom: 1px solid #eaeaea;
   content: "";
   display: block;

@@ -53,6 +53,9 @@ h1,h2,h3,h4,h5,h6{
 	}
 }
 
+.navbar-toggler-icon{
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
 
 .header-top{
 
@@ -115,6 +118,7 @@ h1,h2,h3,h4,h5,h6{
 	position: sticky;
 	top: 0;
 	z-index: 5;
+	border-top: 1px solid #ffffff;
 }
 
 .list-inline{
@@ -176,9 +180,9 @@ ul{
 	height: 100vh;
 }
 
-.bg-custom{
+.bg-custom, .home-nav-bg{
 	background-color: transparent;
-	border-top: 1px solid #ffffff;
+	// border-top: 1px solid #ffffff;
 	// border-bottom: 2px solid #f1f1f1f1;
 }
 
@@ -422,16 +426,16 @@ div{
 	.logo-home{
 		position: relative;
 		// z-index: 1000;
-		height: 70px;
+		height: 100px;
 		img{
-			height: 55px;
+			height: 80px;
 			@include center_item;
 		}
 	}
 
 
 	.login-container{
-		width: 50%;
+		width: 70%;
 		height: 100%;
 		margin: 0 auto;
 		
@@ -440,7 +444,7 @@ div{
 		}
 
 		#login{
-			width: 55%;
+			// width: 45%;
 			margin: 0 auto;
 			// background-color: lightgray;
 			padding: 30px;
@@ -481,7 +485,6 @@ div{
                 
                 .new-customer-button{
                     margin-top: 30px;
-//                    background-color: red;
                     height: 30px;
                     position: relative;
                     #create-account-button{
@@ -495,19 +498,17 @@ div{
                         padding: 2px 0;
                         @include center_item;
                         
-                        .ca-inner-button{
-                            box-shadow: 0 1px 0 rgba(255,255,255,.6) inset;
-                            display: block;
-                            position: relative;
-                            border-radius: 2px;
-                            background: linear-gradient(to bottom,#f7f8fa,#e7e9ec);
-                            
-                            a{
-                                padding: 5px 61px;
-//                                background-color: red;
-                                font-size: 15px;
-                                color: #111;
-                                text-decoration: none;
+	                    a{
+	                        font-size: 15px;
+	                        color: #111;
+	                        text-decoration: none;
+	                        .ca-inner-button{
+	                            box-shadow: 0 1px 0 rgba(255,255,255,.6) inset;
+	                            display: block;
+	                            position: relative;
+	                            border-radius: 2px;
+	                            background: linear-gradient(to bottom,#f7f8fa,#e7e9ec);
+	                            text-align: center;
                             }
                         }
                     }
@@ -803,7 +804,7 @@ ol, ul{
 }
 .box{
 	overflow: hidden;
-	padding: 27px 0;
+	padding: 27px 10px;
 	border-bottom: 1px solid #eaeaea;
 	@include clear_them;
 	// height: 118px;

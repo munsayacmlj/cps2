@@ -31,17 +31,26 @@ $('input[name=reg-username]').on('input', function() {
 			username: username
 		},
 		success:function(data) {
+			// alert(data);
 			if (data == 'invalid') {
 				$('#chkUsr').css('color', 'red');
 				$('#chkUsr').html('username exists');
+				$('#submitBtn').attr('disabled', true);
 			}
 			else if (data == 'valid') {
 				$('#chkUsr').css('color', 'green');
-				$('#chkUsr').html('valid');	
+				$('#chkUsr').html('valid username');	
+				$('#submitBtn').attr('disabled', false);
 			}
 			else if (data == 'blank') {
 				$('#chkUsr').css('color', 'red');
 				$('#chkUsr').html('username cannot be blank');
+				$('#submitBtn').attr('disabled', true);
+			}
+			else if (data == 'short') {
+				$('#chkUsr').css('color', 'red');
+				$('#chkUsr').html('username too short');
+				$('#submitBtn').attr('disabled', true);
 			}
 
 		}
@@ -191,16 +200,16 @@ $('document').ready(function(){
 		return false;
 	});
 
-	var scrollStart = 0;
-	var startChange = $("#data-row");
-	var offset = startChange.offset();
-	$(document).scroll(function() {
-		scroll_start = $(this).scrollTop();
-		if (scroll_start > offset.top) {
-			$('.bg-custom').css('background-color', 'rgb(251,251,251)');
-		}
-		else {
-			$('.bg-custom').css('background-color', 'transparent');
-		}
-	});
+	// var scrollStart = 0;
+	// var startChange = $("#data-row");
+	// var offset = startChange.offset();
+	// $(document).scroll(function() {
+	// 	scroll_start = $(this).scrollTop();
+	// 	if (scroll_start > offset.top) {
+	// 		$('.bg-custom').css('background-color', 'rgb(251,251,251)');
+	// 	}
+	// 	else {
+	// 		$('.bg-custom').css('background-color', 'transparent');
+	// 	}
+	// });
 });

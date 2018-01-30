@@ -11,7 +11,7 @@
 	<div class="login-page">
 		
 		<div class="logo-home">
-			<a href="index.php"><img src="assets/images/gitgud.jpg"></a>
+			<a href="index.php"><img src="assets/images/bg/tesla-logo.png"></a>
 		</div>
 
 
@@ -27,23 +27,23 @@
 							<div class="row" id="input-names-reg">
 								<div class="form-group col-xs-6 col-md-6">
 										<label for="inputFirstName">First Name</label>
-										<input type="text" class="form-control" id="inputFirstName" name="firstname">
+										<input type="text" class="form-control" id="inputFirstName" name="firstname" required>
 								</div>
 								<div class="form-group col-xs-6 col-md-6">
 										<label>Last Name</label>
-										<input type="text" class="form-control" id="inputLastName" name="lastname">
+										<input type="text" class="form-control" id="inputLastName" name="lastname" required>
 								</div>
 							</div>
 							
 
 							<div class="form-group">
 								<label for="InputUsername">Username</label>
-								<input type="text" class="form-control" id="InputUsername" aria-describedby="emailHelp" name="reg-username" autocomplete="new-password">
+								<input type="text" class="form-control" id="InputUsername" aria-describedby="emailHelp" name="reg-username" autocomplete="new-password" required>
 								<span id="chkUsr" class="form-text"></span>
 							</div>
 							<div class="form-group">
 								<label for="InputPassword">Password</label>
-								<input type="password" class="form-control" id="InputPassword" name="reg-password" autocomplete="new-password">
+								<input type="password" class="form-control" id="InputPassword" name="reg-password" autocomplete="new-password" required>
 							</div>
 							<button type="submit" name="register" class="btn btn-primary" id="submitBtn">Create your MLJM account</button>
 							
@@ -60,9 +60,11 @@
 						    
 						    <div class="new-customer-button">
 						        <span id="create-account-button">
-                                    <span class="ca-inner-button">
-                                        <a href="#">Create your new account</a>
-                                    </span>
+                                    <a href="#">
+	                                    <span class="ca-inner-button">
+	                                        Create your new account
+	                                    </span>
+                                    </a>
 						        </span>
 						    </div>
 						</div> <!-- /.reg-page-button -->

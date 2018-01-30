@@ -245,6 +245,19 @@
 	<script src="assets/js/alertify.js" type="text/javascript"></script>
 	<script src="assets/js/uglipop.js" type="text/javascript"></script>
     <script type="text/javascript">
+
+    	var scrollStart = 0;
+		var startChange = $("#data-row");
+		var offset = startChange.offset();
+		$(document).scroll(function() {
+			scroll_start = $(this).scrollTop();
+			if (scroll_start > offset.top) {
+				$('.bg-custom').css('background-color', 'rgb(251,251,251)');
+			}
+			else {
+				$('.bg-custom').css('background-color', 'transparent');
+			}
+		});
     </script>
 </body>
 </html>
