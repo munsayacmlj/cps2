@@ -97,8 +97,7 @@
 			var password = $.cookie('password');
 			$('#usernameLoginInput').val(username);
 			$('#loginPassword').val(password);
-			$('#rememberMe').val('on');
-
+			$('#rememberMe').prop('checked', true);
 		}
 		/* END COOKIE LOGIN */
 	</script>

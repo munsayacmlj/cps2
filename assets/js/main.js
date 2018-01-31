@@ -146,8 +146,11 @@ $('document').ready(function(){
 				qty: qty 
 			},
 			success:function(data){
-				if (data == 1) {
+				data = $.trim(data);
+				if (data == 'changed') {
 					$('#div-shopping-bag').load(' #div-shopping-bag');
+					$('#div-subtotal-price').load(' #div-subtotal-price');
+					$('.price-'+id).load(' .'+id);
 					$('#ifEmptyBag').load(' #ifEmptyBag');
 				}
 			}
@@ -177,10 +180,10 @@ $('document').ready(function(){
 				}
 			}
 		});
-		return false;
+		return false; /*prevent the page going back to top after clicking shop button*/
 	});
 
-	$(".add-to-wish").click(function() {
+	$(".add-to-wish").click(function(e) {
 		var prod_id = $(this).data('id');
 		$.ajax({
 			url: 'endpoint.php',
@@ -190,7 +193,8 @@ $('document').ready(function(){
 				prod_id : prod_id
 			},
 			success:function(data) {
-				if (data == 0) {
+				data = $.trim(data);
+				if (data == 'success') {
 					var delay = alertify.get('notifier','delay');
 					 alertify.set('notifier','delay', 2);
 					 alertify.set('notifier','position', 'top-right');
@@ -203,6 +207,29 @@ $('document').ready(function(){
 				}
 			}
 		});
-		return false;
+		return false; /*prevent the page going back to top after clicking add to wish button*/
+	});
+
+
+	$('.next-page-button').click(function() {
+		
+		$.ajax({
+			url: 'endpoint.php',
+			type: 'POST',
+			data: {
+				checkout : true
+			},
+			success:function(data) {
+				data = $.trim(data);
+				if (data == "success") {
+					$('#shopping-wrapper').load(' #shopping-wrapper');
+					$('#data-row').load(' #data-row');
+					$('#ifEmptyBag').load(' #ifEmptyBag');
+					$('#div-shopping-bag').load(' #div-shopping-bag');
+					alertify.alert("Transaction completed", "View your account profile to see your transaction history.").show();
+				}
+			}
+		});
+
 	});
 });

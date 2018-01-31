@@ -18,7 +18,7 @@
 		<div class="row">
 			
 		<table class="table table-condensed table-hover col-md-auto user-order-table">
-			<caption>Transaction Details</caption>
+			<caption>Transaction History</caption>
 			<thead>
 				<tr>
 					<th>Order ID</th>

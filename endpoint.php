@@ -179,7 +179,7 @@
 			else{
 				$_SESSION['wish'][$prod_id] = 1;
 			}
-			echo 0;
+			echo 'success';
 		}
 	}
 
@@ -238,7 +238,7 @@
 			}
 		}
 		
-		echo 1;
+		echo 'changed';
 	}
 
 	if (isset($_GET['delete_item_from_cart'])) {
@@ -297,7 +297,6 @@
 <?php
 	endif;
  ?>
-
  <?php 
  	if (isset($_POST['delete_item'])) :
  		$id = $_POST['index'];
@@ -324,7 +323,6 @@
   			<!-- <input type="button" class="btn btn-danger delete-body" data-id="<?php echo $del_id; ?>" value="Yes">
             <input type="button" class="btn btn-success" data-dismiss='modal' value="No"> -->
 <?php endif; ?>
-
 <?php 
 	
 	if (isset($_POST['add_item'])) :
@@ -406,7 +404,6 @@
 <?php	
 	endif;
  ?>
-
 <?php 
 	if (isset($_POST['ban'])) :
 		$id = $_POST['id']; 
@@ -446,7 +443,6 @@
 	            <input type="button" class="btn btn-success" data-dismiss='modal' value="No">
             </form>
 <?php endif; ?>
-
 <?php 
 	if (isset($_POST['unban'])) :
 		$id = $_POST['id'];
@@ -482,7 +478,6 @@
 	            <input type="button" class="btn btn-danger" data-dismiss='modal' value="No">
             </form>
 <?php endif; ?>
-
 <?php 
 	if (isset($_POST['order_complete'])) :
 		$order_id = $_POST['order_id'];
@@ -520,7 +515,6 @@
             </form>
 
 <?php endif; ?>
-
 <?php 
 	if (isset($_POST['order_delete'])) :
 		$order_id = $_POST['order_id'];
@@ -553,7 +547,6 @@
 	            <input type="button" class="btn btn-danger" data-dismiss='modal' value="No">
             </form>
 <?php	endif; ?>
-
 <?php 
 	if (isset($_POST['view_order'])) :
 		$order_id = $_POST['order_id'];
@@ -587,7 +580,6 @@
 			</table>
 
 <?php endif; ?>
-
 <?php 
 	if (isset($_POST['rm_wish_item'])) {
 		session_start();
@@ -599,7 +591,6 @@
 
 	}
  ?>
-
 <?php 
 	
 	if (isset($_POST['user_order'])) :
@@ -652,4 +643,18 @@
 				</tbody>
 			</table>
 <?php endif; ?>
+<?php 
+	if (isset($_POST['checkout'])) {
+		session_start();
+		$username = $_SESSION['username'];
+		$res = mysqli_query($connection, "SELECT id from orders WHERE user_id = 
+							(SELECT id from users WHERE username = '$username') AND status = 'pending'");
+		$row = extract(mysqli_fetch_assoc($res));
+		$order_id = $id;
 
+		$sql = "UPDATE orders SET status = 'done' WHERE id = '$order_id'";
+		if (mysqli_query($connection, $sql) === TRUE) {
+			unset($_SESSION['cart']);
+			echo 'success';
+		}
+	}

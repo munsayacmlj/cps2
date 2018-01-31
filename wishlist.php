@@ -90,7 +90,8 @@
 	<script src="assets/js/main.js" type="text/javascript"></script>
 	<script src="assets/js/uglipop.js" type="text/javascript"></script>
     <script type="text/javascript">
-    		$('.remove-wish-item').click(function() {
+    	$('.wish-list-items').on('click', '.remove-wish-item', function() {
+
     			var product_id = $(this).data('product-id');
 
     			$.ajax({
@@ -108,9 +109,12 @@
 						 alertify.set('notifier','delay', delay);
 						 $('#'+product_id).remove();
 						 $('#div-wish-list').load(' #div-wish-list');
+						 $('.wish-list-items').load(' .wish-list-items');
     				}
     			});
-    		});
+    	})
+    		// $('.remove-wish-item').click(function() {
+    		// });
     </script>
 </body>
 </html>

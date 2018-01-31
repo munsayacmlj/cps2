@@ -52,16 +52,16 @@
 									<span class="label">Description:</span>
 									<span class="value"><?php echo $description; ?></span>
 								</div>
-								<!-- <div class="price">
+								<div class="price">
 									<span class="label">Price:</span>
 									<span class="value">Php <?php echo number_format($price,2); ?></span>
-								</div> -->
+								</div>
 							</div> <!-- /.desc-size -->
 
 							<div class="change-quantity col-md-4">
 								<span class="label">Quantity:</span>
 								<span class="qty-value">
-									<select name="Qty" class="selecta" id="<?php echo $p_id; ?>" data-index="<?php echo $p_id; ?>">
+									<select name="Qty" class="selecta" data-index="<?php echo $p_id; ?>">
 										<option value="1" <?php if ($total==1) echo "selected"; ?>>1</option>
 										<option value="2" <?php if ($total==2) echo "selected"; ?>>2</option>
 										<option value="3" <?php if ($total==3) echo "selected"; ?>>3</option>
@@ -71,11 +71,11 @@
 								</span>
 							</div> <!-- /.change-quantity -->
 							
-							<div class="price-col col-md-4">
-								<span class="del-item-c">
+							<div class="price-col col-md-4 price-<?php echo $p_id; ?>">
+								<span class="del-item-c <?php echo $p_id; ?>">
 									<a href="#"><li class="fa fa-trash fa-lg trash-can" data-id="<?php echo $p_id; ?>"></li></a>
 								</span>
-								<span class="price">
+								<span class="price <?php echo $p_id; ?>">
 									<span class="value">Php <?php echo number_format($price*$total,2); ?></span>
 								</span>
 							</div>
@@ -90,16 +90,13 @@
 
 		</div> <!-- /.row -->
 <div id="ifEmptyBag">
-		
 	<?php if (empty($_SESSION['cart'])): ?>
-	
 		<div class="inner-empty-cart">
 			<div class="empty-bag">Your Shopping Bag is empty</div>
 			<div>
 				<a href="items.php?new=true&page=1" class="go-back">Back to shopping</a>
 			</div>
 		</div>
-	
 	<?php else: ?>
 	<div class="box recap">
 		<div class="change-shipping-info">
@@ -146,7 +143,7 @@
 	<script src="assets/js/main.js" type="text/javascript"></script>
     <script type="text/javascript">
 
-    	$('.trash-can').click(function() {
+    	$('.price-col').on('click', '.trash-can', function() {
     		var id = $(this).data('id');
     		 $.ajax({
     			url: 'endpoint.php',
@@ -169,6 +166,8 @@
     		});
     		return false;
     	});
+    	// $('.trash-can').click(function() {
+    	// });
 
     </script>
 </body>

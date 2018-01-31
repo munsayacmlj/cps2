@@ -29,7 +29,9 @@
 			    </div>	
 			    <?php elseif (isset($_SESSION['username'])) : ?>
 			    	<div class="shop-link shop-link-cont">
-				    	<a href="#" data-id="<?php echo $prod_id; ?>" class="shop-link btn btn-black shop-btn <?php echo $prod_id; ?>">Shop This &gt;</a><br>
+				    	<div>
+					    	<a href="#" data-id="<?php echo $prod_id; ?>" class="shop-link btn btn-black shop-btn <?php echo $prod_id; ?>">Add to Shopping Bag</a>
+				    	</div>
 				    	<div class="outer-add-to-wish">
 					    	<a href="#" class="add-to-wish <?php echo $prod_id; ?>" data-id="<?php echo $prod_id; ?>">Add to Wishlist</a>
 				    	</div>

@@ -348,7 +348,8 @@ div{
 		/* left: 0;*/
 	}
 .card-block{
-	height: 120px;
+	// height: 120px;
+	min-height: 110px;
 	position: relative;	
 }	
 .card-content{
@@ -368,18 +369,17 @@ div{
 	}
 	
 	.shop-link-cont{
+		padding-top: 10px;
 		position: absolute;
-		top: 30px;
-		left: 50px;
-		/* transform: translate(-20px, -50px);*/
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		.shop-btn{
 			margin-top: 10px;
 		}
 
 		.outer-add-to-wish{
-			padding: 10px;
-			/* margin-top: 20px;*/
-			
+			padding-top: 10px;
 			.add-to-wish{
 				color: #000;
 				text-decoration: underline;

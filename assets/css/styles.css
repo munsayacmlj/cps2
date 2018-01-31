@@ -233,7 +233,7 @@ div .cart-icon {
   /* left: 0;*/ }
 
 .card-block {
-  height: 120px;
+  min-height: 110px;
   position: relative; }
 
 .card-content {
@@ -251,15 +251,15 @@ div .cart-icon {
     opacity: 1;
     /* display: none;*/ }
   .card-content .shop-link-cont {
+    padding-top: 10px;
     position: absolute;
-    top: 30px;
-    left: 50px;
-    /* transform: translate(-20px, -50px);*/ }
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
     .card-content .shop-link-cont .shop-btn {
       margin-top: 10px; }
     .card-content .shop-link-cont .outer-add-to-wish {
-      padding: 10px;
-      /* margin-top: 20px;*/ }
+      padding-top: 10px; }
       .card-content .shop-link-cont .outer-add-to-wish .add-to-wish {
         color: #000;
         text-decoration: underline; }
