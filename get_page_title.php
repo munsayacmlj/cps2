@@ -28,8 +28,6 @@
 				echo "Shoes for Women";
 				
 
-			if(isset($_GET['brand'])){
-
 					foreach ($_GET as $key => $value){
 						switch ($key) {
 							case 'allen_edmonds':
@@ -83,6 +81,6 @@
 						}
 					}	
 				
-			}
+			
 		}
 ?>

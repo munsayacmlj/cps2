@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home</title>
+    <title>MLJM Shop</title>
     <?php require "assets/partials/head.php"; ?>
     
 </head>
@@ -40,19 +40,19 @@
 						elseif (isset($_GET['mshoe'])) {
 							require "men.php";
 							function get_method() {
-								echo "men=true&mshoe";
+								echo "mshoe";
 							}
 						}
 						elseif (isset($_GET['mbag'])) {
 							require "men.php";
 							function get_method() {
-								echo "men=true&mbag";
+								echo "mbag";
 							}
 						}
 						elseif (isset($_GET['mtop'])) {
 							require "men.php";
 							function get_method() {
-								echo "men=true&mtop";
+								echo "mtop";
 							}
 						}
 						elseif (isset($_GET['allwomen'])) {
@@ -64,19 +64,19 @@
 						elseif (isset($_GET['wshoe'])) {
 						 	require "women.php";
 						 	function get_method() {
-								echo "women=true&wshoe";
+								echo "wshoe";
 							}
 						}
 						elseif (isset($_GET['wbag'])) {
 						 	require "women.php";
 						 	function get_method() {
-								echo "women=true&wbag";
+								echo "wbag";
 							}
 						}
 						elseif (isset($_GET['wtop'])) {
 						 	require "women.php";
 						 	function get_method() {
-								echo "women=true&wtop";
+								echo "wtop";
 							}
 						}
 						elseif (isset($_GET['search_all'])) {
@@ -91,91 +91,91 @@
 							case 'allen_edmonds':
 								require "display_brands.php";
 								function get_method() {
-									echo "brand=true&allen_edmonds";
+									echo "allen_edmonds";
 								}
 								break;
 							case 'balenciaga' :
 								require "display_brands.php";
 								function get_method() {
-									echo "brand=true&balenciaga";
+									echo "balenciaga";
 								}	
 								break;
 							case 'berluti' :
 								require "display_brands.php";
 								function get_method() {
-									echo "brand=true&berluti";
+									echo "berluti";
 								}	
 								break;
 							case 'barba_napoli' :
 								require "display_brands.php";
 								function get_method() {
-									echo "brand=true&barba_napoli";
+									echo "barba_napoli";
 								}	
 								break;
 							case 'brioni' :
 								require "display_brands.php";
 								function get_method() {
-									echo "brand=true&brioni";
+									echo "brioni";
 								}	
 								break;
 							case 'christian_louboutin' :
 								require "display_brands.php";
 								function get_method() {
-									echo "brand=true&christian_louboutin";
+									echo "christian_louboutin";
 								}	
 								break;
 							case 'gucci' :
 								require "display_brands.php";
 								function get_method() {
-									echo "brand=true&gucci";
+									echo "gucci";
 								}	
 								break;
 							case 'jimmy_choo' :
 								require "display_brands.php";
 								function get_method() {
-									echo "brand=true&jimmy_choo";
+									echo "jimmy_choo";
 								}	
 								break;
 							case 'kate_spade' :
 								require "display_brands.php";
 								function get_method() {
-									echo "brand=true&kate_spade";
+									echo "kate_spade";
 								}	
 								break;
 							case 'manolo_blahnik' :
 								require "display_brands.php";
 								function get_method() {
-									echo "brand=true&manolo_blahnik";
+									echo "manolo_blahnik";
 								}	
 								break;
 							case 'ralph_lauren' :
 								require "display_brands.php";
 								function get_method() {
-									echo "brand=true&ralph_lauren";
+									echo "ralph_lauren";
 								}	
 								break;
 							case 'saint_laurent' :
 								require "display_brands.php";
 								function get_method() {
-									echo "brand=true&saint_laurent";
+									echo "saint_laurent";
 								}	
 								break;
 							case 'salvatore_ferragamo' :
 								require "display_brands.php";
 								function get_method() {
-									echo "brand=true&salvatore_ferragamo";
+									echo "salvatore_ferragamo";
 								}	
 								break;
 							case 'stuart_weitzman' :
 								require "display_brands.php";
 								function get_method() {
-									echo "brand=true&stuart_weitzman";
+									echo "stuart_weitzman";
 								}	
 								break;
 							case 'versace' :
 								require "display_brands.php";
 								function get_method() {
-									echo "brand=true&versace";
+									echo "versace";
 								}	
 								break;
 							default:
@@ -188,7 +188,7 @@
 		<div class="page-btns-container" id="pageDiv">
 			<?php for ($page=1; $page <= $num_of_pages; $page++) : ?>
 					<span>
-						<a class="page-btn" id="p_<?php echo $page; ?>" href="items.php?<?php get_method(); ?>=true&page=<?php echo $page; ?>"><?php echo $page; ?></a>
+						<a class="page-btn" id="p_<?php echo $page; ?>" href="items.php?page=<?php echo $page; ?>&<?php get_method(); ?>=true"><?php echo $page; ?></a>
 					</span>
 			<?php endfor;?>
 		</div>

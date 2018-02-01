@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home</title>
+    <title>MLJM Shop</title>
     <?php require "assets/partials/head.php"; ?>
     
 </head>
@@ -11,12 +11,12 @@
 	<?php require "get_page_title.php"; ?>
 	<div class="wrapper">
 		<div class="top-bg" data-zoom>
-			<a href="#!" class="home-link">
-				<img src="assets/images/bg/girl.jpg" class="primary" height="1328" width="1920" style="display: inline-block;">
+			<a href="items.php?page=1&allwomen=true" class="home-link">
+				<img src="assets/images/bg/girl.jpg" class="primary" height="1328" width="1920" style="display: inline-block;" title="New Arrivals for Women 2018" alt="New Arrivals for Women 2018">
 				<div class="title-wrap">
 					<div class="caption">
 						<h3 style="text-align: center;">
-							<strong>NEW ARRIVALS 2018</strong>
+							<strong>NEW ARRIVALS for Women 2018</strong>
 						</h3>
 						<h4 style="text-align: center;">Discover more</h4>
 					</div>
@@ -83,13 +83,14 @@
 		$(document).scroll(function() {
 			scroll_start = $(this).scrollTop();
 			if (scroll_start > offset.top) {
+				$('.home-nav-bg').css('background-color', 'transparent');
 				$('.home-nav-border').css('border-bottom', 'none');
 				$('.nav-link-index').css('color', '#fff');
 				$('.home-search').css('color', '#fff');
 				$('.home-logo').css('height', '100px');
 			}
 			else {
-				$('.home-nav-bg').css('background-color', 'transparent');
+				$('.home-nav-bg').css('background-color', '#f2f2f2');
 				$('.nav-link-index').css('color', '#000');
 				$('.home-search').css('color', '#000');
 				$('.home-logo').css('height', '65px');

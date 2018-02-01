@@ -124,9 +124,7 @@ ul a.link-dark:hover {
   .wrapper .home-link {
     color: #fff;
     text-decoration: none; }
-  .wrapper .mid-bg {
-    position: relative; }
-  .wrapper .bottom-bg {
+  .wrapper .top-bg, .wrapper .mid-bg, .wrapper .bottom-bg {
     position: relative; }
   .wrapper .title-wrap {
     text-align: center;
@@ -138,10 +136,11 @@ ul a.link-dark:hover {
     .wrapper .title-wrap h4 {
       font-size: 13px; }
 
-.bg-custom, .home-nav-bg {
-  background-color: transparent;
-  /* border-top: 1px solid #ffffff;*/
-  /* border-bottom: 2px solid #f1f1f1f1;*/ }
+.bg-custom {
+  background-color: transparent; }
+
+.home-nav-bg {
+  background-color: #f2f2f2; }
 
 div .container .row {
   width: 100%; }
@@ -186,7 +185,7 @@ div .cart-icon {
   /* height: 100vh;*/ }
 
 .items-wrapper {
-  padding-top: 90px !important; }
+  padding-top: 50px !important; }
   .items-wrapper .left-side {
     height: 500px;
     background-color: lightgray; }
@@ -513,8 +512,8 @@ ol, ul {
 
 /* Shopping bag */
 #shopping-wrapper {
-  padding: 40px 0;
-  margin-top: 50px; }
+  padding: 30px 0;
+  margin-top: 20px; }
 
 .cart-container {
   width: 100%; }
@@ -552,12 +551,12 @@ ol, ul {
     .item-row .outer-row:first-child {
       padding-top: 0; }
   .item-row .image-col {
-    height: 200px;
-    line-height: 200px;
+    height: 250px;
+    line-height: 250px;
     text-align: center; }
     .item-row .image-col img {
-      max-height: 200px;
-      width: auto; }
+      max-height: 250px;
+      max-width: 250px; }
   .item-row .col-md-4 {
     padding: 0; }
   .item-row .col-md-7, .item-row .col-md-8 {

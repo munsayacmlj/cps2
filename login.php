@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Online Shopping - Login</title>
+	<title>MLJM Shop - Login</title>
 	<?php require "assets/partials/head.php"; ?>
 </head>
 <body style="margin-bottom: 0">

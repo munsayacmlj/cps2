@@ -183,6 +183,32 @@ $('document').ready(function(){
 		return false; /*prevent the page going back to top after clicking shop button*/
 	});
 
+	$('#wish-list-wrapper').on('click', '.wish-shop-btn',function() {
+		var prod_id = $(this).data('id');
+		$.ajax({
+			url: 'endpoint.php',
+			type: 'GET',
+			data: {
+				add_to_cart : true,
+				id : prod_id
+			},
+			success:function(data) {
+				if (data != 5) {
+					var delay = alertify.get('notifier','delay');
+					 alertify.set('notifier','delay', 2);
+					 alertify.set('notifier','position', 'top-right');
+					 alertify.success('Product added to Shopping Bag.');
+					 alertify.set('notifier','delay', delay);
+					 $('#div-shopping-bag').load(' #div-shopping-bag');
+				}
+				else {
+					alertify.alert("Oopps!", "You cannot order the same item more than 5 times.").show();
+				}
+			}
+		});
+		return false; /*prevent the page going back to top after clicking shop button*/
+	});
+
 	$(".add-to-wish").click(function(e) {
 		var prod_id = $(this).data('id');
 		$.ajax({
@@ -210,9 +236,7 @@ $('document').ready(function(){
 		return false; /*prevent the page going back to top after clicking add to wish button*/
 	});
 
-
-	$('.next-page-button').click(function() {
-		
+	$('#ifEmptyBag').on('click','.next-page-button', function() {
 		$.ajax({
 			url: 'endpoint.php',
 			type: 'POST',
@@ -230,6 +254,29 @@ $('document').ready(function(){
 				}
 			}
 		});
+	});
 
+	$('.price-col').on('click', '.trash-can', function() {
+		var id = $(this).data('id');
+		 $.ajax({
+			url: 'endpoint.php',
+			type: 'GET',
+			data: {
+				delete_item_from_cart : true,
+				id : id
+			},
+			success:function(data) {
+				var delay = alertify.get('notifier','delay');
+				 alertify.set('notifier','delay', 2);
+				 alertify.set('notifier','position', 'top-right');
+				 alertify.warning('Product has been removed.');
+				 alertify.set('notifier','delay', delay);
+				 $('#ifEmptyBag').load(' #ifEmptyBag');
+				 $('#shopping-wrapper').load(' #shopping-wrapper');		
+					 $('#div-shopping-bag').load(' #div-shopping-bag');
+				 $('#'+id).remove();
+			}
+		});
+		return false;
 	});
 });

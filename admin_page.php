@@ -1,30 +1,22 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Admin page</title>
+	<title>MLJM SHOP / Admin</title>
 
 	<style type="text/css" media="screen">
 
 	</style>
 	<?php require "assets/partials/head.php" ?>
+	<?php require "assets/partials/top-nav.php" ?>
+	<?php require "assets/partials/navigation.php" ?>
 </head>
 <body>
 <?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'admin'): ?>
 		
 <div class="container">
 	<div class="row">
-		<div class="row col-12 home-btn logout-btn">
-			<div class="inner-home-btn col-sm-12 col-md-4">
-				<a href="index.php" class="btn btn-primary">Back to Homepage</a>
-			</div>
-			<div class="inner-admin-name col-sm-12 col-md-4">
-				<h2><?php echo $_SESSION['username']; ?></h2>
-			</div>
-			<div class="inner-logout-btn create-admin-btn col-sm-12 col-md-4">
-				<a href="logout.php" class="btn btn-info admin-logout">Logout</a>
-				<span class="btn btn-link" data-toggle="modal" data-target="#adminModal">Create Admin Account</span>
-			</div>
+		<div class="row col-12 pt-4 pb-4"">
+			<h2 style="text-align: center;">Welcome, <?php echo $_SESSION['username']; ?></h2>
 		</div>
 		<div>
 			<a href="admin_page.php?admin=<?php echo $_SESSION['username']; ?>&user_page=1" class="btn">

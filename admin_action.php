@@ -6,17 +6,22 @@
 		$product_name = mysqli_real_escape_string($connection, $_POST['product_name']);
 		$description = mysqli_real_escape_string($connection, $_POST['description']);
 		$price = mysqli_real_escape_string($connection, $_POST['price']);
-
+		$brand_id = $_POST['brand'];
+		$gender_id = $_POST['gender'];
+		$product_type_id = $_POST['product_type'];
+		
 		$sql = "UPDATE products SET 
 				product_name = '$product_name',
 				description = '$description',
-				price = '$price'
+				price = '$price',
+				brand_id = '$brand_id',
+				gender_id = '$gender_id',
+				product_type_id = '$product_type_id'
 				WHERE id = '$id'";
 		mysqli_query($connection, $sql);
 		header('location: ' . $_SERVER['HTTP_REFERER']);
 		exit;
 	}
-
 
 	if (isset($_GET['delete_action'])) {
 		$del_id = $_GET['del_id'];
@@ -50,10 +55,10 @@
 		move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
 
 
-		$product_name = $_POST['product_name'];
-		$description = $_POST['description'];
+		$product_name = mysqli_real_escape_string($connection, $_POST['product_name']);
+		$description = mysqli_real_escape_string($connection, $_POST['description']);
 		$picture = $target_file;
-		$price = $_POST['price'];
+		$price = mysqli_real_escape_string($connection, $_POST['price']);
 		$brand_id = $_POST['brand'];
 		$gender_id = $_POST['gender'];
 		$product_type_id = $_POST['product_type'];

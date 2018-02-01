@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5">
-                <h5><i class="fa fa-road"></i> MLJM CO INC.</h5>
+                <h5>MLJM CO INC.</h5>
                 <div class="row">
                     <div class="col-6">
                         <ul class="list-unstyled">
@@ -27,6 +27,9 @@
                     <li class="nav-item"><a href="#!" class="social nav-link"><i class="fa fa-github fa-lg"></i></a></li>
                     <li class="nav-item"><a href="#!" class="social nav-link"><i class="fa fa-instagram fa-lg"></i></a></li>
                 </ul>
+                <div class="pt-2 mt-1">
+                    &copy; 2018, MLJM Shop
+                </div>
                 <br>
             </div>
             <div class="col-md-2">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Online Shopping - Login</title>
+	<title>MLJM Shop - Register</title>
 	<?php require "assets/partials/head.php"; ?>
 </head>
 <body style="margin-bottom: 0">
@@ -48,11 +48,6 @@
 							<div class="registerBtnDiv">
 								<button type="submit" name="register" class="btn btn-black" id="regSubmitBtn">Create your MLJM account</button>
 							</div>
-							
-							<!-- <div class="form-check">
-								<input type="checkbox" class="form-check-input" id="exampleCheck1">
-								<label class="form-check-label" for="exampleCheck1">Remember Me</label>
-							</div> -->
 						</form>
 						<div class="a-divider">
 							<div class="a-divider-inner">
@@ -62,21 +57,6 @@
 							Already have an account?
 							<a href="login.php">Sign in</a>
 						</div>
-						<!-- <div class="reg-page-button">
-						    <div class="new-customer-divider">
-						        <span class="new-cust-text">New Customer?</span>
-						    </div>
-						    
-						    <div class="new-customer-button">
-						        <span id="create-account-button">
-                                    <a href="#">
-	                                    <span class="ca-inner-button">
-	                                        Create your new account
-	                                    </span>
-                                    </a>
-						        </span>
-						    </div>
-						</div>  --><!-- /.reg-page-button -->
 					</div> <!-- /.login -->
 				</div> <!-- /.row -->
 			</div> <!-- /.container -->

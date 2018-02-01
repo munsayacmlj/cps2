@@ -37,9 +37,8 @@
 					$result = mysqli_query($connection, $sql);
 					$row = mysqli_fetch_assoc($result);
 					extract($row);
-					// print_r($row);
 		?>
-					<li class="col-md-4" id="<?php echo $product_id; ?>">
+					<li class="col-md-4 prod-body" id="<?php echo $product_id; ?>">
 						<div class="wish-items">
 							<div class="edit">
 								<button class="remove-wish-item" type="button" data-product-id="<?php echo $product_id; ?>">
@@ -66,7 +65,7 @@
 									<span class="value"><?php echo $description; ?></span>
 								</div>
 							</div>
-							<button class="btn btn-black add-btn shop-btn" data-id="<?php echo $product_id; ?>">Add to Shopping Bag</button>
+							<button class="btn btn-black add-btn wish-shop-btn" data-id="<?php echo $product_id; ?>">Add to Shopping Bag</button>
 						</div>
 					</li>	
 

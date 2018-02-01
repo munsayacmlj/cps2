@@ -94,7 +94,7 @@
 		<div class="inner-empty-cart">
 			<div class="empty-bag">Your Shopping Bag is empty</div>
 			<div>
-				<a href="items.php?new=true&page=1" class="go-back">Back to shopping</a>
+				<a href="items.php?page=1&new=true" class="go-back">Back to shopping</a>
 			</div>
 		</div>
 	<?php else: ?>
@@ -120,7 +120,7 @@
 		</div>
 	</div>
 	<div class="box proceed">
-		<a href="items.php?new=true&page=1" class="go-back">Back to shopping</a>
+		<a href="items.php?page=1&new=true" class="go-back">Back to shopping</a>
 		<button class="next-page-button">
 			<span>Proceed to checkout</span>
 		</button>
@@ -139,36 +139,8 @@
 		    $previous = $_SERVER['HTTP_REFERER'];
 		}
 	 ?>
-	<?php //require "assets/partials/footer.php" ?>
 	<script src="assets/js/main.js" type="text/javascript"></script>
     <script type="text/javascript">
-
-    	$('.price-col').on('click', '.trash-can', function() {
-    		var id = $(this).data('id');
-    		 $.ajax({
-    			url: 'endpoint.php',
-    			type: 'GET',
-    			data: {
-    				delete_item_from_cart : true,
-    				id : id
-    			},
-    			success:function(data) {
-    				var delay = alertify.get('notifier','delay');
-					 alertify.set('notifier','delay', 2);
-					 alertify.set('notifier','position', 'top-right');
-					 alertify.warning('Product has been removed.');
-					 alertify.set('notifier','delay', delay);
-					 $('#ifEmptyBag').load(' #ifEmptyBag');
-					 $('#shopping-wrapper').load(' #shopping-wrapper');		
- 					 $('#div-shopping-bag').load(' #div-shopping-bag');
-					 $('#'+id).remove();
-    			}
-    		});
-    		return false;
-    	});
-    	// $('.trash-can').click(function() {
-    	// });
-
     </script>
 </body>
 </html>

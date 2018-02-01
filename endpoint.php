@@ -124,9 +124,6 @@
 			$row = mysqli_fetch_assoc($result);
 			extract($row);
 			if($qty >= 5){
-					// $new_loc = (string)$_SERVER['HTTP_REFERER'];			
-					// echo "<script>alert('You cannot order the same item more than 5 times.');
-					// 		window.location.replace(\"$new_loc\")</script>";
 				echo 5;
 			}
 			else{
@@ -146,8 +143,6 @@
 				}
 			}	
 		}	
-		// header('Location: ' . $_SERVER['HTTP_REFERER']);
-		// exit;
 	}
 	if (isset($_POST['add_to_wish'])) {
 		session_start();
@@ -189,10 +184,8 @@
 		$sql = "SELECT COUNT(quantity) as db_qty FROM order_details WHERE product_id = '$product_id'";
 		$result = mysqli_query($connection, $sql);
 		$row = mysqli_fetch_assoc($result);
-		extract($row);
+		extract($row); /* extracted $db_qty as the total count of items in the database where product_id = $product_id */
 		if ($quantity < $db_qty) {
-			// echo $quantity;
-			// echo $db_qty;
 			while ($quantity < $db_qty) {
 				$sql = "DELETE FROM order_details WHERE product_id = '$product_id' LIMIT 1";
 				mysqli_query($connection, $sql);
@@ -202,9 +195,9 @@
 				$sql = "SELECT COUNT(quantity) as db_qty FROM order_details WHERE product_id = '$product_id'";
 				$result = mysqli_query($connection, $sql);
 				$row = mysqli_fetch_assoc($result);
-				extract($row);
+				extract($row); /* extracted $db_qty for comparison */
 			}
-			// echo $db_qty;
+			echo 'changed';
 		}
 		if ($quantity > $db_qty) {
 			$sql = "SELECT price FROM products WHERE id = '$product_id'";
@@ -232,8 +225,9 @@
 				$row = mysqli_fetch_assoc($result);
 				extract($row);
 			}
+			echo 'changed';
 		}
-		echo 'changed';
+		
 	}
 	if (isset($_GET['delete_item_from_cart'])) {
 		session_start();
@@ -247,22 +241,23 @@
 		exit;
 	}
 	if (isset($_POST['edit_item'])) :
-		$id = $_POST['index'];
-		$sql = "SELECT * FROM products WHERE id = '$id'";
+		$prod_id = $_POST['index'];
+		$sql = "SELECT *, b.gender as gender, b.id as gender_id, c.id as product_type_id, c.type as product_type FROM products a JOIN genders b ON (a.gender_id = b.id) JOIN product_types c 
+				ON (a.product_type_id = c.id) WHERE a.id = '$prod_id'";
 		$result = mysqli_query($connection, $sql);
 		$product_row = mysqli_fetch_assoc($result);
 		extract($product_row);
 
-		$sql = "SELECT brand_name FROM brands a JOIN products b ON (a.id = b.brand_id)
-					WHERE b.id = '$id'";
+		$sql = "SELECT brand_name, a.id as brand_id FROM brands a JOIN products b ON (a.id = b.brand_id)
+					WHERE b.id = '$prod_id'";
 		$result = mysqli_query($connection, $sql);
 		$brand_row = mysqli_fetch_assoc($result);
 		extract($brand_row); /* $brand_name */
 ?>
-	<div class="brand-name-edit-modal">
+ 	<div class="brand-name-edit-modal">
 		<h3><?php echo $brand_name; ?></h3>
 	</div>
-	<form id="modal-form" action="admin_action.php?edit_action=true&id=<?php echo $id; ?>" method="POST" class="edit-form">
+	<form id="modal-form" action="admin_action.php?edit_action=true&id=<?php echo $prod_id; ?>" method="POST" class="edit-form">
         <div class="inner-form">
         	<div class="pic-container">
 	            <img id="modal-img" src="<?php echo $picture; ?>">
@@ -277,17 +272,40 @@
             </div>
 			<div class="form-inline">
 	            <select class="form-control selectables" name="brand" required>
-	                <option selected><?php echo $brand_name; ?></option>
+	                <option selected value="<?php echo $brand_id ?>"><?php echo $brand_name; ?></option>
 	                <?php 
-	                $sql = "SELECT * FROM brands";
+	                $sql = "SELECT * FROM brands ORDER BY brand_name DESC";
 	                $result = mysqli_query($connection, $sql);
 	                while($row = mysqli_fetch_assoc($result)) :
 	                    extract($row);
 	                 ?>
-	                    <option value="<?php echo $id ?>"><?php echo $brand_name ?></option>
+	                    <option value="<?php echo $id; ?>"><?php echo $brand_name ?></option>
 	                <?php endwhile; ?>
 	            </select>
-	            
+
+	            <select class="form-control selectables" name="gender" required>
+	                <option selected value="<?php echo $gender_id; ?>"><?php echo $gender; ?></option>
+	                <?php 
+	                $sql = "SELECT * FROM genders";
+	                $result = mysqli_query($connection, $sql);
+	                while($row = mysqli_fetch_assoc($result)) :
+	                    extract($row);
+	                 ?>
+	                    <option value="<?php echo $id; ?>"><?php echo $gender; ?></option>
+	                <?php endwhile; ?>
+	            </select>
+
+	            <select class="form-control selectables" name="product_type" required>
+	                <option selected value="<?php echo $product_type_id; ?>"><?php echo $product_type ?></option>
+	                <?php 
+	                $sql = "SELECT * FROM product_types";
+	                $result = mysqli_query($connection, $sql);
+	                while($row = mysqli_fetch_assoc($result)) :
+	                    extract($row);
+	                 ?>
+	                    <option value="<?php echo $id; ?>"><?php echo $type; ?></option>
+	                <?php endwhile; ?>
+	            </select>
 			</div>
             <div class="form-group">
                 <label>Price: Php</label> 
@@ -358,7 +376,7 @@
 			            <select class="form-control selectables" name="brand" required>
 			                <option disabled selected>Brand Name</option>
 			                <?php 
-			                $sql = "SELECT * FROM brands";
+			                $sql = "SELECT * FROM brands ORDER BY brand_name DESC";
 			                $result = mysqli_query($connection, $sql);
 			                while($row = mysqli_fetch_assoc($result)) :
 			                    extract($row);

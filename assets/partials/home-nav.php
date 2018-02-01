@@ -6,14 +6,11 @@
                   <a href="index.php"><img src="assets/images//bg/tesla-logo.png" class="home-logo"></a>
                 </span>
             </span>
-<!--             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon"></span>
-            </button> -->
             <div class="col-md-8 ml-lg-auto">
 
               <nav class="navbar navbar-expand-lg nav-margin">
                 
-                <div class="navbar-brand d-lg-none">LOGO</div>
+                <div class="navbar-brand d-lg-none">MLJM</div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
@@ -25,30 +22,30 @@
                       if (isset($_SESSION['username']) && $_SESSION['role'] == 'admin') : ?>
                          
                           <li class="nav-item">
-                            <a class="nav-link-index nav-link" href="items.php?search_all=true&page=1">All Items</a>
+                            <a class="nav-link-index nav-link" href="items.php?page=1&search_all=true">All Items</a>
                           </li>
 
                     <?php endif; ?>
 
                     <li class="nav-item">
-                      <a class="nav-link-index nav-link" href="items.php?new=true&page=1">New Arrivals</a>
+                      <a class="nav-link-index nav-link" href="items.php?page=1&new=true">New Arrivals</a>
                     </li>                    
                     <li class="nav-item dropdown">
-                          <a class="nav-link-index nav-link men-items" href="items.php?allmen=true&page=1" id="navbarDropdown">Men</a>
+                          <a class="nav-link-index nav-link men-items" href="items.php?page=1&allmen=true" id="navbarDropdown">Men</a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="items.php?men=true&mtop=true&page=1">Top</a>
-                              <a class="dropdown-item" href="items.php?men=true&mbag=true&page=1">Bag</a>
-                              <a class="dropdown-item" href="items.php?men=true&mshoe=true&page=1">Shoes</a>
+                              <a class="dropdown-item" href="items.php?page=1&mtop=true">Top</a>
+                              <a class="dropdown-item" href="items.php?page=1&mbag=true">Bag</a>
+                              <a class="dropdown-item" href="items.php?page=1&mshoe=true">Shoes</a>
                           </div>
                     </li>
                     
 
                     <li class="nav-item dropdown">
-                          <a class="nav-link-index nav-link" href="items.php?allwomen=true&page=1" id="navbarDropdown">Women</a>
+                          <a class="nav-link-index nav-link" href="items.php?page=1&allwomen=true" id="navbarDropdown">Women</a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="items.php?women=true&wtop=true&page=1">Top</a>
-                              <a class="dropdown-item" href="items.php?women=true&wbag=true&page=1">Bag</a>
-                              <a class="dropdown-item" href="items.php?women=true&wshoe=true&page=1">Shoes</a>
+                              <a class="dropdown-item" href="items.php?page=1&wtop=true">Top</a>
+                              <a class="dropdown-item" href="items.php?page=1&wbag=true">Bag</a>
+                              <a class="dropdown-item" href="items.php?page=1&wshoe=true">Shoes</a>
                           </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -61,7 +58,7 @@
                                 while ($row = mysqli_fetch_assoc($result)) : 
                                    extract($row); 
                               ?>
-                                  <a class="dropdown-item" href="items.php?brand=true&<?php echo strtolower(str_replace(' ','_', $brand_name)); ?>=true">
+                                  <a class="dropdown-item" href="items.php?page=1&<?php echo strtolower(str_replace(' ','_', $brand_name)); ?>=true">
                                     <?php echo $brand_name; ?>
                                   </a>
                               <?php  endwhile; ?>
@@ -72,7 +69,7 @@
                       <a class="nav-link-index nav-link" href="#">Collections</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link-index nav-link" href="#">The Suit</a>
+                      <a class="nav-link-index nav-link" href="about.php">About</a>
                     </li>
                   </ul>
                 </div> <!-- /navbar-collapse -->
