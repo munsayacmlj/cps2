@@ -69,10 +69,6 @@
 		$id = $_GET['user_id'];
 		if (isset($_POST['delete-order'])) {
 			$delete_order = $_POST['delete-order'];
-			// $sql = "SELECT id as order_id FROM orders WHERE user_id = '$id'";
-			// $result = mysqli_query($connection, $sql);
-			// $row = mysqli_fetch_assoc($result);
-			// extract($row);
 
 			$sql = "DELETE FROM order_details WHERE order_id = (SELECT id as order_id FROM orders WHERE user_id = '$id'
 					 AND status='pending')";

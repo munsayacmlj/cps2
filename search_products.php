@@ -10,8 +10,10 @@
 	<?php require "assets/partials/navigation.php" ?>
 	<?php require "get_page_title.php"; ?>
 	<div class="sort-text">
-		<h1>
-			<?php get_page_title(); ?> 
+		<h1 class="title">
+			<?php if (isset($_GET['search_item'])): ?>
+			 	Results for <?php echo $_GET['search_item']; ?>
+			 <?php endif ?> 
 		</h1>
 	</div>
 	
@@ -23,8 +25,8 @@
 		$results_per_page = 8;
 
 		$sql = "SELECT *, a.id as prod_id, b.brand_name as brand, c.type as type FROM products a JOIN brands b ON 
-				(a.brand_id = b.id) JOIN product_types c ON (a.product_type_id = c.id) WHERE a.product_name LIKE '$name%'
-			 	OR b.brand_name LIKE '$name%' OR c.type LIKE '$name%'";
+				(a.brand_id = b.id) JOIN product_types c ON (a.product_type_id = c.id) WHERE a.product_name LIKE '%$name%'
+			 	OR b.brand_name LIKE '%$name%' OR c.type LIKE '%$name%'";
 		$res = mysqli_query($connection, $sql);
 		$num_of_rows = mysqli_num_rows($res);
 
@@ -38,8 +40,8 @@
 		$this_page_result = ($page - 1) * $results_per_page;
 
 			 		$sql = "SELECT *, a.id as prod_id, b.brand_name as brand, c.type as type FROM products a JOIN brands b ON (a.brand_id = b.id)
-			 				JOIN product_types c ON (a.product_type_id = c.id) WHERE a.product_name LIKE '$name%'
-			 				OR b.brand_name LIKE '$name%' OR c.type LIKE '$name%' LIMIT " . $this_page_result . ',' .$results_per_page;
+			 				JOIN product_types c ON (a.product_type_id = c.id) WHERE a.product_name LIKE '%$name%'
+			 				OR b.brand_name LIKE '%$name%' OR c.type LIKE '%$name%' LIMIT " . $this_page_result . ',' .$results_per_page;
 			 		$result = mysqli_query($connection, $sql);
 			 		
 			 		while ($row = mysqli_fetch_assoc($result)) {
@@ -74,8 +76,18 @@
 	<?php require "assets/partials/footer.php" ?>
 	<script src="assets/js/main.js" type="text/javascript"></script>
     <script type="text/javascript">
-    	
-
+    	var scrollStart = 0;
+		var startChange = $("#data-row");
+		var offset = startChange.offset();
+		$(document).scroll(function() {
+			scroll_start = $(this).scrollTop();
+			if (scroll_start > offset.top) {
+				$('.bg-custom').css('background-color', 'rgb(251,251,251)');
+			}
+			else {
+				$('.bg-custom').css('background-color', 'transparent');
+			}
+		});
     </script>
 </body>
 </html>
