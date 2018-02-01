@@ -16,8 +16,8 @@
 	<div class="sort-text">
 		<h3>Shopping Bag</h3>
 	</div>
-</div>	
 	<?php endif; ?>
+</div>	
 	<div class="container cart-container">
 		<div class="item-row" id="data-row">
 			<?php 
@@ -141,6 +141,23 @@
 	 ?>
 	<script src="assets/js/main.js" type="text/javascript"></script>
     <script type="text/javascript">
+    	$('#ifEmptyBag').on('click','.next-page-button', function() {
+			$.ajax({
+				url: 'endpoint.php',
+				type: 'POST',
+				data: {
+					checkout : true
+				},
+				success:function(data) {
+						// $('#shopping-wrapper').load(' #shopping-wrapper');
+						// $('#data-row').load(' #data-row');
+						// $('#ifEmptyBag').load(' #ifEmptyBag');
+						// $('#div-shopping-bag').load(' #div-shopping-bag');
+					window.location.reload(false);
+					alertify.alert("Transaction completed", "View your account profile to see your transaction history.").show();
+				}
+			});
+		});
     </script>
 </body>
 </html>

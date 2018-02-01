@@ -55,23 +55,19 @@
 						}
 					}
 				}
+				header('location: https://mljmshop.000webhostapp.com/index.php');		
 				echo 1;
-				header('location: index.php');		
 				exit;
 			}
 			elseif ($user_status == 'banned'){
-				// echo "banned";
+				header('location: https://mljmshop.000webhostapp.com/login.php');
 				echo -1;
-				header('location: login.php');
 				exit;
 			}
 		}
 		else{
-			// echo "Failed to login. Incorrect login credentials. <br>";
-			// echo "Login again <a href='login.php' style='color: red'>here</a>";
-			// echo "incorrect";
+			header('location: https://mljmshop.000webhostapp.com/login.php');
 			echo -2;
-			header('location: login.php');
 			exit;
 		}
 	}

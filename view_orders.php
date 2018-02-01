@@ -82,10 +82,6 @@
 								<a href="#" class="btn btn-danger btn-sm order-delete-btn" data-username="<?php echo $username; ?>" data-order-id="<?php echo $order_id; ?>" data-quantity="<?php echo $quantity; ?>" data-toggle="modal" data-target="#myModal">Delete</a>
 								</td>
 							<?php endif; ?>
-							
-							<!-- <td>
-								<a href="#" class="btn btn-danger btn-sm order-delete-btn" data-username="<?php echo $username; ?>" data-order-id="<?php echo $order_id; ?>" data-quantity="<?php echo $quantity; ?>" data-toggle="modal" data-target="#myModal">Delete</a>
-							</td> -->
 					</tr>
 					<?php endwhile; ?>
 				</tbody>

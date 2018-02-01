@@ -14,7 +14,7 @@
 			$sql = "INSERT INTO users (first_name, last_name, username, password, role_id, status_id)
 					VALUES ('$first_name', '$last_name', '$username', '$password', 1, 1)";
 			mysqli_query($connection, $sql);
-			header('location: login.php');
+			header('location: https://mljmshop.000webhostapp.com/login.php');
 			exit;
 		}
 		else{
@@ -154,7 +154,7 @@
 		$row = mysqli_fetch_assoc($result);
 		extract($row); /* $user_id */
 
-		$sql = "SELECT COUNT(product_id) as num_product FROM wishlists WHERE product_id = '$prod_id'";
+		$sql = "SELECT COUNT(product_id) as num_product FROM wishlists WHERE product_id = '$prod_id' AND user_id = '$user_id'";
 		$result = mysqli_query($connection, $sql);
 		$row = mysqli_fetch_assoc($result);
 		extract($row); /* $num_product */
@@ -232,9 +232,16 @@
 	if (isset($_GET['delete_item_from_cart'])) {
 		session_start();
 		$id = $_GET['id'];
+		$username = $_SESSION['username'];
+
+		$sql = "SELECT id as order_id FROM orders WHERE user_id = 
+				(SELECT id from users WHERE username = '$username') AND status ='pending'";
+		$res = mysqli_query($connection, $sql);
+		$row = extract(mysqli_fetch_assoc($res)); /* $order_id */
+
 		unset($_SESSION['cart'][$id]);
 
-		$sql = "DELETE FROM order_details WHERE product_id = '$id'";
+		$sql = "DELETE FROM order_details WHERE product_id = '$id' AND order_id = '$order_id'";
 		mysqli_query($connection, $sql);
 		echo 0;
 		header('location: '. $_SERVER['HTTP_REFERER']);
@@ -605,15 +612,21 @@
 	if (isset($_POST['rm_wish_item'])) {
 		session_start();
 		$product_id = $_POST['product_id'];
-		unset($_SESSION['wish'][$product_id]);
+		$username = $_SESSION['username'];
 
-		$sql = "DELETE FROM wishlists WHERE product_id = '$product_id'";
+		$sql = "SELECT id as user_id FROM users WHERE username = '$username'";
+		$result = mysqli_query($connection, $sql);
+		$row = mysqli_fetch_assoc($result);
+		extract($row); /* $user_id */
+
+
+		$sql = "DELETE FROM wishlists WHERE product_id = '$product_id' AND user_id = '$user_id'";
 		mysqli_query($connection, $sql);
 
+		unset($_SESSION['wish'][$product_id]);
 	}
  ?>
-<?php 
-	
+<?php 	
 	if (isset($_POST['user_order'])) :
 		$order_id = $_POST['order_id'];
 
@@ -635,11 +648,6 @@
 				<tbody>
 					<?php while($row = mysqli_fetch_assoc($res)):
 						extract($row); 
-						// $sql = "SELECT brand_name FROM brands WHERE id = 
-						// 		(SELECT brand_id FROM products WHERE product_name = '$product_name')";
-						// $brand_res = mysqli_query($connection, $sql);
-						// $brand_row = mysqli_fetch_assoc($brand_res);
-						// extract($brand_row);		
 					?>
 							<tr>
 								<td><?php echo $product_name; ?></td>
@@ -668,14 +676,16 @@
 	if (isset($_POST['checkout'])) {
 		session_start();
 		$username = $_SESSION['username'];
-		$res = mysqli_query($connection, "SELECT id from orders WHERE user_id = 
-							(SELECT id from users WHERE username = '$username') AND status = 'pending'");
-		$row = extract(mysqli_fetch_assoc($res));
+		$sql = "SELECT id from orders WHERE user_id = 
+							(SELECT id from users WHERE username = '$username') AND status = 'pending'";
+		$res = mysqli_query($connection, $sql);
+		$row = mysqli_fetch_assoc($res);
+		extract($row);
 		$order_id = $id;
+		
+		unset($_SESSION['cart']);
 
 		$sql = "UPDATE orders SET status = 'done' WHERE id = '$order_id'";
-		if (mysqli_query($connection, $sql) === TRUE) {
-			unset($_SESSION['cart']);
-			echo 'success';
-		}
+		mysqli_query($connection, $sql)
 	}
+?>

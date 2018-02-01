@@ -70,7 +70,8 @@ $('document').ready(function(){
 			data: formData,
 			success:function(data) {
 				if (data == -2) {
-					alert("Invalid username/password. Please Try Again.");
+					// alert("Invalid username/password. Please Try Again.");
+					$('$chkUsr').html('Invalid username/passowrd. Please Try Again');
 				}
 				else if (data == -1) {
 					alert("The BAN HAMMER has been executed by the admin.");
@@ -234,26 +235,6 @@ $('document').ready(function(){
 			}
 		});
 		return false; /*prevent the page going back to top after clicking add to wish button*/
-	});
-
-	$('#ifEmptyBag').on('click','.next-page-button', function() {
-		$.ajax({
-			url: 'endpoint.php',
-			type: 'POST',
-			data: {
-				checkout : true
-			},
-			success:function(data) {
-				data = $.trim(data);
-				if (data == "success") {
-					$('#shopping-wrapper').load(' #shopping-wrapper');
-					$('#data-row').load(' #data-row');
-					$('#ifEmptyBag').load(' #ifEmptyBag');
-					$('#div-shopping-bag').load(' #div-shopping-bag');
-					alertify.alert("Transaction completed", "View your account profile to see your transaction history.").show();
-				}
-			}
-		});
 	});
 
 	$('.price-col').on('click', '.trash-can', function() {
