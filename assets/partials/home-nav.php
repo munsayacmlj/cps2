@@ -1,9 +1,9 @@
-<div class="sticky-wrapper home-nav-bg">
+<div class="sticky-wrapper home-nav-bg home-nav-border">
   <div class="container">
     <div class="row">
             <span class="col-md-auto d-none d-sm-none d-md-none d-lg-block logo">
                 <span class="logo">
-                  <a href="index.php"><img src="assets/images//bg/tesla-logo.png"></a>
+                  <a href="index.php"><img src="assets/images//bg/tesla-logo.png" class="home-logo"></a>
                 </span>
             </span>
 <!--             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,20 +69,11 @@
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link-index nav-link" href="#">About</a>
+                      <a class="nav-link-index nav-link" href="#">Collections</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link-index nav-link" href="#">Story</a>
+                      <a class="nav-link-index nav-link" href="#">The Suit</a>
                     </li>
-                    <!-- <?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'regular'): ?>
-                      <li class="nav-item">
-                        <?php if(isset($_SESSION['cart'])): ?>
-                          <a class="nav-link cart-icon" href="shopping_bag.php?user=<?php echo $_SESSION['username']; ?>"><img src="assets/icons/shopping-cart.png" alt="">( <?php echo array_sum($_SESSION['cart']); ?> )</a>
-                        <?php else: ?>
-                          <a class="nav-link cart-icon" href="shopping_bag.php"><img src="assets/icons/shopping-cart.png" alt=""></a>
-                        <?php endif;  ?>
-                      </li>
-                    <?php endif ?> -->
                   </ul>
                 </div> <!-- /navbar-collapse -->
               
@@ -90,14 +81,11 @@
             </div>
 
             <div class="col-auto d-none d-sm-none d-md-none d-lg-block pl-0 pl-md-1 pr-0">
-                  <!-- <div class="header-button">
-                    <a href="#" class="btn btn-sm btn-default">Contact Us <i class="fa fa-envelope-o pl-1"></i></a>
-                  </div> -->
                   <form action="search_products.php" method="GET">
                     <div class="input-group header-search">
                       <input type="text" class="form-control" placeholder="Search.." name="search_item">
                       <div class="input-group-btn">
-                        <button type="submit" class="btn no-bg-btn"><i class="fa fa-search"></i></button>
+                        <button type="submit" class="btn no-bg-btn"><i class="fa fa-search home-search"></i></button>
                       </div>
                     </div>
                   </form>

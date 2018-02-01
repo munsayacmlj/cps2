@@ -236,10 +236,12 @@
 		$(document).scroll(function() {
 			scroll_start = $(this).scrollTop();
 			if (scroll_start > offset.top) {
-				$('.bg-custom').css('background-color', 'rgb(251,251,251)');
+				$('.bg-custom').css('background-color', '#fff');
+				$('.home-logo').css('height', '100px');
 			}
 			else {
 				$('.bg-custom').css('background-color', 'transparent');
+				$('.home-logo').css('height', '65px');
 			}
 		});
     </script>

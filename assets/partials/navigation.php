@@ -3,7 +3,7 @@
     <div class="row">
             <span class="col-md-auto d-none d-sm-none d-md-none d-lg-block logo">
                 <span class="logo">
-                  <a href="index.php"><img src="assets/images//bg/tesla-logo.png"></a>
+                  <a href="index.php"><img src="assets/images//bg/tesla-logo.png" class="home-logo"></a>
                 </span>
             </span>
 <!--             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,10 +69,10 @@
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link black" href="#">About</a>
+                      <a class="nav-link black" href="#">Collections</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link black" href="#">Story</a>
+                      <a class="nav-link black" href="#">The Suit</a>
                     </li>
                     <!-- <?php if (isset($_SESSION['username']) && $_SESSION['role'] == 'regular'): ?>
                       <li class="nav-item">

@@ -58,7 +58,7 @@
 	<h2>You have no permission to visit this page.</h2>
 <?php endif ?>	
 
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
@@ -75,7 +75,7 @@
 	</div>
 
 
-	<div class="modal fade" id="adminModal" tabindex="-1" role="dialog">
+	<div class="modal" id="adminModal" tabindex="-1" role="dialog">
 		  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">

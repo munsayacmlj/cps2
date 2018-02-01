@@ -1,5 +1,4 @@
-<?php 
-	
+<?php 	
 	require "connection.php";
 
 	if (isset($_POST['register'])) { /* register account endpoint */
@@ -24,7 +23,6 @@
 							window.location.replace(\"$new_loc\")</script>";
 		}
 	}
-
 	if (isset($_GET['add_to_cart'])) {
 		session_start();
 
@@ -71,7 +69,8 @@
 			$extracted_price = $price;
 			
 			
-			$sql = "SELECT COUNT(quantity) as qty FROM order_details WHERE product_id = '$extracted_product_id'";
+			$sql = "SELECT COUNT(quantity) as qty FROM order_details WHERE product_id = '$extracted_product_id'
+					AND order_id = '$new_order_id'";
 			$result = mysqli_query($connection, $sql);
 			$row = mysqli_fetch_assoc($result);
 			extract($row);
@@ -119,7 +118,8 @@
 			$extracted_price = $price;
 			
 			
-			$sql = "SELECT COUNT(quantity) as qty FROM order_details WHERE product_id = '$extracted_product_id'";
+			$sql = "SELECT COUNT(quantity) as qty FROM order_details WHERE product_id = '$extracted_product_id'
+					AND order_id = '$new_order_id'";
 			$result = mysqli_query($connection, $sql);
 			$row = mysqli_fetch_assoc($result);
 			extract($row);
@@ -149,8 +149,6 @@
 		// header('Location: ' . $_SERVER['HTTP_REFERER']);
 		// exit;
 	}
-
-	/* ADD TO WISHLIST*/
 	if (isset($_POST['add_to_wish'])) {
 		session_start();
 		$prod_id = $_POST['prod_id'];
@@ -182,7 +180,6 @@
 			echo 'success';
 		}
 	}
-
 	if (isset($_POST['qtyChange'])) {   /* CHANGE ITEM'S QUANTITY*/
 		session_start();
 		$product_id = $_POST['id']; /*product_id*/
@@ -209,7 +206,6 @@
 			}
 			// echo $db_qty;
 		}
-
 		if ($quantity > $db_qty) {
 			$sql = "SELECT price FROM products WHERE id = '$product_id'";
 			$result = mysqli_query($connection, $sql);
@@ -237,10 +233,8 @@
 				extract($row);
 			}
 		}
-		
 		echo 'changed';
 	}
-
 	if (isset($_GET['delete_item_from_cart'])) {
 		session_start();
 		$id = $_GET['id'];
@@ -252,8 +246,6 @@
 		header('location: '. $_SERVER['HTTP_REFERER']);
 		exit;
 	}
-
-
 	if (isset($_POST['edit_item'])) :
 		$id = $_POST['index'];
 		$sql = "SELECT * FROM products WHERE id = '$id'";
@@ -265,9 +257,8 @@
 					WHERE b.id = '$id'";
 		$result = mysqli_query($connection, $sql);
 		$brand_row = mysqli_fetch_assoc($result);
-		extract($brand_row);
+		extract($brand_row); /* $brand_name */
 ?>
-
 	<div class="brand-name-edit-modal">
 		<h3><?php echo $brand_name; ?></h3>
 	</div>
@@ -284,6 +275,20 @@
                 <label>Description:</label> 
                 <textarea class="form-control" id="modal-description" name="description"><?php echo $description; ?></textarea>
             </div>
+			<div class="form-inline">
+	            <select class="form-control selectables" name="brand" required>
+	                <option selected><?php echo $brand_name; ?></option>
+	                <?php 
+	                $sql = "SELECT * FROM brands";
+	                $result = mysqli_query($connection, $sql);
+	                while($row = mysqli_fetch_assoc($result)) :
+	                    extract($row);
+	                 ?>
+	                    <option value="<?php echo $id ?>"><?php echo $brand_name ?></option>
+	                <?php endwhile; ?>
+	            </select>
+	            
+			</div>
             <div class="form-group">
                 <label>Price: Php</label> 
                 <input class="form-control" id="modal-price" name="price" type="number" min=0 value="<?php echo $price; ?>"> 
@@ -324,35 +329,33 @@
             <input type="button" class="btn btn-success" data-dismiss='modal' value="No"> -->
 <?php endif; ?>
 <?php 
-	
 	if (isset($_POST['add_item'])) :
-
 ?>	
 	<div class="container add-item-modal">
 		<div class="row">
 		        <form class="form-group col-12" action="admin_action.php?add_item=true" method="post" enctype="multipart/form-data">
 					<div class="input-desc form-group col-12">
 						<label for="product_name">Name</label>
-						<input class="form-control" type="text" id="product_name" name="product_name">
+						<input class="form-control" type="text" id="product_name" name="product_name" required>
 					</div>
 					
 					<div class="form-group col-12">
 			            <label for="description">Description</label>
-			            <textarea class="form-control" id="description" name="description"></textarea>
+			            <textarea class="form-control" id="description" name="description" required></textarea>
 					</div>
 
 					<div class="form-group col-12">
 			            <label for="price">Price</label>
-			            <input class="form-control" type="number" name="price" id="price" min=0>
+			            <input class="form-control" type="number" name="price" id="price" min=0 required>
 					</div>
 
 					<div class="form-group col-12">
 			            <label for="image">Image</label>
-						<input class="form-control" type="file" name="image" id="image">
+						<input class="form-control" type="file" name="image" id="image" required>
 					</div>
 
-					<div class="form-inline">
-			            <select class="form-control selectables" name="brand">
+					<div class="form-inline selects">
+			            <select class="form-control selectables" name="brand" required>
 			                <option disabled selected>Brand Name</option>
 			                <?php 
 			                $sql = "SELECT * FROM brands";
@@ -365,7 +368,7 @@
 			            </select>
 
 
-			            <select class="form-control selectables" name="gender">
+			            <select class="form-control selectables" name="gender" required>
 			                <option disabled selected>Men/Women</option>
 			                <?php 
 			                $sql = "SELECT * FROM genders";
@@ -377,7 +380,7 @@
 			                <?php endwhile; ?>
 			            </select>
 
-			            <select class="form-control selectables" name="product_type">
+			            <select class="form-control selectables" name="product_type" required>
 			                <option disabled selected>Type</option>
 			                <?php 
 			                $sql = "SELECT * FROM product_types";
