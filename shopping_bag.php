@@ -128,11 +128,6 @@
 	<?php endif; ?>
 </div>	
 </div> <!-- /.container -->
-
-	<section class="foot">
-		
-	</section>
-	
 	<?php 
 		$previous = "javascript:history.go(-1)";
 		if(isset($_SERVER['HTTP_REFERER'])) {
@@ -149,11 +144,10 @@
 					checkout : true
 				},
 				success:function(data) {
-						// $('#shopping-wrapper').load(' #shopping-wrapper');
-						// $('#data-row').load(' #data-row');
-						// $('#ifEmptyBag').load(' #ifEmptyBag');
-						// $('#div-shopping-bag').load(' #div-shopping-bag');
-					window.location.reload(false);
+						$('#shopping-wrapper').load(' #shopping-wrapper');
+						$('#data-row').load(' #data-row');
+						$('#ifEmptyBag').load(' #ifEmptyBag');
+						$('#div-shopping-bag').load(' #div-shopping-bag');
 					alertify.alert("Transaction completed", "View your account profile to see your transaction history.").show();
 				}
 			});

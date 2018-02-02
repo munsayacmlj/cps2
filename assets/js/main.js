@@ -24,7 +24,7 @@ $('input[name=reg-username]').on('input', function() {
 	var username = $('input[name=reg-username]').val();
 
 	$.ajax({
-		url: 'authenticate.php',
+		url: 'https://mljmshop.000webhostapp.com/authenticate.php',
 		type: 'POST',
 		data: {
 			auth_username: true,
@@ -87,7 +87,7 @@ $('document').ready(function(){
 	$('.edit-item').click(function(){
 		var index = $(this).data('index');
 		$.ajax({
-			url: 'endpoint.php',
+			url: 'https://mljmshop.000webhostapp.com/endpoint.php',
 			type: 'POST',
 			data: {
 					edit_item: true,
@@ -104,7 +104,7 @@ $('document').ready(function(){
 		var index = $(this).data('index');
 
 		$.ajax({
-			url: 'endpoint.php',
+			url: 'https://mljmshop.000webhostapp.com/endpoint.php',
 			type: 'POST',
 			data: {
 				delete_item: true,
@@ -147,13 +147,10 @@ $('document').ready(function(){
 				qty: qty 
 			},
 			success:function(data){
-				data = $.trim(data);
-				if (data == 'changed') {
-					$('#div-shopping-bag').load(' #div-shopping-bag');
-					$('#div-subtotal-price').load(' #div-subtotal-price');
-					$('.price-'+id).load(' .'+id);
-					$('#ifEmptyBag').load(' #ifEmptyBag');
-				}
+				$('#div-shopping-bag').load(' #div-shopping-bag');
+				$('#div-subtotal-price').load(' #div-subtotal-price');
+				$('.price-'+id).load(' .'+id);
+				$('#ifEmptyBag').load(' #ifEmptyBag');
 			}
 		});
 	});

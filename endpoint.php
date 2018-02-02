@@ -225,7 +225,6 @@
 				$row = mysqli_fetch_assoc($result);
 				extract($row);
 			}
-			echo 'changed';
 		}
 		
 	}
