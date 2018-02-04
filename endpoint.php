@@ -1,6 +1,6 @@
 <?php 	
 	require "connection.php";
-
+	session_start();
 	if (isset($_POST['register'])) { /* register account endpoint */
 		
 		$first_name = $_POST['firstname'];
@@ -24,7 +24,7 @@
 		}
 	}
 	if (isset($_GET['add_to_cart'])) {
-		session_start();
+		
 
 		/* VARIABLES */
 		$get_product_id = $_GET['id']; /* products.id*/
@@ -145,7 +145,7 @@
 		}	
 	}
 	if (isset($_POST['add_to_wish'])) {
-		session_start();
+		
 		$prod_id = $_POST['prod_id'];
 		$username = $_SESSION['username'];
 
@@ -176,23 +176,30 @@
 		}
 	}
 	if (isset($_POST['qtyChange'])) {   /* CHANGE ITEM'S QUANTITY*/
-		session_start();
+		
 		$product_id = $_POST['id']; /*product_id*/
 		$quantity = $_POST['qty'];
 		// echo $product_id."    ".$quantity;
+		$username = $_SESSION['username'];
 
 		$sql = "SELECT COUNT(quantity) as db_qty FROM order_details WHERE product_id = '$product_id'";
 		$result = mysqli_query($connection, $sql);
 		$row = mysqli_fetch_assoc($result);
 		extract($row); /* extracted $db_qty as the total count of items in the database where product_id = $product_id */
+
+		$_SESSION['cart'][$product_id] = $quantity;
 		if ($quantity < $db_qty) {
+			$sql = "SELECT id as order_id FROM orders WHERE user_id = 
+					(SELECT id from users WHERE username = '$username') AND status = 'pending'";
+			$res = mysqli_query($connection, $sql);
+			$row = extract(mysqli_fetch_assoc($res)); /* $order_id of user with status of pending */
 			while ($quantity < $db_qty) {
-				$sql = "DELETE FROM order_details WHERE product_id = '$product_id' LIMIT 1";
+				$sql = "DELETE FROM order_details WHERE product_id = '$product_id' AND order_id = '$order_id' LIMIT 1";
 				mysqli_query($connection, $sql);
 
-				$_SESSION['cart'][$product_id] -= 1;
+				// $_SESSION['cart'][$product_id] -= 1;
 
-				$sql = "SELECT COUNT(quantity) as db_qty FROM order_details WHERE product_id = '$product_id'";
+				$sql = "SELECT COUNT(quantity) as db_qty FROM order_details WHERE product_id = '$product_id' AND order_id = '$order_id'";
 				$result = mysqli_query($connection, $sql);
 				$row = mysqli_fetch_assoc($result);
 				extract($row); /* extracted $db_qty for comparison */
@@ -205,31 +212,33 @@
 			$row = mysqli_fetch_assoc($result);
 			extract($row); /* $price */
 
-			$username = $_SESSION['username'];
+			
 			
 			$sql = "SELECT a.id as order_id FROM orders a JOIN users b ON (a.user_id = b.id) WHERE username = '$username' AND status = 'pending'";
 			$result = mysqli_query($connection, $sql);
 			$row = mysqli_fetch_assoc($result);
-			extract($row); /* $order_id */
+			extract($row); /* $order_id of the user with status of pending */
 			
 			while ($quantity > $db_qty) {
 				$sql = "INSERT INTO order_details (quantity, total_price, product_id, order_id) 
 						VALUES (1, '$price', '$product_id', '$order_id')";
 				mysqli_query($connection, $sql);
 				
-				$_SESSION['cart'][$product_id] += 1;
+				// $_SESSION['cart'][$product_id] += 1;
 
 
-				$sql = "SELECT COUNT(quantity) as db_qty FROM order_details WHERE product_id = '$product_id'";
+				$sql = "SELECT COUNT(quantity) as db_qty FROM order_details WHERE
+							 product_id = '$product_id' AND order_id = '$order_id'";
 				$result = mysqli_query($connection, $sql);
 				$row = mysqli_fetch_assoc($result);
 				extract($row);
 			}
+			echo 'changed';
 		}
 		
 	}
 	if (isset($_GET['delete_item_from_cart'])) {
-		session_start();
+		
 		$id = $_GET['id'];
 		$username = $_SESSION['username'];
 
@@ -609,7 +618,7 @@
 <?php endif; ?>
 <?php 
 	if (isset($_POST['rm_wish_item'])) {
-		session_start();
+		
 		$product_id = $_POST['product_id'];
 		$username = $_SESSION['username'];
 
@@ -673,7 +682,7 @@
 <?php endif; ?>
 <?php 
 	if (isset($_POST['checkout'])) {
-		session_start();
+		
 		$username = $_SESSION['username'];
 		$sql = "SELECT id from orders WHERE user_id = 
 							(SELECT id from users WHERE username = '$username') AND status = 'pending'";
@@ -685,6 +694,18 @@
 		unset($_SESSION['cart']);
 
 		$sql = "UPDATE orders SET status = 'done' WHERE id = '$order_id'";
-		mysqli_query($connection, $sql)
+		mysqli_query($connection, $sql);
 	}
 ?>
+<?php 
+	
+	if (isset($_POST['delete_account'])) :
+?>
+		<div class="container">
+			<h4 class="p-2">Do you want to delete your account?</h4>
+			<form id="delete-account-form" action="user_action.php" method="POST" class="p-2">
+	            <input type="submit" class="btn btn-danger" name="delete_account" value="Yes">
+	            <input type="button" class="btn btn-success" data-dismiss='modal' value="No">
+	        </form>
+		</div>
+<?php endif; ?>

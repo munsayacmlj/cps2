@@ -73,6 +73,7 @@
 	<script src="assets/js/alertify.js" type="text/javascript"></script>
 	<script src="assets/js/jquery.cookie.js"></script>
 	<script>
+
 		/*COOKIE LOGIN*/
 		$('#loginForm').on('submit', function() {
 

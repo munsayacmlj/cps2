@@ -55,23 +55,21 @@
 						}
 					}
 				}
-				header('location: https://mljmshop.000webhostapp.com/index.php');		
-				echo 1;
+				header('location: index.php');
 				exit;
 			}
 			elseif ($user_status == 'banned'){
-				header('location: https://mljmshop.000webhostapp.com/login.php');
-				echo -1;
-				exit;
+				$new_loc = (string)$_SERVER['HTTP_REFERER'];
+				echo "<script>alert('Banned!');
+							window.location.replace(\"$new_loc\")</script>";
 			}
 		}
 		else{
-			header('location: https://mljmshop.000webhostapp.com/login.php');
-			echo -2;
-			exit;
+			$new_loc = (string)$_SERVER['HTTP_REFERER'];
+			echo "<script>alert('Invalid username/password');
+							window.location.replace(\"$new_loc\")</script>";
 		}
 	}
-
 
 
 	if (isset($_POST['auth_username'])) {

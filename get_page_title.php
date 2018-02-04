@@ -28,59 +28,56 @@
 				echo "Shoes for Women";
 				
 
-					foreach ($_GET as $key => $value){
-						switch ($key) {
-							case 'allen_edmonds':
-								echo "Allen Edmonds";
-								break;
-							case 'balenciaga':
-								echo "Balenciaga";
-								break;
-							case 'barba_napoli':
-								echo "Barba Napoli";
-								break;
-							case 'berluti':
-								echo "Berluti";
-								break;
-							case 'brioni':
-								echo "Brioni";
-								break;
-							case 'christian_louboutin':
-								echo "Christian Louboutin";
-								break;
-							case 'gucci':
-								echo "Gucci";
-								break;
-							case 'jimmy_choo':
-								echo "Jimmy Choo";
-								break;
-							case 'kate_spade':
-								echo "Kate Spade";
-								break;
-							case 'manolo_blahnik':
-								echo "Manolo Blahnik";
-								break;
-							case 'ralph_lauren':
-								echo "Ralph Lauren";
-								break;
-							case 'saint_laurent':
-								echo "Saint Laurent";
-								break;
-							case 'savatore_ferragamo':
-								echo "Salvatore Ferragamo";
-								break;
-							case 'stuart_weitzman':
-								echo "Stuart Weitzman";
-								break;
-							case 'versace':
-								echo "Versace";
-								break;
-							default:
-								# code...
-								break;
-						}
-					}	
-				
-			
+			foreach ($_GET as $key => $value){
+				switch ($key) {
+					case 'allen_edmonds':
+						echo "Allen Edmonds";
+						break;
+					case 'balenciaga':
+						echo "Balenciaga";
+						break;
+					case 'barba_napoli':
+						echo "Barba Napoli";
+						break;
+					case 'berluti':
+						echo "Berluti";
+						break;
+					case 'brioni':
+						echo "Brioni";
+						break;
+					case 'christian_louboutin':
+						echo "Christian Louboutin";
+						break;
+					case 'gucci':
+						echo "Gucci";
+						break;
+					case 'jimmy_choo':
+						echo "Jimmy Choo";
+						break;
+					case 'kate_spade':
+						echo "Kate Spade";
+						break;
+					case 'manolo_blahnik':
+						echo "Manolo Blahnik";
+						break;
+					case 'ralph_lauren':
+						echo "Ralph Lauren";
+						break;
+					case 'saint_laurent':
+						echo "Saint Laurent";
+						break;
+					case 'savatore_ferragamo':
+						echo "Salvatore Ferragamo";
+						break;
+					case 'stuart_weitzman':
+						echo "Stuart Weitzman";
+						break;
+					case 'versace':
+						echo "Versace";
+						break;
+					default:
+						# code...
+						break;
+				}
+			}	
 		}
-?>

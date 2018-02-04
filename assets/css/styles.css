@@ -727,5 +727,7 @@ ol, ul {
       font-family: LabGrotesque-Bold,sans-serif; }
   .account-wrapper .user-order-table tr {
     cursor: pointer; }
+  .account-wrapper #change-password-form {
+    display: none; }
 
 /*# sourceMappingURL=styles.css.map */

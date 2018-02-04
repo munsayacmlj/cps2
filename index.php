@@ -87,13 +87,15 @@
 				$('.home-nav-border').css('border-bottom', 'none');
 				$('.nav-link-index').css('color', '#fff');
 				$('.home-search').css('color', '#fff');
-				$('.home-logo').css('height', '100px');
+				// $('.home-logo').css('height', '100px');
+				$('.brand').css('color', '#fff');
 			}
 			else {
 				$('.home-nav-bg').css('background-color', '#f2f2f2');
 				$('.nav-link-index').css('color', '#000');
 				$('.home-search').css('color', '#000');
-				$('.home-logo').css('height', '65px');
+				// $('.home-logo').css('height', '65px');
+				$('.brand').css('color', '#000');
 			}
 		});
     </script>

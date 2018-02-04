@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row">
             <span class="col-md-auto d-none d-sm-none d-md-none d-lg-block logo">
-                <span class="logo">
-                  <a href="index.php"><img src="assets/images//bg/tesla-logo.png" class="home-logo"></a>
+                <span class="logo pt-4">
+                  <a href="index.php"><span class="logo-home">MLJM</span></a>
                 </span>
             </span>
             <div class="col-md-8 col-sm-12 ml-lg-auto">
